@@ -22,7 +22,7 @@ public class PlayerActionManager : MonoBehaviour
 
     void RegisterActions(PlayerInput input)
     {
-        input.actions.FindActionMap("UI").Enable();//TODO UI or Player
+        input.actions.FindActionMap("UI").Enable();//TODO UI or Player?
         InputAction moveAction = input.actions["Move"];
         if (moveAction != null)
         {
