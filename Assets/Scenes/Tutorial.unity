@@ -391,7 +391,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 521883971}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -516,6 +516,10 @@ PrefabInstance:
     - target: {fileID: 3126724084602222555, guid: dbdbd5d7a5fd7b240b52fa87bee0b096, type: 3}
       propertyPath: m_Name
       value: Ground (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3126724084602222555, guid: dbdbd5d7a5fd7b240b52fa87bee0b096, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4747945948895842487, guid: dbdbd5d7a5fd7b240b52fa87bee0b096, type: 3}
       propertyPath: m_LocalScale.x
@@ -787,6 +791,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 3126724084602222555, guid: dbdbd5d7a5fd7b240b52fa87bee0b096, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4747945948895842487, guid: dbdbd5d7a5fd7b240b52fa87bee0b096, type: 3}
       propertyPath: m_LocalScale.x
       value: 5
@@ -888,6 +896,10 @@ PrefabInstance:
     - target: {fileID: 3126724084602222555, guid: dbdbd5d7a5fd7b240b52fa87bee0b096, type: 3}
       propertyPath: m_Name
       value: Ground (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3126724084602222555, guid: dbdbd5d7a5fd7b240b52fa87bee0b096, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4747945948895842487, guid: dbdbd5d7a5fd7b240b52fa87bee0b096, type: 3}
       propertyPath: m_LocalScale.x
@@ -1109,6 +1121,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 3126724084602222555, guid: dbdbd5d7a5fd7b240b52fa87bee0b096, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4747945948895842487, guid: dbdbd5d7a5fd7b240b52fa87bee0b096, type: 3}
       propertyPath: m_LocalScale.x
       value: 5
@@ -1219,6 +1235,10 @@ PrefabInstance:
     - target: {fileID: 3126724084602222555, guid: dbdbd5d7a5fd7b240b52fa87bee0b096, type: 3}
       propertyPath: m_Name
       value: Ground (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3126724084602222555, guid: dbdbd5d7a5fd7b240b52fa87bee0b096, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4747945948895842487, guid: dbdbd5d7a5fd7b240b52fa87bee0b096, type: 3}
       propertyPath: m_LocalScale.x

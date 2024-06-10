@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,31 +21,20 @@ public class PlayerActionManager : MonoBehaviour
         if (TryGetComponent(out PlayerInput input)) { UnRegisterActions(input); }
     }
 
+
+    //TODO move boolean here and make RegisterActions  and UnRegisterActions one function
     void RegisterActions(PlayerInput input)
     {
         input.actions.FindActionMap("UI").Enable();//TODO UI or Player?
-        InputAction moveAction = input.actions["Move"];
-        if (moveAction != null)
-        {
-            moveAction.performed += context => SetMove(context.ReadValue<Vector2>());
-        }
-        InputAction jumpAction = input.actions["Jump"];
-        if (jumpAction != null)
-        {
-            jumpAction.performed += context => SetJump(context.ReadValueAsButton());
-            jumpAction.canceled += context => OnJumpCancel(context.ReadValueAsButton());
-        }
-        InputAction glideAction = input.actions["glide"];
-        if (glideAction != null)
-        {
-            glideAction.performed += context => SetGlide(context.ReadValueAsButton());
-            glideAction.canceled += context => SetGlide(context.ReadValueAsButton());
-        }
-        InputAction interactAction = input.actions["interact"];
-        if (interactAction != null)
-        {
-            interactAction.canceled += context => OnInteractStart(context);
-        }
+
+        AssignCallbacksAI(input, "Move", SetMove, null, null, context => context.ReadValue<Vector2>(), true);
+        AssignCallbacksAI(input, "Jump", SetJump, OnJumpCancel, started: null, context => context.ReadValueAsButton(), true);
+        AssignCallbacksAI(input, "glide", SetGlide, SetGlide, null, context => context.ReadValueAsButton(), true);
+        AssignCallbacksAI(input, "interact", null, OnInteractStart, null, context => context, true);
+
+        //TODO Failed here, Make duplicate lines or change the funtions?
+        //AssignCallbacksAI(input, "PauseMenu", OnEscape, SetEscape, null, context => context.ReadValueAsButton(), true);
+
         InputAction escapeAction = input.actions["Pausemenu"];
         if (escapeAction != null)
         {
@@ -55,28 +45,14 @@ public class PlayerActionManager : MonoBehaviour
 
     void UnRegisterActions(PlayerInput input)
     {
-        InputAction moveAction = input.actions["Move"];
-        if (moveAction != null)
-        {
-            moveAction.performed -= context => SetMove(context.ReadValue<Vector2>());
-        }
-        InputAction jumpAction = input.actions["Jump"];
-        if (jumpAction != null)
-        {
-            jumpAction.performed -= context => SetJump(context.ReadValueAsButton());
-            jumpAction.canceled -= context => OnJumpCancel(context.ReadValueAsButton());
-        }
-        InputAction glideAction = input.actions["glide"];
-        if (glideAction != null)
-        {
-            glideAction.performed -= context => SetGlide(context.ReadValueAsButton());
-            glideAction.canceled -= context => SetGlide(context.ReadValueAsButton());
-        }
-        InputAction interactAction = input.actions["interact"];
-        if (interactAction != null)
-        {
-            interactAction.canceled -= context => OnInteractStart(context);
-        }
+
+
+        AssignCallbacksAI(input, "Move", SetMove, null, null, context => context.ReadValue<Vector2>(), false);
+        AssignCallbacksAI(input, "Jump", SetJump, OnJumpCancel, null, context => context.ReadValueAsButton(), false);
+        AssignCallbacksAI(input, "glide", SetGlide, SetGlide, null, context => context.ReadValueAsButton(), false);
+        AssignCallbacksAI(input, "interact", null, OnInteractStart, null, context => context, false);
+
+        //TODO  is this wrong?
         InputAction escapeAction = input.actions["Pausemenu"];
         if (escapeAction != null)
         {
@@ -84,6 +60,34 @@ public class PlayerActionManager : MonoBehaviour
             escapeAction.canceled += context => SetEscape(context.ReadValueAsButton());
         }
     }
+
+
+    public void AssignCallbacksAI<T>(PlayerInput input, string actionName, Action<T> performed = null, Action<T> canceled = null, Action<T> started = null, Func<InputAction.CallbackContext, T> converter = null, bool enable = true)
+    {
+        InputAction action = input.actions[actionName];
+        if (action != null)
+        {
+            if (enable)
+            {
+                action.started += context => OnActionTaken(context, started, converter);
+                action.performed += context => OnActionTaken(context, performed, converter);
+                action.canceled += context => OnActionTaken(context, canceled, converter);
+            }
+            else
+            {
+                action.started -= context => OnActionTaken(context, started, converter);
+                action.performed -= context => OnActionTaken(context, performed, converter);
+                action.canceled -= context => OnActionTaken(context, canceled, converter);
+            }
+        }
+    }
+    private void OnActionTaken<T>(InputAction.CallbackContext context, Action<T> action, Func<InputAction.CallbackContext, T> buttonData)
+    {
+        if (action == null) return;
+
+        action(buttonData(context));
+    }
+
 
     void SetMove(Vector2 value) { moveValue = value; }
     void SetJump(bool value) { jumpValue = value; }
