@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
+
 
 public class PlayerActionManager : MonoBehaviour
 {
@@ -10,6 +12,7 @@ public class PlayerActionManager : MonoBehaviour
     public bool glideValue { get; private set; }
     public bool interactValue { get; private set; }
     public bool escapeValue { get; private set; }
+    public PlayerInstrument.InstrumentType selectedInsturument { get; private set; } = PlayerInstrument.InstrumentType.Wind;
     private void OnEnable()
     {
         if (TryGetComponent(out PlayerInput input))
@@ -28,10 +31,12 @@ public class PlayerActionManager : MonoBehaviour
 
     void ManageActions(PlayerInput input, bool onEnable)
     {
+
         AssignCallbacks(input, "Move", SetMove, null, null, context => context.ReadValue<Vector2>(), onEnable);
         AssignCallbacks(input, "Jump", SetJump, OnJumpCancel, started: null, context => context.ReadValueAsButton(), onEnable);
         AssignCallbacks(input, "glide", SetGlide, SetGlide, null, context => context.ReadValueAsButton(), onEnable);
         AssignCallbacks(input, "interact", null, OnInteractStart, null, context => context, onEnable);
+        AssignCallbacks(input, "Select Instrument", null, null, OnSelectInsturument, context => context, onEnable);
 
         AssignCallbacks(input, "PauseMenu", OnEscape, null, null, context => context, onEnable);
     }
@@ -85,6 +90,40 @@ public class PlayerActionManager : MonoBehaviour
         Debug.Log("escape!");
         SetEscape(context.ReadValueAsButton());
         PauseMenu.togglePause();
+    }
+
+    void OnSelectInsturument(InputAction.CallbackContext context)
+    {
+
+        //TODO this does not allow multiple button pressed which creates unresponsive controls.
+        var control = context.control;
+        if (control is KeyControl keyControl)
+        {
+            switch (keyControl.keyCode)
+            {
+                case Key.Digit1:
+                selectedInsturument = PlayerInstrument.InstrumentType.Wind;
+                Debug.Log("Key 1 pressed");
+                break;
+
+                case Key.Digit2:
+                selectedInsturument = PlayerInstrument.InstrumentType.Percussion;
+                Debug.Log("Key 2 pressed");
+                break;
+
+                case Key.Digit3:
+                selectedInsturument = PlayerInstrument.InstrumentType.String;
+                Debug.Log("Key 3 pressed");
+                break;
+
+                default:
+                Debug.Log("Other key pressed " + keyControl.keyCode.ToString());
+                break;
+            }
+        }
+
+
+
     }
 }
 
