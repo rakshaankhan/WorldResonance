@@ -226,7 +226,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21cbdb483b474f84e8c16290cdd90bce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instrumentEvent: {fileID: 11400000, guid: 25a50ea2ffa097e45a84c6c4e7c0728a, type: 2}
+  instrumentPlayEvent: {fileID: 11400000, guid: 25a50ea2ffa097e45a84c6c4e7c0728a, type: 2}
+  instrumentChangeEvent: {fileID: 11400000, guid: 3eacc8f9048207648902db0b0f7ba754, type: 2}
+  selectedInstrument: {fileID: 11400000, guid: 83517201c39552144a13be36d0f9dd4e, type: 2}
+  instrumentList:
+  - {fileID: 11400000, guid: 83517201c39552144a13be36d0f9dd4e, type: 2}
+  - {fileID: 11400000, guid: aba6967f74f057b4a945db1593f1a6d8, type: 2}
+  - {fileID: 11400000, guid: 8624b66b625eda6479594664fd934e8c, type: 2}
 --- !u!1001 &328805944
 PrefabInstance:
   m_ObjectHideFlags: 0

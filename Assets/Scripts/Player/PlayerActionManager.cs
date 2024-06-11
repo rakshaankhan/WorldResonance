@@ -12,7 +12,7 @@ public class PlayerActionManager : MonoBehaviour
     public bool glideValue { get; private set; }
     public bool interactValue { get; private set; }
     public bool escapeValue { get; private set; }
-    public PlayerInstrument.InstrumentType selectedInsturument { get; private set; } = PlayerInstrument.InstrumentType.Wind;
+    public PlayerInstrument.InstrumentType selectedInstrument { get; private set; } = PlayerInstrument.InstrumentType.Wind;
     private void OnEnable()
     {
         if (TryGetComponent(out PlayerInput input))
@@ -36,7 +36,7 @@ public class PlayerActionManager : MonoBehaviour
         AssignCallbacks(input, "Jump", SetJump, OnJumpCancel, started: null, context => context.ReadValueAsButton(), onEnable);
         AssignCallbacks(input, "glide", SetGlide, SetGlide, null, context => context.ReadValueAsButton(), onEnable);
         AssignCallbacks(input, "interact", null, OnInteractStart, null, context => context, onEnable);
-        AssignCallbacks(input, "Select Instrument", null, null, OnSelectInsturument, context => context, onEnable);
+        AssignCallbacks(input, "Select Instrument", null, null, OnSelectInstrumentName, context => context, onEnable);
 
         AssignCallbacks(input, "PauseMenu", OnEscape, null, null, context => context, onEnable);
     }
@@ -70,7 +70,7 @@ public class PlayerActionManager : MonoBehaviour
 
     void SetMove(Vector2 value) { moveValue = value; }
     void SetJump(bool value) { jumpValue = value; }
-    void SetGlide(bool value) { glideValue = value; /*Debug.Log("glide value: " + value);*/ }
+    void SetGlide(bool value) { glideValue = value; }
     void SetInteract(bool value) { interactValue = value; }
     void SetEscape(bool value) { escapeValue = value; }
     void OnJumpCancel(bool value)
@@ -92,7 +92,7 @@ public class PlayerActionManager : MonoBehaviour
         PauseMenu.togglePause();
     }
 
-    void OnSelectInsturument(InputAction.CallbackContext context)
+    public void OnSelectInstrumentName(InputAction.CallbackContext context)
     {
 
         //TODO this does not allow multiple button pressed which creates unresponsive controls.
@@ -102,17 +102,17 @@ public class PlayerActionManager : MonoBehaviour
             switch (keyControl.keyCode)
             {
                 case Key.Digit1:
-                selectedInsturument = PlayerInstrument.InstrumentType.Wind;
+                selectedInstrument = PlayerInstrument.InstrumentType.Wind;
                 Debug.Log("Key 1 pressed");
                 break;
 
                 case Key.Digit2:
-                selectedInsturument = PlayerInstrument.InstrumentType.Percussion;
+                selectedInstrument = PlayerInstrument.InstrumentType.Percussion;
                 Debug.Log("Key 2 pressed");
                 break;
 
                 case Key.Digit3:
-                selectedInsturument = PlayerInstrument.InstrumentType.String;
+                selectedInstrument = PlayerInstrument.InstrumentType.String;
                 Debug.Log("Key 3 pressed");
                 break;
 
@@ -120,6 +120,9 @@ public class PlayerActionManager : MonoBehaviour
                 Debug.Log("Other key pressed " + keyControl.keyCode.ToString());
                 break;
             }
+
+            //TODO just for testing will delete from here.
+            GetComponent<PlayerInstrument>().ChangeInstrument(selectedInstrument);
         }
     }
 }

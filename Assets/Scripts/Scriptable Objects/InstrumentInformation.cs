@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Instrument/Instrument Information")]
-public class InsturmentInformation : ScriptableObject
+public class InstrumentInformation : ScriptableObject
 {
 #if UNITY_EDITOR
     [Multiline]
@@ -9,9 +9,9 @@ public class InsturmentInformation : ScriptableObject
 #endif
 
     [SerializeField]
-    public string insturmentName;
+    public string instrumentName;
     [SerializeField]
-    public AudioClip insturmentSound;
+    public AudioClip instrumentSound;
     [SerializeField]
     public PlayerInstrument.InstrumentType instrumentType;
     [SerializeField]
