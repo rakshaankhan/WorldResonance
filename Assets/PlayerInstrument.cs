@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class PlayerInstrument : MonoBehaviour
 {
+
+    [SerializeField]
+    private GameEvent instrumentEvent;
+
     public enum InstrumentType
     {
         /// <summary>
@@ -18,15 +22,8 @@ public class PlayerInstrument : MonoBehaviour
         String
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void PlayCurrentInstrument()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        instrumentEvent.TriggerEvent();
     }
 }
