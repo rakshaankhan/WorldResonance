@@ -1,5 +1,8 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
+
 
 public class PlayerActionManager : MonoBehaviour
 {
@@ -9,85 +12,66 @@ public class PlayerActionManager : MonoBehaviour
     public bool glideValue { get; private set; }
     public bool interactValue { get; private set; }
     public bool escapeValue { get; private set; }
+    public PlayerInstrument.InstrumentType selectedInstrument { get; private set; } = PlayerInstrument.InstrumentType.Wind;
     private void OnEnable()
     {
-        if (TryGetComponent(out PlayerInput input)) { RegisterActions(input); }
+        if (TryGetComponent(out PlayerInput input))
+        {
+            input.actions.FindActionMap("UI").Enable();
+            ManageActions(input, true);
+        }
 
     }
 
     private void OnDisable()
     {
-        if (TryGetComponent(out PlayerInput input)) { UnRegisterActions(input); }
+        if (TryGetComponent(out PlayerInput input)) { ManageActions(input, false); }
     }
 
-    void RegisterActions(PlayerInput input)
+
+    void ManageActions(PlayerInput input, bool onEnable)
     {
-        input.actions.FindActionMap("UI").Enable();//TODO UI or Player?
-        InputAction moveAction = input.actions["Move"];
-        if (moveAction != null)
-        {
-            moveAction.performed += context => SetMove(context.ReadValue<Vector2>());
-        }
-        InputAction jumpAction = input.actions["Jump"];
-        if (jumpAction != null)
-        {
-            jumpAction.performed += context => SetJump(context.ReadValueAsButton());
-            jumpAction.canceled += context => OnJumpCancel(context.ReadValueAsButton());
-        }
-        InputAction glideAction = input.actions["glide"];
-        if (glideAction != null)
-        {
-            glideAction.performed += context => SetGlide(context.ReadValueAsButton());
-            glideAction.canceled += context => SetGlide(context.ReadValueAsButton());
-        }
-        InputAction interactAction = input.actions["interact"];
-        if (interactAction != null)
-        {
-            interactAction.canceled += context => OnInteractStart(context);
-        }
-        InputAction escapeAction = input.actions["Pausemenu"];
-        if (escapeAction != null)
-        {
-            escapeAction.performed += context => OnEscape(context);
-            escapeAction.canceled += context => SetEscape(context.ReadValueAsButton());
-        }
+
+        AssignCallbacks(input, "Move", SetMove, null, null, context => context.ReadValue<Vector2>(), onEnable);
+        AssignCallbacks(input, "Jump", SetJump, OnJumpCancel, started: null, context => context.ReadValueAsButton(), onEnable);
+        AssignCallbacks(input, "glide", SetGlide, SetGlide, null, context => context.ReadValueAsButton(), onEnable);
+        AssignCallbacks(input, "interact", null, OnInteractStart, null, context => context, onEnable);
+        AssignCallbacks(input, "Select Instrument", null, null, OnSelectInstrumentName, context => context, onEnable);
+        AssignCallbacks(input, "Play Note", OnPlayNote2, null, null, context => context, onEnable);
+
+        AssignCallbacks(input, "PauseMenu", OnEscape, null, null, context => context, onEnable);
     }
 
-    void UnRegisterActions(PlayerInput input)
+    public void AssignCallbacks<T>(PlayerInput input, string actionName, Action<T> performed = null, Action<T> canceled = null, Action<T> started = null, Func<InputAction.CallbackContext, T> converter = null, bool enable = true)
     {
-        InputAction moveAction = input.actions["Move"];
-        if (moveAction != null)
+        InputAction action = input.actions[actionName];
+        if (action != null)
         {
-            moveAction.performed -= context => SetMove(context.ReadValue<Vector2>());
-        }
-        InputAction jumpAction = input.actions["Jump"];
-        if (jumpAction != null)
-        {
-            jumpAction.performed -= context => SetJump(context.ReadValueAsButton());
-            jumpAction.canceled -= context => OnJumpCancel(context.ReadValueAsButton());
-        }
-        InputAction glideAction = input.actions["glide"];
-        if (glideAction != null)
-        {
-            glideAction.performed -= context => SetGlide(context.ReadValueAsButton());
-            glideAction.canceled -= context => SetGlide(context.ReadValueAsButton());
-        }
-        InputAction interactAction = input.actions["interact"];
-        if (interactAction != null)
-        {
-            interactAction.canceled -= context => OnInteractStart(context);
-        }
-        InputAction escapeAction = input.actions["Pausemenu"];
-        if (escapeAction != null)
-        {
-            escapeAction.performed += context => OnEscape(context);
-            escapeAction.canceled += context => SetEscape(context.ReadValueAsButton());
+            if (enable)
+            {
+                action.started += context => OnActionTaken(context, started, converter);
+                action.performed += context => OnActionTaken(context, performed, converter);
+                action.canceled += context => OnActionTaken(context, canceled, converter);
+            }
+            else
+            {
+                action.started -= context => OnActionTaken(context, started, converter);
+                action.performed -= context => OnActionTaken(context, performed, converter);
+                action.canceled -= context => OnActionTaken(context, canceled, converter);
+            }
         }
     }
+    private void OnActionTaken<T>(InputAction.CallbackContext context, Action<T> action, Func<InputAction.CallbackContext, T> buttonData)
+    {
+        if (action == null) return;
+
+        action(buttonData(context));
+    }
+
 
     void SetMove(Vector2 value) { moveValue = value; }
     void SetJump(bool value) { jumpValue = value; }
-    void SetGlide(bool value) { glideValue = value; /*Debug.Log("glide value: " + value);*/ }
+    void SetGlide(bool value) { glideValue = value; }
     void SetInteract(bool value) { interactValue = value; }
     void SetEscape(bool value) { escapeValue = value; }
     void OnJumpCancel(bool value)
@@ -99,7 +83,7 @@ public class PlayerActionManager : MonoBehaviour
     {
         SetInteract(context.ReadValueAsButton());
         LevelEventsManager.Instance.Interact();
-        //Debug.Log("interact");
+        Debug.Log("interact");
     }
 
     void OnEscape(InputAction.CallbackContext context)
@@ -107,6 +91,82 @@ public class PlayerActionManager : MonoBehaviour
         Debug.Log("escape!");
         SetEscape(context.ReadValueAsButton());
         PauseMenu.togglePause();
+    }
+
+    public void OnSelectInstrumentName(InputAction.CallbackContext context)
+    {
+
+        //TODO this does not allow multiple button pressed which creates unresponsive controls.
+        var control = context.control;
+        if (control is KeyControl keyControl)
+        {
+            switch (keyControl.keyCode)
+            {
+                case Key.Digit1:
+                selectedInstrument = PlayerInstrument.InstrumentType.Wind;
+                Debug.Log("Key 1 pressed");
+                break;
+
+                case Key.Digit2:
+                selectedInstrument = PlayerInstrument.InstrumentType.Percussion;
+                Debug.Log("Key 2 pressed");
+                break;
+
+                case Key.Digit3:
+                selectedInstrument = PlayerInstrument.InstrumentType.String;
+                Debug.Log("Key 3 pressed");
+                break;
+
+                default:
+                Debug.Log("Other key pressed " + keyControl.keyCode.ToString());
+                break;
+            }
+
+            //TODO just for testing will delete from here.
+            GetComponent<PlayerInstrument>().ChangeInstrument(selectedInstrument);
+        }
+    }
+
+    //There is a bug with method names returns MissingMethodException so 2 is there to fix it.
+    public void OnPlayNote2(InputAction.CallbackContext context)
+    {
+
+        //TODO this does not allow multiple button pressed which creates unresponsive controls.
+        var control = context.control;
+        int id = 0;
+        if (control is KeyControl keyControl)
+        {
+            switch (keyControl.keyCode)
+            {
+                case Key.UpArrow:
+                id = 0;
+                Debug.Log("Up Arrow pressed");
+                break;
+
+                case Key.DownArrow:
+                id = 1;
+                Debug.Log("Down Arrow pressed");
+                break;
+
+                case Key.LeftArrow:
+                id = 2;
+                Debug.Log("Left Arrow pressed");
+                break;
+
+                case Key.RightArrow:
+                id = 3;
+                Debug.Log("Right Arrow pressed");
+                break;
+
+
+                default:
+                Debug.Log("Other key pressed " + keyControl.keyCode.ToString());
+                break;
+            }
+
+            //TODO just for testing will delete from here.
+            GetComponent<PlayerInstrument>().ChooseNoteAndPlay(id);
+        }
     }
 }
 
