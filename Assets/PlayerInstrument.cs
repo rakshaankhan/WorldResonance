@@ -16,6 +16,17 @@ public class PlayerInstrument : MonoBehaviour
     [SerializeField]
     private List<InstrumentInformation> instrumentList;
 
+
+
+    private void OnEnable()
+    {
+        LevelEventsManager.Instance.onInteract += PlayCurrentInstrument;
+    }
+
+    private void OnDisable()
+    {
+        LevelEventsManager.Instance.onInteract -= PlayCurrentInstrument;
+    }
     public enum InstrumentType
     {
         /// <summary>
