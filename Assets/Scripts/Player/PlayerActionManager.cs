@@ -33,7 +33,7 @@ public class PlayerActionManager : MonoBehaviour
         AssignCallbacksAI(input, "glide", SetGlide, SetGlide, null, context => context.ReadValueAsButton(), onEnable);
         AssignCallbacksAI(input, "interact", null, OnInteractStart, null, context => context, onEnable);
 
-        AssignCallbacksAI(input, "PauseMenu", OnEscape, null, null, context => context, true);
+        AssignCallbacksAI(input, "PauseMenu", OnEscape, null, null, context => context, onEnable);
     }
 
     public void AssignCallbacksAI<T>(PlayerInput input, string actionName, Action<T> performed = null, Action<T> canceled = null, Action<T> started = null, Func<InputAction.CallbackContext, T> converter = null, bool enable = true)
