@@ -12,55 +12,29 @@ public class PlayerActionManager : MonoBehaviour
     public bool escapeValue { get; private set; }
     private void OnEnable()
     {
-        if (TryGetComponent(out PlayerInput input)) { RegisterActions(input); }
+        if (TryGetComponent(out PlayerInput input))
+        {
+            input.actions.FindActionMap("UI").Enable();
+            ManageActions(input, true);
+        }
 
     }
 
     private void OnDisable()
     {
-        if (TryGetComponent(out PlayerInput input)) { UnRegisterActions(input); }
+        if (TryGetComponent(out PlayerInput input)) { ManageActions(input, false); }
     }
 
 
-    //TODO move boolean here and make RegisterActions  and UnRegisterActions one function
-    void RegisterActions(PlayerInput input)
+    void ManageActions(PlayerInput input, bool onEnable)
     {
-        input.actions.FindActionMap("UI").Enable();//TODO UI or Player?
+        AssignCallbacksAI(input, "Move", SetMove, null, null, context => context.ReadValue<Vector2>(), onEnable);
+        AssignCallbacksAI(input, "Jump", SetJump, OnJumpCancel, started: null, context => context.ReadValueAsButton(), onEnable);
+        AssignCallbacksAI(input, "glide", SetGlide, SetGlide, null, context => context.ReadValueAsButton(), onEnable);
+        AssignCallbacksAI(input, "interact", null, OnInteractStart, null, context => context, onEnable);
 
-        AssignCallbacksAI(input, "Move", SetMove, null, null, context => context.ReadValue<Vector2>(), true);
-        AssignCallbacksAI(input, "Jump", SetJump, OnJumpCancel, started: null, context => context.ReadValueAsButton(), true);
-        AssignCallbacksAI(input, "glide", SetGlide, SetGlide, null, context => context.ReadValueAsButton(), true);
-        AssignCallbacksAI(input, "interact", null, OnInteractStart, null, context => context, true);
-
-        //TODO Failed here, Make duplicate lines or change the funtions?
-        //AssignCallbacksAI(input, "PauseMenu", OnEscape, SetEscape, null, context => context.ReadValueAsButton(), true);
-
-        InputAction escapeAction = input.actions["Pausemenu"];
-        if (escapeAction != null)
-        {
-            escapeAction.performed += context => OnEscape(context);
-            escapeAction.canceled += context => SetEscape(context.ReadValueAsButton());
-        }
+        AssignCallbacksAI(input, "PauseMenu", OnEscape, null, null, context => context, true);
     }
-
-    void UnRegisterActions(PlayerInput input)
-    {
-
-
-        AssignCallbacksAI(input, "Move", SetMove, null, null, context => context.ReadValue<Vector2>(), false);
-        AssignCallbacksAI(input, "Jump", SetJump, OnJumpCancel, null, context => context.ReadValueAsButton(), false);
-        AssignCallbacksAI(input, "glide", SetGlide, SetGlide, null, context => context.ReadValueAsButton(), false);
-        AssignCallbacksAI(input, "interact", null, OnInteractStart, null, context => context, false);
-
-        //TODO  is this wrong?
-        InputAction escapeAction = input.actions["Pausemenu"];
-        if (escapeAction != null)
-        {
-            escapeAction.performed += context => OnEscape(context);
-            escapeAction.canceled += context => SetEscape(context.ReadValueAsButton());
-        }
-    }
-
 
     public void AssignCallbacksAI<T>(PlayerInput input, string actionName, Action<T> performed = null, Action<T> canceled = null, Action<T> started = null, Func<InputAction.CallbackContext, T> converter = null, bool enable = true)
     {
@@ -103,7 +77,7 @@ public class PlayerActionManager : MonoBehaviour
     {
         SetInteract(context.ReadValueAsButton());
         LevelEventsManager.Instance.Interact();
-        //Debug.Log("interact");
+        Debug.Log("interact");
     }
 
     void OnEscape(InputAction.CallbackContext context)
