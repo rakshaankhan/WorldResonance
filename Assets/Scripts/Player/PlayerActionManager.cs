@@ -28,15 +28,15 @@ public class PlayerActionManager : MonoBehaviour
 
     void ManageActions(PlayerInput input, bool onEnable)
     {
-        AssignCallbacksAI(input, "Move", SetMove, null, null, context => context.ReadValue<Vector2>(), onEnable);
-        AssignCallbacksAI(input, "Jump", SetJump, OnJumpCancel, started: null, context => context.ReadValueAsButton(), onEnable);
-        AssignCallbacksAI(input, "glide", SetGlide, SetGlide, null, context => context.ReadValueAsButton(), onEnable);
-        AssignCallbacksAI(input, "interact", null, OnInteractStart, null, context => context, onEnable);
+        AssignCallbacks(input, "Move", SetMove, null, null, context => context.ReadValue<Vector2>(), onEnable);
+        AssignCallbacks(input, "Jump", SetJump, OnJumpCancel, started: null, context => context.ReadValueAsButton(), onEnable);
+        AssignCallbacks(input, "glide", SetGlide, SetGlide, null, context => context.ReadValueAsButton(), onEnable);
+        AssignCallbacks(input, "interact", null, OnInteractStart, null, context => context, onEnable);
 
-        AssignCallbacksAI(input, "PauseMenu", OnEscape, null, null, context => context, onEnable);
+        AssignCallbacks(input, "PauseMenu", OnEscape, null, null, context => context, onEnable);
     }
 
-    public void AssignCallbacksAI<T>(PlayerInput input, string actionName, Action<T> performed = null, Action<T> canceled = null, Action<T> started = null, Func<InputAction.CallbackContext, T> converter = null, bool enable = true)
+    public void AssignCallbacks<T>(PlayerInput input, string actionName, Action<T> performed = null, Action<T> canceled = null, Action<T> started = null, Func<InputAction.CallbackContext, T> converter = null, bool enable = true)
     {
         InputAction action = input.actions[actionName];
         if (action != null)
