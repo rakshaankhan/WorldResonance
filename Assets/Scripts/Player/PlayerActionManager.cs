@@ -37,6 +37,7 @@ public class PlayerActionManager : MonoBehaviour
         AssignCallbacks(input, "glide", SetGlide, SetGlide, null, context => context.ReadValueAsButton(), onEnable);
         AssignCallbacks(input, "interact", null, OnInteractStart, null, context => context, onEnable);
         AssignCallbacks(input, "Select Instrument", null, null, OnSelectInstrumentName, context => context, onEnable);
+        AssignCallbacks(input, "Play Note", OnPlayNote2, null, null, context => context, onEnable);
 
         AssignCallbacks(input, "PauseMenu", OnEscape, null, null, context => context, onEnable);
     }
@@ -123,6 +124,48 @@ public class PlayerActionManager : MonoBehaviour
 
             //TODO just for testing will delete from here.
             GetComponent<PlayerInstrument>().ChangeInstrument(selectedInstrument);
+        }
+    }
+
+    //There is a bug with method names returns MissingMethodException so 2 is there to fix it.
+    public void OnPlayNote2(InputAction.CallbackContext context)
+    {
+
+        //TODO this does not allow multiple button pressed which creates unresponsive controls.
+        var control = context.control;
+        int id = 0;
+        if (control is KeyControl keyControl)
+        {
+            switch (keyControl.keyCode)
+            {
+                case Key.UpArrow:
+                id = 0;
+                Debug.Log("Up Arrow pressed");
+                break;
+
+                case Key.DownArrow:
+                id = 1;
+                Debug.Log("Down Arrow pressed");
+                break;
+
+                case Key.LeftArrow:
+                id = 2;
+                Debug.Log("Left Arrow pressed");
+                break;
+
+                case Key.RightArrow:
+                id = 3;
+                Debug.Log("Right Arrow pressed");
+                break;
+
+
+                default:
+                Debug.Log("Other key pressed " + keyControl.keyCode.ToString());
+                break;
+            }
+
+            //TODO just for testing will delete from here.
+            GetComponent<PlayerInstrument>().ChooseNoteAndPlay(id);
         }
     }
 }

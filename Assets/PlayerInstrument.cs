@@ -16,7 +16,7 @@ public class PlayerInstrument : MonoBehaviour
     [SerializeField]
     private List<InstrumentInformation> instrumentList;
 
-
+    private Note selectedNote = Note.A;
 
     private void OnEnable()
     {
@@ -43,6 +43,15 @@ public class PlayerInstrument : MonoBehaviour
         String
     }
 
+    //Did not write actual notes to make it easier to read
+    public enum Note
+    {
+        A,
+        B,
+        C,
+        D
+    }
+
     public void PlayCurrentInstrument()
     {
         instrumentPlayEvent.TriggerEvent();
@@ -53,5 +62,11 @@ public class PlayerInstrument : MonoBehaviour
         //TODO Maybe just use an id if there will me more insturuments instead of Type.
         selectedInstrument = instrumentList[(int) type];
         instrumentChangeEvent.TriggerEvent();
+    }
+
+    public void ChooseNoteAndPlay(int id)
+    {
+        selectedNote = (Note) id;
+        PlayCurrentInstrument();
     }
 }
