@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,8 +11,8 @@ public class PlayerActionManager : MonoBehaviour
     public bool escapeValue { get; private set; }
     private void OnEnable()
     {
-        if(TryGetComponent(out PlayerInput input)) { RegisterActions(input); }
-        
+        if (TryGetComponent(out PlayerInput input)) { RegisterActions(input); }
+
     }
 
     private void OnDisable()
@@ -24,20 +22,20 @@ public class PlayerActionManager : MonoBehaviour
 
     void RegisterActions(PlayerInput input)
     {
-        input.actions.FindActionMap("UI").Enable();
+        input.actions.FindActionMap("UI").Enable();//TODO UI or Player?
         InputAction moveAction = input.actions["Move"];
-        if(moveAction != null) 
-        { 
+        if (moveAction != null)
+        {
             moveAction.performed += context => SetMove(context.ReadValue<Vector2>());
         }
         InputAction jumpAction = input.actions["Jump"];
-        if(jumpAction != null)
+        if (jumpAction != null)
         {
             jumpAction.performed += context => SetJump(context.ReadValueAsButton());
             jumpAction.canceled += context => OnJumpCancel(context.ReadValueAsButton());
         }
         InputAction glideAction = input.actions["glide"];
-        if(glideAction != null)
+        if (glideAction != null)
         {
             glideAction.performed += context => SetGlide(context.ReadValueAsButton());
             glideAction.canceled += context => SetGlide(context.ReadValueAsButton());
@@ -55,7 +53,7 @@ public class PlayerActionManager : MonoBehaviour
         }
     }
 
-    void UnRegisterActions(PlayerInput input) 
+    void UnRegisterActions(PlayerInput input)
     {
         InputAction moveAction = input.actions["Move"];
         if (moveAction != null)
@@ -92,12 +90,12 @@ public class PlayerActionManager : MonoBehaviour
     void SetGlide(bool value) { glideValue = value; /*Debug.Log("glide value: " + value);*/ }
     void SetInteract(bool value) { interactValue = value; }
     void SetEscape(bool value) { escapeValue = value; }
-    void OnJumpCancel(bool value) 
+    void OnJumpCancel(bool value)
     {
         LevelEventsManager.Instance.JumpCancel();
         jumpValue = value;
     }
-    void OnInteractStart(InputAction.CallbackContext context) 
+    void OnInteractStart(InputAction.CallbackContext context)
     {
         SetInteract(context.ReadValueAsButton());
         LevelEventsManager.Instance.Interact();
@@ -112,4 +110,3 @@ public class PlayerActionManager : MonoBehaviour
     }
 }
 
-    
