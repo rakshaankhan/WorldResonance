@@ -7,6 +7,9 @@ using UnityEngine.InputSystem.Controls;
 public class PlayerActionManager : MonoBehaviour
 {
 
+    [SerializeField]
+    private GameEvent interactGameEvent;
+
     public Vector2 moveValue { get; private set; }
     public bool jumpValue { get; private set; }
     public bool glideValue { get; private set; }
@@ -82,6 +85,7 @@ public class PlayerActionManager : MonoBehaviour
     void OnInteractStart(InputAction.CallbackContext context)
     {
         SetInteract(context.ReadValueAsButton());
+        interactGameEvent.TriggerEvent();
         LevelEventsManager.Instance.Interact();
         Debug.Log("interact");
     }
@@ -139,27 +143,28 @@ public class PlayerActionManager : MonoBehaviour
             switch (keyControl.keyCode)
             {
                 case Key.UpArrow:
-                id = 0;
+                id = 1;
                 Debug.Log("Up Arrow pressed");
                 break;
 
                 case Key.DownArrow:
-                id = 1;
+                id = 2;
                 Debug.Log("Down Arrow pressed");
                 break;
 
                 case Key.LeftArrow:
-                id = 2;
+                id = 3;
                 Debug.Log("Left Arrow pressed");
                 break;
 
                 case Key.RightArrow:
-                id = 3;
+                id = 4;
                 Debug.Log("Right Arrow pressed");
                 break;
 
 
                 default:
+
                 Debug.Log("Other key pressed " + keyControl.keyCode.ToString());
                 break;
             }

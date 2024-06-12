@@ -13,20 +13,22 @@ public class PlayerInstrument : MonoBehaviour
     [SerializeField]
     public InstrumentInformation selectedInstrument;
 
+    public Note selectedNote = Note.A;
+
     [SerializeField]
     private List<InstrumentInformation> instrumentList;
 
-    private Note selectedNote = Note.A;
 
-    private void OnEnable()
-    {
-        LevelEventsManager.Instance.onInteract += PlayCurrentInstrument;
-    }
 
-    private void OnDisable()
-    {
-        LevelEventsManager.Instance.onInteract -= PlayCurrentInstrument;
-    }
+    //private void OnEnable()
+    //{
+    //    LevelEventsManager.Instance.onInteract += PlayCurrentInstrument;
+    //}
+
+    //private void OnDisable()
+    //{
+    //    LevelEventsManager.Instance.onInteract -= PlayCurrentInstrument;
+    //}
     public enum InstrumentType
     {
         /// <summary>
@@ -46,10 +48,12 @@ public class PlayerInstrument : MonoBehaviour
     //Did not write actual notes to make it easier to read
     public enum Note
     {
+        _,
         A,
         B,
         C,
         D
+
     }
 
     public void PlayCurrentInstrument()

@@ -11,14 +11,11 @@ public class InventoryUITextHandler : MonoBehaviour
     private void Awake()
     {
         textField = GetComponent<TextMeshProUGUI>();
+        playersInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
     }
 
     private Inventory playersInventory;
 
-    private void Start()
-    {
-        playersInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
-    }
 
     public void ChangeText()
     {
