@@ -1,3 +1,4 @@
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,7 +25,6 @@ public class NoteListChangeUIHandler : MonoBehaviour
             Debug.LogWarning("Sibling Order Changed by script " + gameObject.name);
         }
         textField.text = "";
-
     }
 
     public void Change()
@@ -42,8 +42,23 @@ public class NoteListChangeUIHandler : MonoBehaviour
             {
                 textField.text = myNote.ToString();
             }
-
-
         }
+
+        if (noteManager.IsLastNote(orderInUI))
+        {
+            transform.DOShakePosition(0.2f, 0.2f, 5, 30);
+        }
+    }
+
+    public void OnSongFilled()
+    {
+        RectTransform rectTransform = GetComponent<RectTransform>();
+        rectTransform.DOAnchorPosY(0.3f, 0.2f).SetDelay(orderInUI * 0.1f).SetLoops(2, LoopType.Yoyo).OnComplete(ClearUI);
+    }
+
+
+    private void ClearUI()
+    {
+        textField.text = "";
     }
 }

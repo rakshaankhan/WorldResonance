@@ -1,4 +1,7 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
 
 public class Interactables : MonoBehaviour
 {
@@ -6,7 +9,14 @@ public class Interactables : MonoBehaviour
     [SerializeField]
     private float interractionDistance = 3f;
 
+    [SerializeField]
+    private NoteManager noteManager;
 
+    [SerializeField]
+    List<PlayerInstrument.Note> acceptedNoteOrder;
+
+    [SerializeField]
+    private UnityEvent specialInteraction;
 
     private GameObject player;
     private PlayerInstrument playerInstrument;
@@ -16,26 +26,35 @@ public class Interactables : MonoBehaviour
         playerInstrument = player.GetComponent<PlayerInstrument>();
     }
 
+
+
     public void Interact()
     {
         if (Vector2.Distance(player.transform.position, transform.position) > interractionDistance) return;
 
-        Debug.Log("Player Interracted With Me");
-        var currentInstrumentType = playerInstrument.selectedInstrument.instrumentType;
-        switch (currentInstrumentType)
+        if (acceptedNoteOrder.Count < 6) return;
+        if (noteManager.notes.Count < 6) return;
+        bool flag = true;
+
+        for (int i = 0; i < acceptedNoteOrder.Count; i++)
         {
-            case PlayerInstrument.InstrumentType.Wind:
-            transform.transform.position += Vector3.up / 2;
-            break;
-            case PlayerInstrument.InstrumentType.Percussion:
-            transform.localScale /= 2;
-            break;
-            case PlayerInstrument.InstrumentType.String:
-            transform.localScale *= 2;
-            break;
-            default:
-            break;
+            flag = acceptedNoteOrder[i] == noteManager.GetINoteAtIndex(i);
+            if (flag == false) break;
         }
 
+        if (flag)
+        {
+            //transform.DOBlendableScaleBy(Vector3.one * 3f, 3f);
+            SpecialAction();
+        }
+
+
+
     }
+
+    private void SpecialAction()
+    {
+        specialInteraction.Invoke();
+    }
+
 }

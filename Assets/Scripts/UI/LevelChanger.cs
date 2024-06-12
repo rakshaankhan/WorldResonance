@@ -3,33 +3,50 @@ using UnityEngine.SceneManagement;
 
 public class LevelChanger : MonoBehaviour
 {
+    /// <summary>
+    /// We first check name for the next level
+    /// </summary>
+    [Tooltip("You only need to enter level index or name")]
+    [SerializeField]
+    private string nextLevelname;
+    /// <summary>
+    ///
+    /// </summary>
+    [Tooltip("You only need to enter level index or name")]
+    [SerializeField]
+    private int nextLevelindex;
 
+    [SerializeField]
     public Animator animator;
+    private bool activated = false;
 
-    private int levelToLoad;
 
-    // Update is called once per frame
-    //void Update()
-    //{
-    //    if (Input.GetMouseButtonDown(0))
-    //    {
-    //        FadeToNextLevel();
-    //    }
-    //}
+
 
     public void FadeToNextLevel()
     {
-        FadeToLevel(SceneManager.GetActiveScene().buildIndex + 1);
-    }
-
-    public void FadeToLevel(int levelIndex)
-    {
-        levelToLoad = levelIndex;
+        activated = true;
         animator.SetTrigger("FadeOut");
     }
 
     public void OnFadeComplete()
     {
-        SceneManager.LoadScene(levelToLoad);
+
+        if (string.IsNullOrEmpty(nextLevelname) == false)
+        {
+            SceneManager.LoadScene(nextLevelname);
+        }
+        else if (nextLevelindex > 0)
+        {
+            SceneManager.LoadScene(nextLevelindex);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (activated == true) return;
+
+        FadeToNextLevel();
+
     }
 }

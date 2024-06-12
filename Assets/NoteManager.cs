@@ -1,15 +1,19 @@
+using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class NoteManager : MonoBehaviour
 {
     [SerializeField]
+    private RectTransform musicSheetUI;
+
+    [SerializeField]
     private float noteExpireTimer = 1f;
     private float timeElapsed = 0f;
 
     [SerializeField]
     public Queue<PlayerInstrument.Note> notes = new(NOTE_SIZE);
-    private const int NOTE_SIZE = 4;
+    private const int NOTE_SIZE = 6;
 
     [SerializeField]
     private PlayerInstrument playerInstrument;
@@ -18,6 +22,10 @@ public class NoteManager : MonoBehaviour
     private GameEvent noteListChanged;
     [SerializeField]
     private GameEvent noteListFilled;
+
+    private bool listFilled = false;
+
+    private bool addingNewNote;
 
     public void AddNote()
     {
@@ -29,11 +37,15 @@ public class NoteManager : MonoBehaviour
 
     private void SpecialEnque(PlayerInstrument.Note note)
     {
+        if (listFilled == true) return;
+
+        musicSheetUI.DOScaleX(1f, 0.2f);
         if (notes.Count >= NOTE_SIZE)
         {
             notes.Dequeue();
         }
         notes.Enqueue(note);
+        addingNewNote = true;
         NoteListChanged();
     }
 
@@ -45,11 +57,21 @@ public class NoteManager : MonoBehaviour
 
         if (timeElapsed > noteExpireTimer)
         {
+            addingNewNote = false;
 
-            notes.Dequeue();
-            NoteListChanged();
+            if (listFilled == true)
+            {
+                notes.Clear();
+                listFilled = false;
+                musicSheetUI.DOScaleX(0f, 0.2f);
+            }
+            else
+            {
+
+                notes.Dequeue();
+                NoteListChanged();
+            }
         }
-
     }
 
     private void NoteListChanged()
@@ -59,6 +81,13 @@ public class NoteManager : MonoBehaviour
         if (notes.Count == NOTE_SIZE)
         {
             noteListFilled.TriggerEvent();
+            listFilled = true;
+        }
+
+        if (notes.Count == 0)
+        {
+
+            musicSheetUI.DOScaleX(0f, 0.2f);
         }
 
     }
@@ -67,13 +96,19 @@ public class NoteManager : MonoBehaviour
     {
         if (index < 0 || index >= notes.Count)
         {
-            Debug.LogWarning("Index out of range");
+            Debug.LogWarning("Index out of range, index is " + index);
             return default;
         }
         List<PlayerInstrument.Note> list = new(notes);
         return list[index];
     }
 
+    public bool IsLastNote(int index)
+    {
+        if (addingNewNote == false) return false;
+
+        return notes.Count == index + 1;
+    }
 
 
 }

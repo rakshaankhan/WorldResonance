@@ -1,3 +1,4 @@
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 
@@ -20,5 +21,6 @@ public class InventoryUITextHandler : MonoBehaviour
     public void ChangeText()
     {
         textField.text = " " + playersInventory.GetItemCount(itemIdRepresented);
+        transform.DOShakeScale(0.2f);
     }
 }
