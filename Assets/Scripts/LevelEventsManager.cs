@@ -8,7 +8,7 @@ public class LevelEventsManager : MonoBehaviour
     public static LevelEventsManager Instance;
     public int level { get; private set; }
     public bool canGlide = false;
-    public bool finishedBirdDialogue = false;
+    
     PlayerManager playerManager;
 
     private void Awake()
@@ -20,7 +20,7 @@ public class LevelEventsManager : MonoBehaviour
         {
             playerManager = pm;
             playerManager.enabled = true;
-            if(level != 2 || finishedBirdDialogue) { playerManager.canGlide = true; }
+           
         }
 
     }
@@ -40,11 +40,8 @@ public class LevelEventsManager : MonoBehaviour
     }
 
 
-    public event Action onMemoryShardFound;
-    public void MemoryShardFound()
-    {
-        if(onMemoryShardFound != null) { onMemoryShardFound(); }
-    }
+    
+    
 
     public event Action onJumpCancel;
     public void JumpCancel()
