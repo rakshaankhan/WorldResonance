@@ -182,9 +182,10 @@ GameObject:
   - component: {fileID: 7008945353524343115}
   - component: {fileID: 1052242171532123146}
   - component: {fileID: 6083625696350120377}
+  - component: {fileID: 7159881784908815463}
   m_Layer: 7
   m_Name: LayoutHolder
-  m_TagString: Untagged
+  m_TagString: MusicSheet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -276,6 +277,25 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 1
   m_ConstraintCount: 3
+--- !u!114 &7159881784908815463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709600015045384651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e0c7ff70c23fc64a82bee5d8b88639b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: c0a332f6fec057c4b95aca641569b81c, type: 2}
+  onEventTriggered:
+    m_PersistentCalls:
+      m_Calls: []
+  onEventTriggeredWithParameter:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1058310449195838280
 GameObject:
   m_ObjectHideFlags: 0

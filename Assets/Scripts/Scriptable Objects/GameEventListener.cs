@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,8 +11,9 @@ public class GameEventListener : MonoBehaviour
     public UnityEvent<GameObject> onEventTriggeredWithParameter;
     void OnEnable()
     {
-        gameEvent.AddListener(this);        
+        gameEvent.AddListener(this);
     }
+
     void OnDisable()
     {
         gameEvent.RemoveListener(this);
@@ -24,7 +23,7 @@ public class GameEventListener : MonoBehaviour
         onEventTriggered.Invoke();
     }
 
-    public void OnEventTriggered(GameObject  go)
+    public void OnEventTriggered(GameObject go)
     {
         onEventTriggeredWithParameter.Invoke(go);
     }

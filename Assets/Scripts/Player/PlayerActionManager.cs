@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
@@ -16,19 +17,36 @@ public class PlayerActionManager : MonoBehaviour
     public bool interactValue { get; private set; }
     public bool escapeValue { get; private set; }
     public PlayerInstrument.InstrumentType selectedInstrument { get; private set; } = PlayerInstrument.InstrumentType.Wind;
+
+    private PlayerInput input;
+
+    private List<Action> startActionList;
+    private List<Action<InputAction.CallbackContext>> performedActionList;
+    private List<Action> cancelActionList;
+
+    private void Awake()
+    {
+        input = GetComponent<PlayerInput>();
+
+        startActionList = new List<Action>();
+        performedActionList = new();
+        cancelActionList = new List<Action>();
+    }
     private void OnEnable()
     {
         if (TryGetComponent(out PlayerInput input))
         {
-            input.actions.FindActionMap("UI").Enable();
-            ManageActions(input, true);
-        }
 
+        }
+        input.actions.FindActionMap("UI").Enable();
+        ManageActions(input, true);
     }
 
     private void OnDisable()
     {
-        if (TryGetComponent(out PlayerInput input)) { ManageActions(input, false); }
+        ManageActions(input, false);
+        performedActionList.Clear();
+        // if (TryGetComponent(out PlayerInput input)) {  }
     }
 
 
@@ -51,16 +69,32 @@ public class PlayerActionManager : MonoBehaviour
         if (action != null)
         {
             if (enable)
-            {
-                action.started += context => OnActionTaken(context, started, converter);
-                action.performed += context => OnActionTaken(context, performed, converter);
-                action.canceled += context => OnActionTaken(context, canceled, converter);
+            {//TODO this get very complicated  and dirty very quickly.
+
+
+                Action<InputAction.CallbackContext> performedAction = context => OnActionTaken(context, performed, converter);
+                performedActionList.Add(performedAction);
+                action.performed += performedAction;
+
+                Action<InputAction.CallbackContext> canceledAction = context => OnActionTaken(context, canceled, converter);
+                performedActionList.Add(canceledAction);
+                action.canceled += canceledAction;
+
+                Action<InputAction.CallbackContext> startedAction = context => OnActionTaken(context, started, converter);
+                performedActionList.Add(startedAction);
+                action.started += startedAction;
+
+
             }
             else
             {
-                action.started -= context => OnActionTaken(context, started, converter);
-                action.performed -= context => OnActionTaken(context, performed, converter);
-                action.canceled -= context => OnActionTaken(context, canceled, converter);
+                //TODO Is there any negative outcome from unsubing everything?
+                foreach (var performedRemove in performedActionList)
+                {
+                    action.performed -= performedRemove;
+                    action.canceled -= performedRemove;
+                    action.started -= performedRemove;
+                }
             }
         }
     }
@@ -70,6 +104,8 @@ public class PlayerActionManager : MonoBehaviour
 
         action(buttonData(context));
     }
+
+
 
 
     void SetMove(Vector2 value) { moveValue = value; }
@@ -95,6 +131,7 @@ public class PlayerActionManager : MonoBehaviour
         Debug.Log("escape!");
         SetEscape(context.ReadValueAsButton());
         PauseMenu.togglePause();
+        Debug.Log("after error message");
     }
 
     public void OnSelectInstrumentName(InputAction.CallbackContext context)

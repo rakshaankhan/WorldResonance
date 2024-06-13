@@ -16,10 +16,17 @@ public class Interactables : MonoBehaviour
     List<PlayerInstrument.Note> acceptedNoteOrder;
 
     [SerializeField]
+    private GameEvent songFailEvent;
+    [SerializeField]
+    private GameEvent songSuccessEvent;
+
+    [SerializeField]
     private UnityEvent specialInteraction;
 
     private GameObject player;
     private PlayerInstrument playerInstrument;
+    private float shakeDuration = 0.02f;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -44,8 +51,13 @@ public class Interactables : MonoBehaviour
 
         if (flag)
         {
-            //transform.DOBlendableScaleBy(Vector3.one * 3f, 3f);
+            songSuccessEvent.TriggerEvent();
             SpecialAction();
+        }
+        else
+        {
+            songFailEvent.TriggerEvent();
+            //transform.DOBlendableLocalMoveBy(Vector3.right, shakeDuration).SetLoops(10, LoopType.Yoyo);
         }
 
 

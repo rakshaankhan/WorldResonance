@@ -19,6 +19,12 @@ public class NoteListChangeUIHandler : MonoBehaviour
 
     private void Start()
     {
+        if (noteManager == null)
+        {
+
+            noteManager = GameObject.FindGameObjectWithTag("NoteManager").GetComponent<NoteManager>();
+        }
+
         if (orderInUI != gameObject.transform.GetSiblingIndex())
         {
             orderInUI = gameObject.transform.GetSiblingIndex();

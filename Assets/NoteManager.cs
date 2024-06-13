@@ -8,6 +8,9 @@ public class NoteManager : MonoBehaviour
     private RectTransform musicSheetUI;
 
     [SerializeField]
+    private List<AudioClip> noteAudioClips;
+
+    [SerializeField]
     private float noteExpireTimer = 1f;
     private float timeElapsed = 0f;
 
@@ -22,10 +25,29 @@ public class NoteManager : MonoBehaviour
     private GameEvent noteListChanged;
     [SerializeField]
     private GameEvent noteListFilled;
+    [SerializeField]
+    private GameEvent noteListCleared;
 
     private bool listFilled = false;
 
     private bool addingNewNote;
+
+    private AudioSource audioSource;
+
+    private void Start()
+    {
+        if (playerInstrument == null)
+        {
+            playerInstrument = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInstrument>();
+        }
+
+        if (musicSheetUI == null)
+        {
+
+            musicSheetUI = GameObject.FindGameObjectWithTag("MusicSheet").GetComponent<RectTransform>();
+        }
+        audioSource = GetComponent<AudioSource>();
+    }
 
     public void AddNote()
     {
@@ -37,6 +59,7 @@ public class NoteManager : MonoBehaviour
 
     private void SpecialEnque(PlayerInstrument.Note note)
     {
+        if (note == PlayerInstrument.Note._) return;
         if (listFilled == true) return;
 
         musicSheetUI.DOScaleX(1f, 0.2f);
@@ -44,6 +67,8 @@ public class NoteManager : MonoBehaviour
         {
             notes.Dequeue();
         }
+        //audioSource.clip = noteAudioClips[((int) note - 1)];
+        audioSource.PlayOneShot(noteAudioClips[((int) note - 1)]);
         notes.Enqueue(note);
         addingNewNote = true;
         NoteListChanged();
@@ -86,7 +111,7 @@ public class NoteManager : MonoBehaviour
 
         if (notes.Count == 0)
         {
-
+            noteListCleared.TriggerEvent();
             musicSheetUI.DOScaleX(0f, 0.2f);
         }
 
@@ -110,5 +135,15 @@ public class NoteManager : MonoBehaviour
         return notes.Count == index + 1;
     }
 
+
+    public void OnSuccessEvent()
+    {
+        foreach (var note in notes)
+        {
+            //audioSource.PlayOneShot(noteAudioClips[((int) note - 1)]);
+            // audioSource.do
+        }
+
+    }
 
 }

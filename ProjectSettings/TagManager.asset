@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Death
+  - NoteManager
+  - MusicSheet
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - Pickupable
   - LevelTransition
   - wall
-  - 
+  - CameraZone
   - 
   - 
   - 

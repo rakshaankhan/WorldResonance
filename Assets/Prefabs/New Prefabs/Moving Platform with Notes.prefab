@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5049198362873805386}
   - component: {fileID: 4219846587952958361}
   - component: {fileID: 7281016130982181529}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Moving Platform with Notes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,6 +52,8 @@ MonoBehaviour:
   interractionDistance: 15
   noteManager: {fileID: 0}
   acceptedNoteOrder: 020000000200000002000000020000000200000002000000
+  songFailEvent: {fileID: 11400000, guid: c0a332f6fec057c4b95aca641569b81c, type: 2}
+  songSuccessEvent: {fileID: 11400000, guid: b04523810d759b5488ff3be7272ddda7, type: 2}
   specialInteraction:
     m_PersistentCalls:
       m_Calls:
@@ -139,6 +141,8 @@ MonoBehaviour:
   interractionDistance: 15
   noteManager: {fileID: 0}
   acceptedNoteOrder: 030000000300000003000000030000000300000003000000
+  songFailEvent: {fileID: 11400000, guid: c0a332f6fec057c4b95aca641569b81c, type: 2}
+  songSuccessEvent: {fileID: 11400000, guid: b04523810d759b5488ff3be7272ddda7, type: 2}
   specialInteraction:
     m_PersistentCalls:
       m_Calls:
@@ -176,6 +180,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6302229429464745751}
     m_Modifications:
+    - target: {fileID: 383352958477522383, guid: 2a575a777cd46bb4581f5754d5e19ea9, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2172629495519199858, guid: 2a575a777cd46bb4581f5754d5e19ea9, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7074107936713518088, guid: 2a575a777cd46bb4581f5754d5e19ea9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -231,6 +243,10 @@ PrefabInstance:
     - target: {fileID: 9140819125533293645, guid: 2a575a777cd46bb4581f5754d5e19ea9, type: 3}
       propertyPath: m_Name
       value: StationaryMold
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140819125533293645, guid: 2a575a777cd46bb4581f5754d5e19ea9, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
