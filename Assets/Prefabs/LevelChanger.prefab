@@ -171,6 +171,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lastSceneInfo: {fileID: 11400000, guid: ade696e8cad04e04380a63f4ed208e24, type: 2}
+  previousScene:
+    m_SceneAsset: {fileID: 0}
+    m_SceneName: 
   nextScene:
     m_SceneAsset: {fileID: 0}
     m_SceneName: 
@@ -179,6 +182,7 @@ MonoBehaviour:
   animator: {fileID: 1980512810732852679}
   disabled: 1
   fadeOut: 0
+  fadeIn: 0
 --- !u!61 &170809385626782751
 BoxCollider2D:
   m_ObjectHideFlags: 0
