@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2508093167190439301}
   - component: {fileID: 5823858199472480428}
   - component: {fileID: 8619389401505214421}
+  - component: {fileID: 6713363308701428062}
   - component: {fileID: 116742885520840326}
   m_Layer: 0
   m_Name: Note Manager
@@ -52,7 +53,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6c124a9d8ed9436468bc9a6c92a6c57d, type: 3}
   - {fileID: 8300000, guid: d96c77a5214e35c459905a86cd636e4e, type: 3}
   - {fileID: 8300000, guid: 173f9125330bcf14396ab388f6219c85, type: 3}
-  noteExpireTimer: 1
+  noteExpireTimer: 3
+  noteUnfilledDismisTimer: 0
+  noteFilledExpireTimer: 1
   playerInstrument: {fileID: 0}
   noteListChanged: {fileID: 11400000, guid: 68676baaf53d6fc46875dde0a156890f, type: 2}
   noteListFilled: {fileID: 11400000, guid: 7a5d6f300e0c40f44accc95720f2eb32, type: 2}
@@ -76,6 +79,37 @@ MonoBehaviour:
       - m_Target: {fileID: 5823858199472480428}
         m_TargetAssemblyTypeName: NoteManager, Assembly-CSharp
         m_MethodName: AddNote
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onEventTriggeredWithParameter:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &6713363308701428062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7091178073877953759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e0c7ff70c23fc64a82bee5d8b88639b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: b04523810d759b5488ff3be7272ddda7, type: 2}
+  onEventTriggered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5823858199472480428}
+        m_TargetAssemblyTypeName: NoteManager, Assembly-CSharp
+        m_MethodName: OnSuccessEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

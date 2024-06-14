@@ -156,7 +156,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2761667111902446749, guid: 1cd2bacc5b15bf44bae73ea6e95bcbdf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 346395519896823833}
   m_SourcePrefab: {fileID: 100100000, guid: 1cd2bacc5b15bf44bae73ea6e95bcbdf, type: 3}
 --- !u!4 &433372539132344503 stripped
 Transform:
@@ -168,6 +171,25 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2761667111902446749, guid: 1cd2bacc5b15bf44bae73ea6e95bcbdf, type: 3}
   m_PrefabInstance: {fileID: 8766808613614912303}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &346395519896823833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6916012145931519922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f453f694addf4275988fac205bc91968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BoundingShape2D: {fileID: 4396041049662186526}
+  Damping: 0.5
+  SlowingDistance: 5
+  OversizeWindow:
+    Enabled: 0
+    MaxWindowSize: 0
+  m_LegacyMaxWindowSize: -2
 --- !u!1001 &9197513711521487828
 PrefabInstance:
   m_ObjectHideFlags: 0

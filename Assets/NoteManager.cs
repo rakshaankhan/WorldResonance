@@ -12,6 +12,10 @@ public class NoteManager : MonoBehaviour
 
     [SerializeField]
     private float noteExpireTimer = 1f;
+    [SerializeField]
+    private float noteUnfilledDismisTimer = 0.2f;
+    [SerializeField]
+    private float noteFilledExpireTimer = 1f;
     private float timeElapsed = 0f;
 
     [SerializeField]
@@ -80,22 +84,29 @@ public class NoteManager : MonoBehaviour
 
         timeElapsed += Time.deltaTime;
 
+        if (listFilled == true && timeElapsed > noteFilledExpireTimer)
+        {
+            notes.Clear();
+            listFilled = false;
+            musicSheetUI.DOScaleX(0f, 0.2f);
+            NoteListChanged();
+        }
+
         if (timeElapsed > noteExpireTimer)
         {
             addingNewNote = false;
 
-            if (listFilled == true)
+            if (listFilled == false)
             {
-                notes.Clear();
-                listFilled = false;
-                musicSheetUI.DOScaleX(0f, 0.2f);
-            }
-            else
-            {
-
                 notes.Dequeue();
                 NoteListChanged();
             }
+        }
+
+        if (addingNewNote == false && timeElapsed > noteUnfilledDismisTimer)
+        {
+            notes.Dequeue();
+            NoteListChanged();
         }
     }
 

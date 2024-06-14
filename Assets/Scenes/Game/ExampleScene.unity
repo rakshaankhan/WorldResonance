@@ -1555,7 +1555,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &805791934
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2879,11 +2879,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbdbd5d7a5fd7b240b52fa87bee0b096, type: 3}
---- !u!1 &1567702675 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7091178073877953759, guid: d028cf23bf5c9ac4583ea6014aa349bb, type: 3}
-  m_PrefabInstance: {fileID: 7353845889194799527}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1581345548
 GameObject:
   m_ObjectHideFlags: 0
@@ -3293,7 +3288,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8664741194795485102, guid: 647fbb2438299e749af9cb6a8ec089b0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.631475
+      value: 10.619875
       objectReference: {fileID: 0}
     - target: {fileID: 8664741194795485102, guid: 647fbb2438299e749af9cb6a8ec089b0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3439,6 +3434,14 @@ PrefabInstance:
       value: LevelChanger
       objectReference: {fileID: 0}
     - target: {fileID: 3128304204020393822, guid: 6c7f91ba4956a5d4499f0c711b1be9c3, type: 3}
+      propertyPath: fadeOut
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128304204020393822, guid: 6c7f91ba4956a5d4499f0c711b1be9c3, type: 3}
+      propertyPath: disabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128304204020393822, guid: 6c7f91ba4956a5d4499f0c711b1be9c3, type: 3}
       propertyPath: nextLevelname
       value: Drop
       objectReference: {fileID: 0}
@@ -3500,43 +3503,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5823858199472480428, guid: d028cf23bf5c9ac4583ea6014aa349bb, type: 3}
   m_PrefabInstance: {fileID: 7353845889194799527}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1567702675}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23bd758d3ff61164199b0bd6d3f91b87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1621179865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1567702675}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e0c7ff70c23fc64a82bee5d8b88639b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: b04523810d759b5488ff3be7272ddda7, type: 2}
-  onEventTriggered:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1621179859}
-        m_TargetAssemblyTypeName: NoteManager, Assembly-CSharp
-        m_MethodName: OnSuccessEvent
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onEventTriggeredWithParameter:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1750703530 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5742244510655713361, guid: 58a9086db7b549d4e950984721daf1a4, type: 3}
@@ -4488,10 +4460,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7091178073877953759, guid: d028cf23bf5c9ac4583ea6014aa349bb, type: 3}
-      insertIndex: 3
-      addedObject: {fileID: 1621179865}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d028cf23bf5c9ac4583ea6014aa349bb, type: 3}
 --- !u!1001 &8243934241945237121
 PrefabInstance:
