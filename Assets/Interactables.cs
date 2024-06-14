@@ -13,6 +13,9 @@ public class Interactables : MonoBehaviour
     private NoteManager noteManager;
 
     [SerializeField]
+    private PlayerInstrument.InstrumentType insturumentType = default;
+
+    [SerializeField]
     List<PlayerInstrument.Note> acceptedNoteOrder;
 
     [SerializeField]
@@ -25,7 +28,7 @@ public class Interactables : MonoBehaviour
 
     private GameObject player;
     private PlayerInstrument playerInstrument;
-    private float shakeDuration = 0.02f;
+
 
     private void Start()
     {
@@ -41,15 +44,17 @@ public class Interactables : MonoBehaviour
 
         if (acceptedNoteOrder.Count < 6) return;
         if (noteManager.notes.Count < 6) return;
-        bool flag = true;
+        byte mistakeCount = 0;
+
+        //TODO right now this assumes player did not change instrument in mid song play. I am not sure what will be the final intend. 
+        if (playerInstrument.selectedInstrument.instrumentType != insturumentType) mistakeCount++;
 
         for (int i = 0; i < acceptedNoteOrder.Count; i++)
         {
-            flag = acceptedNoteOrder[i] == noteManager.GetINoteAtIndex(i);
-            if (flag == false) break;
+            if (acceptedNoteOrder[i] != noteManager.GetINoteAtIndex(i)) mistakeCount++;
         }
 
-        if (flag)
+        if (mistakeCount == 0)
         {
             songSuccessEvent.TriggerEvent();
             SpecialAction();
@@ -57,11 +62,7 @@ public class Interactables : MonoBehaviour
         else
         {
             songFailEvent.TriggerEvent();
-            //transform.DOBlendableLocalMoveBy(Vector3.right, shakeDuration).SetLoops(10, LoopType.Yoyo);
         }
-
-
-
     }
 
     private void SpecialAction()

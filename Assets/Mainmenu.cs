@@ -1,9 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class Mainmenu : MonoBehaviour
 {
+    [SerializeField]
+    private SceneField optionsScene;
+
     // This method is called when the Play button is pressed
     public void PlayGame()
     {
@@ -15,7 +16,8 @@ public class Mainmenu : MonoBehaviour
     public void OpenOptions()
     {
         // Load the options scene (assuming options are at build index 2)
-        Debug.Log ("Options");
+        SceneManager.LoadScene(optionsScene);
+        Debug.Log("Options");
     }
 
     // This method is called when the Quit button is pressed

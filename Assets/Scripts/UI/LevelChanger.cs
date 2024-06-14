@@ -3,18 +3,26 @@ using UnityEngine.SceneManagement;
 
 public class LevelChanger : MonoBehaviour
 {
-    /// <summary>
-    /// We first check name for the next level
-    /// </summary>
-    [Tooltip("You only need to enter level index or name")]
+
+
+    [Header("Enter your preffered way to go to next scene")]
+    [Header("Entering only one of them is enough")]
+    [Space()]
+    [Tooltip("This uses CustomPropertyDrawer so you can select scene directly, should eliminate string errors")]
+    [SerializeField]
+    private SceneField nextScene;
+
+    [Space()]
+    [Tooltip("Simple name")]
     [SerializeField]
     private string nextLevelname;
-    /// <summary>
-    ///
-    /// </summary>
-    [Tooltip("You only need to enter level index or name")]
+
+    [Space()]
+    [Tooltip("Simple Level index")]
     [SerializeField]
     private int nextLevelindex;
+    [Space()]
+    [Header("")]
 
     [SerializeField]
     public Animator animator;
@@ -31,8 +39,11 @@ public class LevelChanger : MonoBehaviour
 
     public void OnFadeComplete()
     {
-
-        if (string.IsNullOrEmpty(nextLevelname) == false)
+        if (nextScene != null && string.IsNullOrEmpty(nextScene.SceneName) == false)
+        {
+            SceneManager.LoadScene(nextScene);
+        }
+        else if (string.IsNullOrEmpty(nextLevelname) == false)
         {
             SceneManager.LoadScene(nextLevelname);
         }

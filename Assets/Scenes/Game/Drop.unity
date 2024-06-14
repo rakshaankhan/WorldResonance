@@ -1477,6 +1477,14 @@ PrefabInstance:
       propertyPath: nextLevelindex
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3128304204020393822, guid: 6c7f91ba4956a5d4499f0c711b1be9c3, type: 3}
+      propertyPath: nextScene.m_SceneName
+      value: Level2a
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128304204020393822, guid: 6c7f91ba4956a5d4499f0c711b1be9c3, type: 3}
+      propertyPath: nextScene.m_SceneAsset
+      value: 
+      objectReference: {fileID: 102900000, guid: 6ded7e71ff1d6eb4da4507eb5f446d4d, type: 3}
     - target: {fileID: 5544902350758783616, guid: 6c7f91ba4956a5d4499f0c711b1be9c3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
