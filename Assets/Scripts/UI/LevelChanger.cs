@@ -6,11 +6,6 @@ public class LevelChanger : MonoBehaviour
     [SerializeField]
     private LastSceneInfo lastSceneInfo;
 
-    //TODO delete later we don't need this unless making a changing labyrinth 
-    [SerializeField]
-    private SceneField previousScene;
-
-
     [Header("Enter your preffered way to go to next scene")]
     [Header("Entering only one of them is enough")]
     [Space()]
@@ -39,20 +34,22 @@ public class LevelChanger : MonoBehaviour
     private bool fadeOut = false;
     [SerializeField]
     private bool fadeIn = false;
+    [SerializeField]
+    private bool teleportPlayer = true;
 
 
     private void Start()
     {
-        //TODO fix this with a field
-        if (fadeIn == true && lastSceneInfo.lastSceneName == "Drop")
-        {
 
-            animator.SetTrigger("FadeIn");
-        }
 
-        if (lastSceneInfo.lastSceneName.Equals(previousScene.SceneName))
+        if (nextScene.SceneName.Equals(lastSceneInfo.lastSceneName) && teleportPlayer == true)
         {
             GameObject.FindGameObjectWithTag("Player").transform.position = transform.position;
+
+            if (fadeIn == true)
+            {
+                animator.SetTrigger("FadeIn");
+            }
         }
         else
         {
@@ -70,7 +67,7 @@ public class LevelChanger : MonoBehaviour
 
     public void OnFadeComplete()
     {
-        //TODO assumes SceneLoading is done.
+        //TODO assumes SceneLoading is going to be done.
         lastSceneInfo.lastSceneName = SceneManager.GetActiveScene().name;
 
         if (nextScene != null && string.IsNullOrEmpty(nextScene.SceneName) == false)

@@ -1,16 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
     public Rigidbody2D playerRB { get; private set; }
     public PlayerMovement playerMovement { get; private set; }
-    public PlayerJump playerJump {get; private set;}
+    public PlayerJump playerJump { get; private set; }
     public PlayerGlide playerGlide { get; private set; }
     public PlayerGrounded playerGrounded { get; private set; }
     public PlayerAnimation playerAnimation { get; private set; }
-    
+
     /// <summary>
     /// playerMovement depends on speed
     /// </summary>
@@ -38,19 +36,23 @@ public class PlayerManager : MonoBehaviour
     [Tooltip("Determines duration of gliding before player begins falling normally")]
     [SerializeField] public float glideTime = 2f;
 
-    
+
+    [Tooltip("Determines how fast player should fall down to trigger a falling down event")]
+    [SerializeField] public float fallDownDedection = -10f;
+    [SerializeField] private GameEvent fallingDownEvent;
+
 
     public bool canGlide = false;
     private bool pauseActivity = false;
     private void Awake()
     {
         playerRB = GetComponent<Rigidbody2D>();
-        playerMovement = GetComponent<PlayerMovement>(); 
-        playerJump = GetComponent<PlayerJump>();         
-        playerGlide = GetComponent<PlayerGlide>(); 
-        playerGrounded = GetComponent<PlayerGrounded>();         
-        playerAnimation = GetComponent<PlayerAnimation>();         
-        
+        playerMovement = GetComponent<PlayerMovement>();
+        playerJump = GetComponent<PlayerJump>();
+        playerGlide = GetComponent<PlayerGlide>();
+        playerGrounded = GetComponent<PlayerGrounded>();
+        playerAnimation = GetComponent<PlayerAnimation>();
+
     }
 
     private void OnEnable()
@@ -59,7 +61,7 @@ public class PlayerManager : MonoBehaviour
     }
     private void OnDisable()
     {
-        
+
     }
 
     void Start()
@@ -68,17 +70,22 @@ public class PlayerManager : MonoBehaviour
         playerJump.enabled = true;
         playerGlide.enabled = true;
         playerAnimation.enabled = true;
-      
+
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(!enabled) { return; }
+        if (!enabled) { return; }
         playerMovement.Move(speed);
         playerJump.Jump(baseJumpForce, holdJumpForce);
-        if(canGlide) { playerGlide.Glide(birdBasePower, birdDecreasePowerRate, glideTime); }  
+        if (canGlide) { playerGlide.Glide(birdBasePower, birdDecreasePowerRate, glideTime); }
         playerAnimation.HandlePlayerMoveAnimation();
+
+        if (playerRB.velocity.y < fallDownDedection)
+        {
+            // fallingDownEvent.TriggerEvent();
+        }
     }
 
     public void PausePlayerActivity() { HandlePauseActivity(); enabled = false; }

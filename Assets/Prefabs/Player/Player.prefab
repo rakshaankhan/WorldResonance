@@ -1123,6 +1123,8 @@ MonoBehaviour:
   birdBasePower: 5
   birdDecreasePowerRate: 1
   glideTime: 2
+  fallDownDedection: -10
+  fallingDownEvent: {fileID: 11400000, guid: c682673db8fd8494d941618925a4911c, type: 2}
   canGlide: 1
 --- !u!114 &4106301045048578212
 MonoBehaviour:

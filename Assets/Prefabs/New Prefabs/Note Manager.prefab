@@ -55,7 +55,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 173f9125330bcf14396ab388f6219c85, type: 3}
   noteExpireTimer: 3
   noteUnfilledDismisTimer: 0
-  noteFilledExpireTimer: 1
+  noteFilledExpireTimer: 0.7
   playerInstrument: {fileID: 0}
   noteListChanged: {fileID: 11400000, guid: 68676baaf53d6fc46875dde0a156890f, type: 2}
   noteListFilled: {fileID: 11400000, guid: 7a5d6f300e0c40f44accc95720f2eb32, type: 2}

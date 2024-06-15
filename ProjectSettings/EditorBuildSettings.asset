@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/UI/MainMenu.unity
     guid: e87a90457e8b9b04c9a9d5ed9f37bace
   - enabled: 1
-    path: Assets/Scenes/Game/ExampleScene.unity
+    path: Assets/Scenes/Game/TutorialScene.unity
     guid: daabce8cd089e7f44acdf29b9e1042b3
   - enabled: 1
     path: Assets/Scenes/Game/Drop.unity

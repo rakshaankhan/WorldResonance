@@ -1,19 +1,44 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    [SerializeField]
     private GameObject pauseMenuUI;
+
+    [SerializeField]
+    private GameObject InGameDebugObject;
+
     private bool isPaused = false;
 
     public delegate void TogglePause();
     public static TogglePause togglePause;
+    private static PauseMenu instance;
+
+    [SerializeField]
+    private InputActionAsset playerActions;
+    private InputActionMap playerActionMap;
 
     private void Awake()
     {
-        pauseMenuUI = GameObject.Find("pauseMenuUI");
-        pauseMenuUI.SetActive(false); Debug.Log("awake pausemenu");
-        
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        pauseMenuUI.SetActive(false);
+
+        playerActionMap = playerActions.FindActionMap("Player");
+
+    }
+    private void Start()
+    {
+        InGameDebugObject.SetActive(false);
     }
 
     private void OnEnable()
@@ -24,17 +49,6 @@ public class PauseMenu : MonoBehaviour
     {
         togglePause -= HandlePause;
     }
-    //void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.Escape))
-    //    {
-    //        if (isPaused)
-    //            Resume();
-    //        else
-    //            Pause();
-    //    }
-    //}
-
     public void HandlePause()
     {
         if (isPaused)
@@ -48,13 +62,28 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
+        playerActionMap.Enable();
     }
 
     void Pause()
     {
         pauseMenuUI.SetActive(true);
+        playerActionMap.Disable();
         Time.timeScale = 0f; // This will pause the game
         isPaused = true;
+    }
+
+
+    public void LoadLevelWithSceneField(SceneField level)
+    {
+        Resume();
+        SceneManager.LoadScene(level);
+    }
+    public void LoadLevel(int level)
+    {
+        Resume();
+        MusicManager.instance?.FadeOUT();
+        SceneManager.LoadScene(level);
     }
 
     public void LoadMenu() { Resume(); SceneManager.LoadScene(0); }
