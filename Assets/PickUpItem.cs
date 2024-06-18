@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PickUpItem : MonoBehaviour
+
+public class PickUpItem : MonoBehaviour, IDataSaveLoad
 {
     [SerializeField]
     private int itemID;
@@ -16,10 +17,17 @@ public class PickUpItem : MonoBehaviour
     private GameObject player;
     private Inventory inventory;
 
+    private void Awake()
+    {
+        if (isPicked) gameObject.SetActive(false);
+    }
+
     private void Start()
     {
+
         player = GameObject.FindGameObjectWithTag("Player");
         inventory = player.GetComponent<Inventory>();
+        if (isPicked) gameObject.SetActive(false);
 
     }
 
@@ -61,8 +69,31 @@ public class PickUpItem : MonoBehaviour
         {
             Debug.Log("Pick Up");
             inventory.AddItem(itemID);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
 
+    }
+
+
+    public void Save(PersistentGameData gameData)
+    {
+        TryGetComponent(out GuidID guidID);
+        {
+            gameData.collectedItems.TryAdd(guidID.id, isPicked);
+
+        }
+
+    }
+
+    public void Load(PersistentGameData gameData)
+    {
+        TryGetComponent(out GuidID guidID);
+        {
+            gameData.collectedItems.TryGetValue(guidID.id, out bool result);
+            {
+                isPicked = result;
+            }
+
+        }
     }
 }

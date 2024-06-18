@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -22,6 +21,12 @@ namespace Gamekit3D
         {
             public string name;
             public AudioClip[] clips;
+
+
+            public AudioClip ReturnRandom()
+            {
+                return clips[Random.Range(0, clips.Length)];
+            }
         }
 
         public bool randomizePitch = true;
@@ -30,10 +35,6 @@ namespace Gamekit3D
         public SoundBank defaultBank = new SoundBank();
         public MaterialAudioOverride[] overrides;
 
-        [HideInInspector]
-        public bool playing;
-        [HideInInspector]
-        public bool canPlay;
 
         protected AudioSource m_Audiosource;
         protected Dictionary<Material, SoundBank[]> m_Lookup = new Dictionary<Material, SoundBank[]>();
@@ -75,6 +76,7 @@ namespace Gamekit3D
             clip = InternalPlayRandomClip(null, bankId: 0);
         }
 
+
         AudioClip InternalPlayRandomClip(Material overrideMaterial, int bankId)
         {
             SoundBank[] banks = null;
@@ -95,6 +97,13 @@ namespace Gamekit3D
             m_Audiosource.PlayDelayed(playDelay);
 
             return clip;
+        }
+
+        [ContextMenu("Play Random Clip")]
+        public void PlayRandom()
+        {
+            m_Audiosource.pitch = randomizePitch ? Random.Range(1.0f - pitchRandomRange, 1.0f + pitchRandomRange) : 1.0f;
+            m_Audiosource.PlayOneShot(defaultBank.ReturnRandom());
         }
 
     }

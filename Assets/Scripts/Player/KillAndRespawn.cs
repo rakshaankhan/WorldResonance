@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class KillAndRespawn : MonoBehaviour
@@ -20,7 +18,8 @@ public class KillAndRespawn : MonoBehaviour
 
         transform.position = respawnPoint.position + 7 * Vector3.up;
 
-        Invoke("EnableCharacter", 1f);
+        EnableCharacter();
+        // Invoke("EnableCharacter", 1f);
     }
 
     private void EnableCharacter()
