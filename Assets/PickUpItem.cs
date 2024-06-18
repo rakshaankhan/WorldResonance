@@ -79,8 +79,11 @@ public class PickUpItem : MonoBehaviour, IDataSaveLoad
     {
         if (TryGetComponent(out GuidID guidID))
         {
-            // gameData.collectedItems.TryAdd(guidID.id, isPicked);
-            gameData.collectedItemGuids.Add(guidID.id);
+            if (gameData.collectedItemGuids.Contains(guidID.id) == false)
+            {
+                gameData.collectedItemGuids.Add(guidID.id);
+            }
+
         }
 
     }
@@ -89,11 +92,6 @@ public class PickUpItem : MonoBehaviour, IDataSaveLoad
     {
         if (TryGetComponent(out GuidID guidID))
         {
-            //gameData.collectedItems.TryGetValue(guidID.id, out bool result);
-            //{
-            //    isPicked = result;
-            //}
-
             if (gameData.collectedItemGuids.Contains(guidID.id))
             {
                 isPicked = true;

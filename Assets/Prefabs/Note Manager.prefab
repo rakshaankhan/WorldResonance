@@ -48,11 +48,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicSheetUI: {fileID: 0}
-  noteAudioClips:
-  - {fileID: 8300000, guid: ca43622f9ce3625419ec7412c9fcee6d, type: 3}
-  - {fileID: 8300000, guid: 6c124a9d8ed9436468bc9a6c92a6c57d, type: 3}
-  - {fileID: 8300000, guid: d96c77a5214e35c459905a86cd636e4e, type: 3}
-  - {fileID: 8300000, guid: 173f9125330bcf14396ab388f6219c85, type: 3}
+  soundBanks:
+  - name: Wind
+    clips:
+    - {fileID: 8300000, guid: 42350034ceb7f684bb000c1469a38229, type: 3}
+    - {fileID: 8300000, guid: c5c1037029e118e4b8a7dae75fe795c2, type: 3}
+    - {fileID: 8300000, guid: 3ef5863e12cbc39438694c34f7531a69, type: 3}
+    - {fileID: 8300000, guid: 3fc00c9957e0ba8459de4fe46ba5c1b8, type: 3}
+    - {fileID: 8300000, guid: 64fa3a3363417a0489e5b86d721cfb86, type: 3}
+    - {fileID: 8300000, guid: 5ea3e8e3d451e6546aa3ace48f3dbd93, type: 3}
+    - {fileID: 8300000, guid: e5009816e8bd25a4695ee23b3f653721, type: 3}
+    - {fileID: 8300000, guid: c74691336955a504e9f6b7c075abff3e, type: 3}
+    variationsCount: 2
+  - name: Percussion
+    clips:
+    - {fileID: 8300000, guid: ccf63e6bcf91c1c439d0a21a500e05e5, type: 3}
+    - {fileID: 8300000, guid: fc5c926ae05465246bf1de7f46cce40c, type: 3}
+    - {fileID: 8300000, guid: c2c5816e95a0a92418692e39405f6c40, type: 3}
+    - {fileID: 8300000, guid: 449d2da0c95369c40a6a6c5297f1fba1, type: 3}
+    - {fileID: 8300000, guid: 55a5b24cb4d1b8e42b9e896bfebbb15f, type: 3}
+    - {fileID: 8300000, guid: 85e7261995cc5664faf43e3134c99d2a, type: 3}
+    - {fileID: 8300000, guid: 90ead04f72a76d14fba44716ece0d12f, type: 3}
+    - {fileID: 8300000, guid: 3a386ca1bad032a44b4deb0162b1ba61, type: 3}
+    - {fileID: 8300000, guid: daa52b6618f21464d9be7906dc8bfb63, type: 3}
+    - {fileID: 8300000, guid: b5f724f0e9ddb9849b8c8f89c618f096, type: 3}
+    - {fileID: 8300000, guid: 85b89edfae9249c468e2af14902d2a77, type: 3}
+    - {fileID: 8300000, guid: 53a3a72472ee0774e82a686759f8af93, type: 3}
+    variationsCount: 3
+  - name: String
+    clips:
+    - {fileID: 8300000, guid: 2168fba3202c36249a859bcbbaed5ead, type: 3}
+    - {fileID: 8300000, guid: af846fd3edbae0946a60cce76a6dc5d3, type: 3}
+    - {fileID: 8300000, guid: 3ab3896245a7d9146867e281300c1c20, type: 3}
+    - {fileID: 8300000, guid: 19405c76e63b8ab4c8954768bd543d3b, type: 3}
+    - {fileID: 8300000, guid: 1e8d4c417021ce54ebdbbcc86701c79f, type: 3}
+    - {fileID: 8300000, guid: 189b6f66c98b7c54c90bc723ac53ff23, type: 3}
+    - {fileID: 8300000, guid: d3f1099dbfa8e4145a5d5249d083cc40, type: 3}
+    - {fileID: 8300000, guid: 5b8b5ee00d4d7cf4092558a9b34efff9, type: 3}
+    variationsCount: 2
   noteExpireTimer: 3
   noteUnfilledDismisTimer: 0
   noteFilledExpireTimer: 0.7

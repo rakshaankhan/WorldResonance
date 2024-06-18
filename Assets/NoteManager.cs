@@ -1,14 +1,18 @@
 using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
+using static Gamekit3D.RandomAudioPlayer;
 
 public class NoteManager : MonoBehaviour
 {
     [SerializeField]
     private RectTransform musicSheetUI;
 
+    //[SerializeField]
+    //private List<AudioClip> noteAudioClips;
+
     [SerializeField]
-    private List<AudioClip> noteAudioClips;
+    private List<SoundBank> soundBanks;
 
     [SerializeField]
     private float noteExpireTimer = 1f;
@@ -71,8 +75,12 @@ public class NoteManager : MonoBehaviour
         {
             notes.Dequeue();
         }
+        int instrumentIndex = (int) playerInstrument.selectedInstrument.instrumentType;
         //audioSource.clip = noteAudioClips[((int) note - 1)];
-        audioSource.PlayOneShot(noteAudioClips[((int) note - 1)]);
+        SoundBank instrumentNotes = soundBanks[instrumentIndex];
+        var ClipToPlay = instrumentNotes.ReturnRandomFromVariations((int) (note) - 1);
+        audioSource.PlayOneShot(ClipToPlay);
+        Debug.Log(ClipToPlay.name);
         notes.Enqueue(note);
         addingNewNote = true;
         NoteListChanged();

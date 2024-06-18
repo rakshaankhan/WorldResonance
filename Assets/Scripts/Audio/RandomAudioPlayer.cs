@@ -21,11 +21,18 @@ namespace Gamekit3D
         {
             public string name;
             public AudioClip[] clips;
+            [Tooltip("If clips have variations select correct number, All clips MUST have same variation counts")]
+            public int variationsCount = 1;
 
 
             public AudioClip ReturnRandom()
             {
                 return clips[Random.Range(0, clips.Length)];
+            }
+            public AudioClip ReturnRandomFromVariations(int index)
+            {
+                // int range = clips.Length / variationsCount;
+                return clips[Random.Range(index * variationsCount, index * variationsCount + variationsCount)];
             }
         }
 
