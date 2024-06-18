@@ -996,7 +996,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: Saves
-  fileName: simpleSave
+  fileName: simpleSave.txt
 --- !u!4 &965629239
 Transform:
   m_ObjectHideFlags: 0
@@ -1803,6 +1803,86 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1464912465}
     m_Modifications:
+    - target: {fileID: 24088459529860215, guid: 240ec5652aae7f74db934f7fb0495af7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 24088459529860215, guid: 240ec5652aae7f74db934f7fb0495af7, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 24088459529860215, guid: 240ec5652aae7f74db934f7fb0495af7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 24088459529860215, guid: 240ec5652aae7f74db934f7fb0495af7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 24088459529860215, guid: 240ec5652aae7f74db934f7fb0495af7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1731084501857211376, guid: 240ec5652aae7f74db934f7fb0495af7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1731084501857211376, guid: 240ec5652aae7f74db934f7fb0495af7, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1731084501857211376, guid: 240ec5652aae7f74db934f7fb0495af7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1731084501857211376, guid: 240ec5652aae7f74db934f7fb0495af7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1731084501857211376, guid: 240ec5652aae7f74db934f7fb0495af7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5276313562625489942, guid: 240ec5652aae7f74db934f7fb0495af7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5276313562625489942, guid: 240ec5652aae7f74db934f7fb0495af7, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5276313562625489942, guid: 240ec5652aae7f74db934f7fb0495af7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5276313562625489942, guid: 240ec5652aae7f74db934f7fb0495af7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5276313562625489942, guid: 240ec5652aae7f74db934f7fb0495af7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5881693673321847512, guid: 240ec5652aae7f74db934f7fb0495af7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5881693673321847512, guid: 240ec5652aae7f74db934f7fb0495af7, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5881693673321847512, guid: 240ec5652aae7f74db934f7fb0495af7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5881693673321847512, guid: 240ec5652aae7f74db934f7fb0495af7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5881693673321847512, guid: 240ec5652aae7f74db934f7fb0495af7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5931309035618840863, guid: 240ec5652aae7f74db934f7fb0495af7, type: 3}
       propertyPath: m_Name
       value: Main Menu Panel

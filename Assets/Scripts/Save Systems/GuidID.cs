@@ -11,9 +11,18 @@ public class GuidID : MonoBehaviour
 
 
 
-    [ContextMenu("Create New Guid")]
-    public void CreateGuid()
+
+    private void CreateGuid()
     {
         id = System.Guid.NewGuid().ToString();
+    }
+
+    private void OnValidate()
+    {
+        // Ensure id is not empty, create a new Guid if it is
+        if (string.IsNullOrEmpty(id))
+        {
+            CreateGuid();
+        }
     }
 }

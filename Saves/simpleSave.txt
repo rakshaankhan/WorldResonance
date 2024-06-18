@@ -1,0 +1,1 @@
+{"collectedItemGuids":["463c5ce3-3735-4f70-a408-406a0aee9917","05db4aad-52a8-428e-b465-603ad185d170","72413b43-638b-4044-88a7-c3a18c7cccbb","2f7a65b2-880d-4245-b03d-1744afd1f034"],"NewGame":true}

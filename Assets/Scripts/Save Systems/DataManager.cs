@@ -32,9 +32,6 @@ public class DataManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-
-        //Application.quitting +=
     }
 
     private void OnDisable()
@@ -95,7 +92,7 @@ public class DataManager : MonoBehaviour
     private void OnApplicationQuit()
     {
 
-        Debug.Log("Saving To File");
+        Debugger.Log("Saving To File", Debugger.PriorityLevel.MustShown);
         SaveToFile();
     }
 

@@ -68,6 +68,7 @@ public class PickUpItem : MonoBehaviour, IDataSaveLoad
         if (isPicked == false)
         {
             Debug.Log("Pick Up");
+            isPicked = true;
             inventory.AddItem(itemID);
             gameObject.SetActive(false);
         }
@@ -77,6 +78,8 @@ public class PickUpItem : MonoBehaviour, IDataSaveLoad
 
     public void Save(PersistentGameData gameData)
     {
+        if (isPicked == false) return;
+
         if (TryGetComponent(out GuidID guidID))
         {
             if (gameData.collectedItemGuids.Contains(guidID.id) == false)
@@ -92,9 +95,17 @@ public class PickUpItem : MonoBehaviour, IDataSaveLoad
     {
         if (TryGetComponent(out GuidID guidID))
         {
+            if (string.IsNullOrEmpty(guidID.id)) return;
+
+            Debugger.Log("Checking for Loading object name " + gameObject.name + " and GUID " + guidID.id, Debugger.PriorityLevel.Low);
             if (gameData.collectedItemGuids.Contains(guidID.id))
             {
+                Debugger.Log("Object Loaded" + guidID.id, Debugger.PriorityLevel.Low);
                 isPicked = true;
+            }
+            else
+            {
+                Debugger.Log("Object could not find" + guidID.id, Debugger.PriorityLevel.Low);
             }
 
         }
