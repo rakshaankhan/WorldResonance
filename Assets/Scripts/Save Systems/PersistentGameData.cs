@@ -7,6 +7,8 @@ public class PersistentGameData
 
     public List<string> collectedItemGuids = new List<string>();
 
+    public string lastSceneOpen;
+
     // public Vector3 playerPosition;
     ///public Vector3 playerRotation;
 

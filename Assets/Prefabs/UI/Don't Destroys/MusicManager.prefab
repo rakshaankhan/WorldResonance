@@ -47,6 +47,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27d6ae08ed9db7e45a441b2ac9e17e15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scenes:
+  - m_SceneAsset: {fileID: 102900000, guid: e87a90457e8b9b04c9a9d5ed9f37bace, type: 3}
+    m_SceneName: MainMenu
+  - m_SceneAsset: {fileID: 102900000, guid: 160b10d83badfbf4f843b586fae327d0, type: 3}
+    m_SceneName: OptionsMenu
+  - m_SceneAsset: {fileID: 102900000, guid: daabce8cd089e7f44acdf29b9e1042b3, type: 3}
+    m_SceneName: TutorialScene
+  - m_SceneAsset: {fileID: 102900000, guid: f96556ee3325cfd4691aeb925f8017af, type: 3}
+    m_SceneName: Drop
+  - m_SceneAsset: {fileID: 102900000, guid: 7b9c603e0a796d14b931593f8ea15aa8, type: 3}
+    m_SceneName: Level2a
+  - m_SceneAsset: {fileID: 102900000, guid: 2da64e0615a70084cbdf5fd22b2dc35d, type: 3}
+    m_SceneName: Level2b
+  - m_SceneAsset: {fileID: 102900000, guid: ebcb8ae02835872458d3f5e51fba6592, type: 3}
+    m_SceneName: Level2c
+  sceneMusicClips:
+  - {fileID: 8300000, guid: a3c1adbcd971c104fba6480a91417d28, type: 3}
+  - {fileID: 8300000, guid: a3c1adbcd971c104fba6480a91417d28, type: 3}
+  - {fileID: 8300000, guid: 73254df6b66bb6244a7ed1c82370b9ee, type: 3}
+  - {fileID: 8300000, guid: 73254df6b66bb6244a7ed1c82370b9ee, type: 3}
+  - {fileID: 8300000, guid: 95c87331c5d806742a8e6e8f09ba4069, type: 3}
+  - {fileID: 8300000, guid: 95c87331c5d806742a8e6e8f09ba4069, type: 3}
+  - {fileID: 8300000, guid: 95c87331c5d806742a8e6e8f09ba4069, type: 3}
   fadeInTimer: 5
   fadeOutTimer: 1
   fadeInTimerForNotes: 0.3

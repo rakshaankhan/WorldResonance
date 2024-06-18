@@ -27,6 +27,8 @@ public class DataManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
             SceneManager.sceneLoaded += AfterSceneLoad;
+            fileSystem = new DatatoFileSystemManager(path, fileName);
+            LoadFromFile();
         }
         else
         {
@@ -41,8 +43,7 @@ public class DataManager : MonoBehaviour
 
     private void Start()
     {
-        fileSystem = new DatatoFileSystemManager(path, fileName);
-        LoadFromFile();
+
     }
 
 
@@ -59,6 +60,8 @@ public class DataManager : MonoBehaviour
     [ContextMenu("SaveGameState")]
     public void SaveGame()
     {
+        gameData.lastSceneOpen = SceneManager.GetActiveScene().name;
+        gameData.NewGame = false;
         foreach (var persistenObject in objectsWithSaveLoad)
         {
             persistenObject.Save(gameData);
@@ -101,5 +104,19 @@ public class DataManager : MonoBehaviour
     {
         gameData = new PersistentGameData();
         SaveToFile();
+    }
+
+    public bool isNewGame()
+    {
+        return gameData.NewGame;
+    }
+
+    public string GetLastScene()
+    {
+        if (string.IsNullOrEmpty(gameData.lastSceneOpen) == true)
+        {
+            return SceneManager.GetSceneByBuildIndex(1).name;
+        }
+        return gameData.lastSceneOpen;
     }
 }
