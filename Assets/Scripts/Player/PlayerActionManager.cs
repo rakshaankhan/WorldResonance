@@ -24,6 +24,8 @@ public class PlayerActionManager : MonoBehaviour
     private List<Action<InputAction.CallbackContext>> performedActionList;
     private List<Action> cancelActionList;
 
+
+    private PlayerInstrument playerInstrument;
     private void Awake()
     {
         input = GetComponent<PlayerInput>();
@@ -31,6 +33,7 @@ public class PlayerActionManager : MonoBehaviour
         startActionList = new List<Action>();
         performedActionList = new();
         cancelActionList = new List<Action>();
+        playerInstrument = GetComponent<PlayerInstrument>();
     }
     private void OnEnable()
     {
@@ -58,7 +61,7 @@ public class PlayerActionManager : MonoBehaviour
         AssignCallbacks(input, "glide", SetGlide, SetGlide, null, context => context.ReadValueAsButton(), onEnable);
         AssignCallbacks(input, "interact", null, OnInteractStart, null, context => context, onEnable);
         AssignCallbacks(input, "Select Instrument", null, null, OnSelectInstrumentName, context => context, onEnable);
-        AssignCallbacks(input, "Play Note", OnPlayNote2, null, null, context => context, onEnable);
+        AssignCallbacks(input, "Play Note", OnPlayNote, null, null, context => context, onEnable);
 
         AssignCallbacks(input, "PauseMenu", OnEscape, null, null, context => context, onEnable);
     }
@@ -163,18 +166,19 @@ public class PlayerActionManager : MonoBehaviour
                 break;
             }
 
-            //TODO just for testing will delete from here.
-            GetComponent<PlayerInstrument>().ChangeInstrument(selectedInstrument);
+            playerInstrument.ChangeInstrument(selectedInstrument);
         }
     }
 
-    //There is a bug with method names returns MissingMethodException so 2 is there to fix it.
-    public void OnPlayNote2(InputAction.CallbackContext context)
-    {
 
-        //TODO this does not allow multiple button pressed which creates unresponsive controls.
+    public void OnPlayNote(InputAction.CallbackContext context)
+    {
         var control = context.control;
+
         int id = 0;
+        //When using passthrough action only triggers performed twice instead of started,performed order. This lets us only fire at started event
+        if (control.IsPressed() == false) return;
+
         if (control is KeyControl keyControl)
         {
             switch (keyControl.keyCode)
@@ -206,8 +210,7 @@ public class PlayerActionManager : MonoBehaviour
                 break;
             }
 
-            //TODO just for testing will delete from here.
-            GetComponent<PlayerInstrument>().ChooseNoteAndPlay(id);
+            playerInstrument.ChooseNoteAndPlay(id);
         }
     }
 }

@@ -58,7 +58,7 @@ public class DatatoFileSystemManager
 
 
                     data = reader.ReadToEnd();
-                // GameData = (PersistentGameData) (JsonFormatter.DeserializeObject(data, typeof(PersistentGameData)) ?? GameData);
+
                 GameData = JsonUtility.FromJson<PersistentGameData>(data) ?? GameData;
 
             }

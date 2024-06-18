@@ -52,7 +52,7 @@
                 },
                 {
                     "name": "Play Note",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "930315f7-2bd7-4ddc-874e-5cc07a21b301",
                     "expectedControlType": "Button",
                     "processors": "",

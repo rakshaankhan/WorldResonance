@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9133285505459498579}
   - component: {fileID: 4685447309049821304}
   - component: {fileID: 4904855176209261740}
+  - component: {fileID: -4020172171163060129}
   m_Layer: 8
   m_Name: Item Red
   m_TagString: Untagged
@@ -159,6 +160,19 @@ MonoBehaviour:
   onEventTriggeredWithParameter:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &-4020172171163060129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2741483890410848778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb861d02c668c7749ba078b949d89787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 
 --- !u!1 &5020130088778190786
 GameObject:
   m_ObjectHideFlags: 0

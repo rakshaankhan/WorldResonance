@@ -13,6 +13,8 @@ public class NoteManager : MonoBehaviour
 
     [SerializeField]
     private List<SoundBank> soundBanks;
+    [SerializeField]
+    private List<SoundBank> textureSoundBanks;
 
     [SerializeField]
     private float noteExpireTimer = 1f;
@@ -40,7 +42,14 @@ public class NoteManager : MonoBehaviour
 
     private bool addingNewNote;
 
-    private AudioSource audioSource;
+    [SerializeField]
+    private AudioSource audioSourceNotes;
+
+    [Range(0f, 0.2f)]
+    [SerializeField]
+    private float pitchRandomRangeForTextures;
+    [SerializeField]
+    private AudioSource audioSourceTextures;
 
     private void Start()
     {
@@ -54,7 +63,6 @@ public class NoteManager : MonoBehaviour
 
             musicSheetUI = GameObject.FindGameObjectWithTag("MusicSheet").GetComponent<RectTransform>();
         }
-        audioSource = GetComponent<AudioSource>();
     }
 
     public void AddNote()
@@ -76,10 +84,16 @@ public class NoteManager : MonoBehaviour
             notes.Dequeue();
         }
         int instrumentIndex = (int) playerInstrument.selectedInstrument.instrumentType;
-        //audioSource.clip = noteAudioClips[((int) note - 1)];
+
         SoundBank instrumentNotes = soundBanks[instrumentIndex];
         var ClipToPlay = instrumentNotes.ReturnRandomFromVariations((int) (note) - 1);
-        audioSource.PlayOneShot(ClipToPlay);
+        audioSourceNotes.PlayOneShot(ClipToPlay);
+
+        SoundBank textureSounds = textureSoundBanks[instrumentIndex];
+        var textureToPLay = textureSounds.ReturnRandomFromVariations((int) (note) - 1);
+        audioSourceTextures.pitch = Random.Range(1.0f - pitchRandomRangeForTextures, 1.0f + pitchRandomRangeForTextures);
+        audioSourceTextures.PlayOneShot(textureToPLay);
+
         Debug.Log(ClipToPlay.name);
         notes.Enqueue(note);
         addingNewNote = true;

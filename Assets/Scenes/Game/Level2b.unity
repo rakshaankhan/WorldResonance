@@ -203,6 +203,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4020172171163060129, guid: 86d23015672e4554cb2610330d6743e2, type: 3}
+      propertyPath: id
+      value: da9f6110-6473-4960-be02-134972829b9a
+      objectReference: {fileID: 0}
     - target: {fileID: 1843032752049293466, guid: 86d23015672e4554cb2610330d6743e2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14.8
@@ -815,6 +819,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item Blue
       objectReference: {fileID: 0}
+    - target: {fileID: 7298324865120586292, guid: 58a9086db7b549d4e950984721daf1a4, type: 3}
+      propertyPath: id
+      value: af7c0f8a-5062-49fb-8eb0-44b37bacc1c8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -969,7 +977,7 @@ PrefabInstance:
     - target: {fileID: 3128304204020393822, guid: 6c7f91ba4956a5d4499f0c711b1be9c3, type: 3}
       propertyPath: nextScene.m_SceneAsset
       value: 
-      objectReference: {fileID: 102900000, guid: 6ded7e71ff1d6eb4da4507eb5f446d4d, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 3128304204020393822, guid: 6c7f91ba4956a5d4499f0c711b1be9c3, type: 3}
       propertyPath: previousScene.m_SceneName
       value: Level2a
@@ -1125,6 +1133,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 6c124a9d8ed9436468bc9a6c92a6c57d, type: 3}
     - {fileID: 8300000, guid: 173f9125330bcf14396ab388f6219c85, type: 3}
     - {fileID: 8300000, guid: 173f9125330bcf14396ab388f6219c85, type: 3}
+    variationsCount: 1
   overrides: []
 --- !u!82 &776505358
 AudioSource:

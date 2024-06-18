@@ -1,15 +1,23 @@
 using DG.Tweening;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 //TODO music manager needs to know the music and which scene we are on and when to change musics.
 public class MusicManager : MonoBehaviour
 {
-
+    [SerializeField]
+    private List<SceneField> scenes = new();
+    [SerializeField]
+    private List<AudioClip> sceneMusicClips = new();
 
     [SerializeField]
     private float fadeInTimer = 1f;
     [SerializeField]
     private float fadeOutTimer = 1f;
+
 
 
 
@@ -45,8 +53,9 @@ public class MusicManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         musicPlayer = GetComponent<AudioSource>();
-
+        SceneManager.sceneLoaded += ChangeMusicOnSceneLoad;
     }
+
 
     private void Start()
     {
@@ -92,4 +101,20 @@ public class MusicManager : MonoBehaviour
         fadeInForNotesTween.Restart();
         fadeInForNotesTween.Play();
     }
+
+
+
+    private void ChangeMusicOnSceneLoad(Scene Scene, LoadSceneMode arg1)
+    {
+
+        var result = scenes.First(x => x.SceneName == Scene.name);
+        var index = scenes.IndexOf(result);
+        if (musicPlayer == null) return;
+        if (musicPlayer.clip == sceneMusicClips[index]) return;
+
+        musicPlayer.clip = sceneMusicClips[index];
+        musicPlayer.Play();
+
+    }
+
 }

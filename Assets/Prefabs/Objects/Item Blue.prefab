@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 3353018861948283153}
   - component: {fileID: 154545379931203730}
   - component: {fileID: 2601222642147497861}
+  - component: {fileID: 7298324865120586292}
   m_Layer: 8
   m_Name: Item Blue
   m_TagString: Untagged
@@ -243,6 +244,19 @@ MonoBehaviour:
   onEventTriggeredWithParameter:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7298324865120586292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5742244510655713361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb861d02c668c7749ba078b949d89787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 
 --- !u!1 &6907883816235357105
 GameObject:
   m_ObjectHideFlags: 0

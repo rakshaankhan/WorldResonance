@@ -26,14 +26,20 @@ public class DataManager : MonoBehaviour
 
             instance = this;
             DontDestroyOnLoad(gameObject);
+            SceneManager.sceneLoaded += AfterSceneLoad;
         }
         else
         {
             Destroy(gameObject);
         }
-        SceneManager.sceneLoaded += AfterSceneLoad;
+
 
         //Application.quitting +=
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= AfterSceneLoad;
     }
 
     private void Start()
