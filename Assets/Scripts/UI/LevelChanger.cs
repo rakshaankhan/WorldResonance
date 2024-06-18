@@ -5,6 +5,8 @@ public class LevelChanger : MonoBehaviour
 {
     [SerializeField]
     private LastSceneInfo lastSceneInfo;
+    [SerializeField]
+    private GameEvent sceneIsChanging;
 
     [Header("Enter your preffered way to go to next scene")]
     [Header("Entering only one of them is enough")]
@@ -69,6 +71,7 @@ public class LevelChanger : MonoBehaviour
     {
         //TODO assumes SceneLoading is going to be done.
         lastSceneInfo.lastSceneName = SceneManager.GetActiveScene().name;
+        sceneIsChanging.TriggerEvent();
 
         if (nextScene != null && string.IsNullOrEmpty(nextScene.SceneName) == false)
         {

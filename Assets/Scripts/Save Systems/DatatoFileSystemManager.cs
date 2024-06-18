@@ -1,15 +1,16 @@
 using System;
 using System.IO;
+using UnityEngine;
 
 
-public class DatatoFileSystemManager2
+public class DatatoFileSystemManager
 {
     private string dataDirPath = "";
     private string fileName = "";
 
     private string fullPath = "";
 
-    public DatatoFileSystemManager2(string path, string fileName)
+    public DatatoFileSystemManager(string path, string fileName)
     {
         this.dataDirPath = path;
         this.fileName = fileName;
@@ -26,7 +27,8 @@ public class DatatoFileSystemManager2
             {
                 using (StreamWriter writer = new StreamWriter(stream))
                 {
-
+                    // data = JsonFormatter.SerializeObject(gameData);
+                    data = JsonUtility.ToJson(gameData);
                     writer.Write(data);
 
                 }
@@ -42,20 +44,22 @@ public class DatatoFileSystemManager2
 
     }
 
-    public PersistentGameData Load(PersistentGameData gamedata)
+    public PersistentGameData Load()
     {
-        PersistentGameData data1 = new PersistentGameData();
+        PersistentGameData GameData = new PersistentGameData();
         try
         {
             Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
             string data = "Test";
 
-            using (FileStream stream = new FileStream(fullPath, FileMode.Create))
+            using (FileStream stream = new FileStream(fullPath, FileMode.OpenOrCreate))
             {
                 using (StreamReader reader = new StreamReader(stream))
 
 
                     data = reader.ReadToEnd();
+                // GameData = (PersistentGameData) (JsonFormatter.DeserializeObject(data, typeof(PersistentGameData)) ?? GameData);
+                GameData = JsonUtility.FromJson<PersistentGameData>(data) ?? GameData;
 
             }
 
@@ -64,6 +68,6 @@ public class DatatoFileSystemManager2
         {
 
         }
-        return data1;
+        return GameData;
     }
 }

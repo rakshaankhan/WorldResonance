@@ -77,21 +77,26 @@ public class PickUpItem : MonoBehaviour, IDataSaveLoad
 
     public void Save(PersistentGameData gameData)
     {
-        TryGetComponent(out GuidID guidID);
+        if (TryGetComponent(out GuidID guidID))
         {
-            gameData.collectedItems.TryAdd(guidID.id, isPicked);
-
+            // gameData.collectedItems.TryAdd(guidID.id, isPicked);
+            gameData.collectedItemGuids.Add(guidID.id);
         }
 
     }
 
     public void Load(PersistentGameData gameData)
     {
-        TryGetComponent(out GuidID guidID);
+        if (TryGetComponent(out GuidID guidID))
         {
-            gameData.collectedItems.TryGetValue(guidID.id, out bool result);
+            //gameData.collectedItems.TryGetValue(guidID.id, out bool result);
+            //{
+            //    isPicked = result;
+            //}
+
+            if (gameData.collectedItemGuids.Contains(guidID.id))
             {
-                isPicked = result;
+                isPicked = true;
             }
 
         }

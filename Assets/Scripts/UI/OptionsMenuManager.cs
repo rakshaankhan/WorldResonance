@@ -102,4 +102,9 @@ public class OptionsMenuManager : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+
+    public void ResetGameState()
+    {
+        DataManager.instance.ResetGameState();
+    }
 }

@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField]
+    private GameEvent sceneIsChaning;
+
+    [SerializeField]
     private GameObject pauseMenuUI;
 
     [SerializeField]
@@ -77,18 +80,25 @@ public class PauseMenu : MonoBehaviour
     public void LoadLevelWithSceneField(SceneField level)
     {
         Resume();
+        sceneIsChaning.TriggerEvent();
         SceneManager.LoadScene(level);
     }
     public void LoadLevel(int level)
     {
         Resume();
+        sceneIsChaning.TriggerEvent();
         MusicManager.instance?.FadeOUT();
         SceneManager.LoadScene(level);
     }
 
-    public void LoadMenu() { Resume(); SceneManager.LoadScene(0); }
-    public void LoadLevel1() { Resume(); SceneManager.LoadScene(2); }
-    public void LoadLevel2() { Resume(); SceneManager.LoadScene(3); }
+    public void LoadMenu()
+    {
+
+        Resume();
+        sceneIsChaning.TriggerEvent();
+        SceneManager.LoadScene(0);
+
+    }
     public void QuitGame()
     {
         // You can add more logic here like confirmation dialog if needed

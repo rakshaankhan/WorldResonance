@@ -1,13 +1,14 @@
 using System.Collections.Generic;
-using System.Numerics;
 
 [System.Serializable]
 public class PersistentGameData
 {
-    public Dictionary<string, bool> collectedItems = new Dictionary<string, bool>();
+    // public Dictionary<string, bool> collectedItems = new Dictionary<string, bool>();
 
-    public Vector3 plyerPosition;
-    public Vector3 playerRotation;
+    public List<string> collectedItemGuids = new List<string>();
+
+    // public Vector3 playerPosition;
+    ///public Vector3 playerRotation;
 
     public bool NewGame;
 
