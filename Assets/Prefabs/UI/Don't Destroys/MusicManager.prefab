@@ -73,7 +73,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 95c87331c5d806742a8e6e8f09ba4069, type: 3}
   - {fileID: 8300000, guid: 95c87331c5d806742a8e6e8f09ba4069, type: 3}
   - {fileID: 8300000, guid: 95c87331c5d806742a8e6e8f09ba4069, type: 3}
-  fadeInTimer: 5
+  fadeInTimer: 1
   fadeOutTimer: 1
   fadeInTimerForNotes: 0.3
   fadeOutTimerForNotes: 3

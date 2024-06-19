@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Insturment Example 3
   m_EditorClassIdentifier: 
   DeveloperDescription: This is just an example.
-  insturmentName: Piano
-  insturmentSound: {fileID: 0}
-  instrumentType: 1
+  instrumentName: 
+  instrumentSound: {fileID: 0}
+  instrumentType: 2
   instrumentUiVisual: {fileID: 21300000, guid: ed2083f2aba7097418978cd8a6a8e249, type: 3}

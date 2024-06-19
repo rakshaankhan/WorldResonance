@@ -288,6 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 816fb83039ed8464bb09d825ef9ad63d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  notePrefab: {fileID: 3111461273749537846, guid: ff00a846f8a27ba48861fe671d8b66a8, type: 3}
   noteManager: {fileID: 0}
   orderInUI: 0
   textField: {fileID: 2148395233288789744}

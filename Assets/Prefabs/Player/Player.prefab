@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 295350342110645194}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 11.745713, y: 5.2799697, z: -10.88}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -68,7 +68,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 90
   orthographic: 1
   orthographic size: 11.51
   m_Depth: -1
@@ -236,15 +236,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: d1b7c60ef24129f49b073270b698be3b, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -352,7 +352,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1058310449195838280}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -449,6 +449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 816fb83039ed8464bb09d825ef9ad63d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  notePrefab: {fileID: 3111461273749537846, guid: ff00a846f8a27ba48861fe671d8b66a8, type: 3}
   noteManager: {fileID: 0}
   orderInUI: 0
   textField: {fileID: 3789356910848269118}
@@ -509,7 +510,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1900159312241557010}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -606,6 +607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 816fb83039ed8464bb09d825ef9ad63d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  notePrefab: {fileID: 3111461273749537846, guid: ff00a846f8a27ba48861fe671d8b66a8, type: 3}
   noteManager: {fileID: 0}
   orderInUI: 0
   textField: {fileID: 7799016618907311}
@@ -666,7 +668,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2007266211422869735}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -763,6 +765,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 816fb83039ed8464bb09d825ef9ad63d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  notePrefab: {fileID: 3111461273749537846, guid: ff00a846f8a27ba48861fe671d8b66a8, type: 3}
   noteManager: {fileID: 0}
   orderInUI: 0
   textField: {fileID: 388531775075829137}
@@ -823,7 +826,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2044739565749948210}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -920,6 +923,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 816fb83039ed8464bb09d825ef9ad63d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  notePrefab: {fileID: 3111461273749537846, guid: ff00a846f8a27ba48861fe671d8b66a8, type: 3}
   noteManager: {fileID: 0}
   orderInUI: 0
   textField: {fileID: 8948788393068154040}
@@ -1332,7 +1336,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3484826247620589413}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -1429,6 +1433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 816fb83039ed8464bb09d825ef9ad63d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  notePrefab: {fileID: 3111461273749537846, guid: ff00a846f8a27ba48861fe671d8b66a8, type: 3}
   noteManager: {fileID: 0}
   orderInUI: 0
   textField: {fileID: 191615296476774802}
@@ -2435,6 +2440,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7976953690371633526}
     m_Modifications:
+    - target: {fileID: 981539722571341877, guid: b2e8231e9f2229c458bf008741813915, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 08ce591db8d8eb64ea5b47cf782a0246, type: 3}
     - target: {fileID: 3665938347420604959, guid: b2e8231e9f2229c458bf008741813915, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

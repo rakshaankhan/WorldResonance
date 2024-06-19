@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class NoteListChangeUIHandler : MonoBehaviour
 {
     [SerializeField]
+    private GameObject notePrefab;
+
+    [SerializeField]
     NoteManager noteManager;
 
     [SerializeField]
@@ -46,7 +49,15 @@ public class NoteListChangeUIHandler : MonoBehaviour
             }
             else
             {
+                if (textField.text == "")
+                {
+                    var result = Instantiate(notePrefab, transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
+                    result.transform.localScale = Random.insideUnitSphere;
+                }
                 textField.text = myNote.ToString();
+
+
+
             }
         }
 

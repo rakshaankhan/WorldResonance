@@ -7,12 +7,11 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 2d mat outline example
+  m_Name: 2d mat outline off
   m_Shader: {fileID: 4800000, guid: 456a2a9c974c2a146ab9080271c3d288, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
-  - PIXELSNAP_ON
+  m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -46,14 +45,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - PixelSnap: 1
+    - PixelSnap: 0
     - _Cutoff: 0.5
     - _EnableExternalAlpha: 0
-    - _Outline: 1
+    - _Outline: 0
     - _OutlineSize: 1
     m_Colors:
     - _Color: {r: 1, g: 0.97957134, b: 0.8632076, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _OutlineColor: {r: 0.40134808, g: 0.5377358, b: 0.35257208, a: 0.62352943}
+    - _OutlineColor: {r: 1, g: 1, b: 1, a: 0.16862746}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

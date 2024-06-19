@@ -112,9 +112,19 @@ public class MusicManager : MonoBehaviour
         if (musicPlayer == null) return;
         if (musicPlayer.clip == sceneMusicClips[index]) return;
 
-        musicPlayer.clip = sceneMusicClips[index];
-        musicPlayer.Play();
 
+        FadeOutThenFadeIN(sceneMusicClips[index]);
+
+    }
+
+
+    private void FadeOutThenFadeIN(AudioClip clip)
+    {
+        musicPlayer.DOFade(0, fadeOutTimer).OnComplete(() =>
+        {
+            musicPlayer.clip = clip;
+            FadeIN();
+        });
     }
 
 }
