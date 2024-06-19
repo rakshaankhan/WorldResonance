@@ -61,7 +61,7 @@ public class PlayerActionManager : MonoBehaviour
         AssignCallbacks(input, "glide", SetGlide, SetGlide, null, context => context.ReadValueAsButton(), onEnable);
         AssignCallbacks(input, "interact", null, OnInteractStart, null, context => context, onEnable);
         AssignCallbacks(input, "Select Instrument", null, null, OnSelectInstrumentName, context => context, onEnable);
-        AssignCallbacks(input, "Play Note", OnPlayNote, null, null, context => context, onEnable);
+        AssignCallbacks(input, "Play Note", OnPlayNote6, null, null, context => context, onEnable);
 
         AssignCallbacks(input, "PauseMenu", OnEscape, null, null, context => context, onEnable);
     }
@@ -171,7 +171,7 @@ public class PlayerActionManager : MonoBehaviour
     }
 
 
-    public void OnPlayNote(InputAction.CallbackContext context)
+    public void OnPlayNote6(InputAction.CallbackContext context)
     {
         var control = context.control;
 

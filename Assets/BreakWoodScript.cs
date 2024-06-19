@@ -7,6 +7,9 @@ public class BreakWoodScript : MonoBehaviour
     [SerializeField]
     private List<Rigidbody2D> woods;
 
+    [SerializeField]
+    private AudioSource audioSource;
+
     private bool isTriggered;
 
 
@@ -20,6 +23,7 @@ public class BreakWoodScript : MonoBehaviour
             {
                 wood.constraints = RigidbodyConstraints2D.None;
             }
+            audioSource.Play();
         }
     }
 

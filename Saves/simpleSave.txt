@@ -1,1 +1,1 @@
-{"collectedItemGuids":["05db4aad-52a8-428e-b465-603ad185d170","375cc79a-31e9-459c-b126-aea27a077199","463c5ce3-3735-4f70-a408-406a0aee9917","2f7a65b2-880d-4245-b03d-1744afd1f034","2ef5202f-c9c8-4078-b86d-69e4016e5912","94693c36-8a39-498b-b04b-ce4caf37a14f"],"lastSceneOpen":"Level2a","NewGame":false}
+{"collectedItemGuids":[],"lastSceneOpen":"Level1c","NewGame":false}

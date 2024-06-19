@@ -54,8 +54,10 @@ MonoBehaviour:
     m_SceneName: OptionsMenu
   - m_SceneAsset: {fileID: 102900000, guid: daabce8cd089e7f44acdf29b9e1042b3, type: 3}
     m_SceneName: TutorialScene
+  - m_SceneAsset: {fileID: 102900000, guid: 3d153552ab4a7a44ca31e92522306d83, type: 3}
+    m_SceneName: Level1b
   - m_SceneAsset: {fileID: 102900000, guid: f96556ee3325cfd4691aeb925f8017af, type: 3}
-    m_SceneName: Drop
+    m_SceneName: Level1c
   - m_SceneAsset: {fileID: 102900000, guid: 7b9c603e0a796d14b931593f8ea15aa8, type: 3}
     m_SceneName: Level2a
   - m_SceneAsset: {fileID: 102900000, guid: 2da64e0615a70084cbdf5fd22b2dc35d, type: 3}
@@ -66,7 +68,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a3c1adbcd971c104fba6480a91417d28, type: 3}
   - {fileID: 8300000, guid: a3c1adbcd971c104fba6480a91417d28, type: 3}
   - {fileID: 8300000, guid: 73254df6b66bb6244a7ed1c82370b9ee, type: 3}
-  - {fileID: 8300000, guid: 73254df6b66bb6244a7ed1c82370b9ee, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 8300000, guid: 95c87331c5d806742a8e6e8f09ba4069, type: 3}
   - {fileID: 8300000, guid: 95c87331c5d806742a8e6e8f09ba4069, type: 3}
   - {fileID: 8300000, guid: 95c87331c5d806742a8e6e8f09ba4069, type: 3}
