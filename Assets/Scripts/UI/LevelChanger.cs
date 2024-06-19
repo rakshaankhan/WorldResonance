@@ -40,6 +40,13 @@ public class LevelChanger : MonoBehaviour
     private bool teleportPlayer = true;
 
 
+
+    private Collider2D mycollider;
+    private void Awake()
+    {
+        mycollider = GetComponent<Collider2D>();
+
+    }
     private void Start()
     {
 
@@ -107,5 +114,36 @@ public class LevelChanger : MonoBehaviour
     {
         disabled = false;
 
+    }
+
+
+    private void OnDrawGizmos()
+    {
+        if (mycollider == null)
+        {
+            mycollider = GetComponent<Collider2D>();
+        }
+
+        if (mycollider != null)
+        {
+            Gizmos.color = Color.green;
+
+            if (mycollider is BoxCollider2D)
+            {
+                BoxCollider2D boxCollider = (BoxCollider2D) mycollider;
+                Vector2 size = boxCollider.size;
+                Vector2 offset = boxCollider.offset;
+
+                Vector3 topLeft = transform.TransformPoint(new Vector3(offset.x - size.x / 2, offset.y + size.y / 2, 0));
+                Vector3 topRight = transform.TransformPoint(new Vector3(offset.x + size.x / 2, offset.y + size.y / 2, 0));
+                Vector3 bottomLeft = transform.TransformPoint(new Vector3(offset.x - size.x / 2, offset.y - size.y / 2, 0));
+                Vector3 bottomRight = transform.TransformPoint(new Vector3(offset.x + size.x / 2, offset.y - size.y / 2, 0));
+
+                Gizmos.DrawLine(topLeft, topRight);
+                Gizmos.DrawLine(topRight, bottomRight);
+                Gizmos.DrawLine(bottomRight, bottomLeft);
+                Gizmos.DrawLine(bottomLeft, topLeft);
+            }
+        }
     }
 }
