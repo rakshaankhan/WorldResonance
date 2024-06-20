@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class PlayerJump : MonoBehaviour
 {
+    [SerializeField]
+    private GameEvent playerWantsToFall;
+
     PlayerActionManager playerActionManager;
     PlayerManager playerManager;
     Rigidbody2D rb;
@@ -16,6 +19,8 @@ public class PlayerJump : MonoBehaviour
 
     bool falling;
     bool hasJumped;
+
+
 
     void Awake()
     {
@@ -45,6 +50,12 @@ public class PlayerJump : MonoBehaviour
 
         if (playerActionManager.jumpValue && playerManager.playerGrounded.IsGrounded() && !jumping)
         {
+            if (playerActionManager.moveValue.y < 0)
+            {
+                Debugger.Log("Player wants to fall down", Debugger.PriorityLevel.High);
+                playerWantsToFall.TriggerEvent();
+                return;
+            }
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(Vector2.up * baseJumpForce, ForceMode2D.Impulse);
             jumping = true;
@@ -59,6 +70,8 @@ public class PlayerJump : MonoBehaviour
             rb.AddForce(Vector2.up * holdJumpForce * Time.deltaTime);
             elapseTime += Time.deltaTime;
         }
+
+
     }
 
     private void JumpCancel()

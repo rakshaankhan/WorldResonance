@@ -82,9 +82,11 @@ public class PlayerManager : MonoBehaviour
         if (canGlide) { playerGlide.Glide(birdBasePower, birdDecreasePowerRate, glideTime); }
         playerAnimation.HandlePlayerMoveAnimation();
 
+        Debugger.Log("playerRB.velocity.y is " + playerRB.velocity.y, Debugger.PriorityLevel.LeastImportant);
         if (playerRB.velocity.y < fallDownDedection)
         {
-            // fallingDownEvent.TriggerEvent();
+            //TODO fall down camera still needs more refining.
+            //fallingDownEvent.TriggerEvent();
         }
     }
 

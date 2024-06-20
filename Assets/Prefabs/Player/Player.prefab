@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 295350342110645194}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.745713, y: 5.2799697, z: -10.88}
+  m_LocalPosition: {x: 4.8387547, y: 3.6181297, z: -10.88}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1127,9 +1127,9 @@ MonoBehaviour:
   birdBasePower: 5
   birdDecreasePowerRate: 1
   glideTime: 2
-  fallDownDedection: -10
+  fallDownDedection: -2
   fallingDownEvent: {fileID: 11400000, guid: c682673db8fd8494d941618925a4911c, type: 2}
-  canGlide: 1
+  canGlide: 0
 --- !u!114 &4106301045048578212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1142,7 +1142,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d365fe68fc0b08742a089cba2132e2b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseUpVelocity: 0.02
   baseDownVelocity: -0.1
+  canClimb: 0
 --- !u!114 &6348180604024686127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1155,6 +1157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78fe8646f94ce224e94d657788d98248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerWantsToFall: {fileID: 11400000, guid: dba36e42f8d8dd340ac45ce87552ddcc, type: 2}
 --- !u!114 &6930947977830621453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1593,7 +1596,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4514641034144765135}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
