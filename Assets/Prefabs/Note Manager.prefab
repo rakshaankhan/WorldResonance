@@ -78,14 +78,14 @@ MonoBehaviour:
     variationsCount: 3
   - name: String
     clips:
-    - {fileID: 8300000, guid: 2168fba3202c36249a859bcbbaed5ead, type: 3}
-    - {fileID: 8300000, guid: af846fd3edbae0946a60cce76a6dc5d3, type: 3}
-    - {fileID: 8300000, guid: 3ab3896245a7d9146867e281300c1c20, type: 3}
-    - {fileID: 8300000, guid: 19405c76e63b8ab4c8954768bd543d3b, type: 3}
-    - {fileID: 8300000, guid: 1e8d4c417021ce54ebdbbcc86701c79f, type: 3}
-    - {fileID: 8300000, guid: 189b6f66c98b7c54c90bc723ac53ff23, type: 3}
-    - {fileID: 8300000, guid: d3f1099dbfa8e4145a5d5249d083cc40, type: 3}
-    - {fileID: 8300000, guid: 5b8b5ee00d4d7cf4092558a9b34efff9, type: 3}
+    - {fileID: 8300000, guid: be86faa6b7f6fda43b4dec658d67aed5, type: 3}
+    - {fileID: 8300000, guid: 3a8781585c1437e40bdd6ecaa4521a02, type: 3}
+    - {fileID: 8300000, guid: 2ab16d47a5f5aa542ab52fcb36f3b8f9, type: 3}
+    - {fileID: 8300000, guid: cefc8ec6224da3043957f95b9d66342e, type: 3}
+    - {fileID: 8300000, guid: c9ee060c73407e246879b846f7d09eca, type: 3}
+    - {fileID: 8300000, guid: ad65bf7a2f3832a47b9c56bb345aa67b, type: 3}
+    - {fileID: 8300000, guid: fa36070f90d9ba148a8fcdc4692a2530, type: 3}
+    - {fileID: 8300000, guid: 4ba5db102c9d6604b8522bf21d77500f, type: 3}
     variationsCount: 2
   textureSoundBanks:
   - name: WindTexture
@@ -104,10 +104,10 @@ MonoBehaviour:
     variationsCount: 1
   - name: StringTexture
     clips:
-    - {fileID: 8300000, guid: e83d77b2f7cf85c4f8f840c1ef3c15e0, type: 3}
-    - {fileID: 8300000, guid: 0fb53a82e8f9faa429f9b5735d99e067, type: 3}
-    - {fileID: 8300000, guid: ef90bf6230e4fdd4980782054a4209d3, type: 3}
-    - {fileID: 8300000, guid: 9b21c2c1884f73943b53ccb4b0bdf5e5, type: 3}
+    - {fileID: 8300000, guid: ea802122cbdccb6489ce72a34ed3748c, type: 3}
+    - {fileID: 8300000, guid: e7feb1738e3ed0643b5a62dc953e9034, type: 3}
+    - {fileID: 8300000, guid: dd08518664c98c14c97bc78ab01ca7fc, type: 3}
+    - {fileID: 8300000, guid: 23d9649a5d5913b4aafe6dcfb0885d18, type: 3}
     variationsCount: 1
   noteExpireTimer: 3
   noteUnfilledDismisTimer: 0
