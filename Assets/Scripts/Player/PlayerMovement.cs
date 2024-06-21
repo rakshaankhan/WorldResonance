@@ -12,6 +12,10 @@ public class PlayerMovement : MonoBehaviour
 
     public bool canClimb = false;
 
+    [SerializeField]
+    private AudioSource walkSound;
+    [SerializeField]
+    private AudioSource climbSound;
     void Awake()
     {
         playerActionManager = GetComponent<PlayerActionManager>();
@@ -20,9 +24,13 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move(float speed)
     {
-        ApplyVerticalVelocity(speed);
+        ManageVerticalMovement(speed);
         rb.velocity = moveVelocity = new Vector2(speed * playerActionManager.moveValue.x, rb.velocity.y + downVelocity);
+        ApplyEffects();
     }
+
+
+
     /// <summary>
     /// Called to Move programatically
     /// </summary>
@@ -30,13 +38,25 @@ public class PlayerMovement : MonoBehaviour
     /// <param name="direction"></param>
     public void Move(float speed, Vector2 direction)
     {
-        ApplyVerticalVelocity(speed);
+        ManageVerticalMovement(speed);
         rb.velocity = speed * direction + (rb.velocity.y + downVelocity) * Vector2.up;
+        ApplyEffects();
     }
 
+    private void ApplyEffects()
+    {
+        if (Mathf.Abs(rb.velocity.x) > Mathf.Epsilon)
+        {
+            walkSound.UnPause();
+        }
+        else
+        {
+            walkSound.Pause();
+        }
 
+    }
 
-    private void ApplyVerticalVelocity(float speed)
+    private void ManageVerticalMovement(float speed)
     {
         if (playerActionManager.moveValue.y < 0)
         {
@@ -49,9 +69,19 @@ public class PlayerMovement : MonoBehaviour
 
         if (canClimb && playerActionManager.moveValue.y > 0)
         {
-            downVelocity = speed * baseUpVelocity * rb.gravityScale;
+            //downVelocity = speed * baseUpVelocity * rb.gravityScale;
             Debugger.Log("Player wants to climb Ladder", Debugger.PriorityLevel.Low);
+            // climbSound.pitch = Mathf.Clamp(downVelocity, 1.2f, 3f);
+            climbSound.UnPause();
+            rb.isKinematic = true;
+            rb.MovePosition(transform.position + Vector3.up * speed * baseUpVelocity + Vector3.right * speed * playerActionManager.moveValue.x * baseUpVelocity);
+        }
+        else
+        {
+            climbSound.Pause();
+            rb.isKinematic = false;
         }
     }
+
 
 }

@@ -52,8 +52,8 @@ MonoBehaviour:
     m_SceneName: MainMenu
   - m_SceneAsset: {fileID: 102900000, guid: 160b10d83badfbf4f843b586fae327d0, type: 3}
     m_SceneName: OptionsMenu
-  - m_SceneAsset: {fileID: 102900000, guid: daabce8cd089e7f44acdf29b9e1042b3, type: 3}
-    m_SceneName: TutorialScene
+  - m_SceneAsset: {fileID: 102900000, guid: ba7bd3655954d984d9f418611765712e, type: 3}
+    m_SceneName: Level1a
   - m_SceneAsset: {fileID: 102900000, guid: 3d153552ab4a7a44ca31e92522306d83, type: 3}
     m_SceneName: Level1b
   - m_SceneAsset: {fileID: 102900000, guid: f96556ee3325cfd4691aeb925f8017af, type: 3}

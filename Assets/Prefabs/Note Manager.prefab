@@ -52,14 +52,14 @@ MonoBehaviour:
   soundBanks:
   - name: Wind
     clips:
-    - {fileID: 8300000, guid: 42350034ceb7f684bb000c1469a38229, type: 3}
-    - {fileID: 8300000, guid: c5c1037029e118e4b8a7dae75fe795c2, type: 3}
-    - {fileID: 8300000, guid: 3ef5863e12cbc39438694c34f7531a69, type: 3}
-    - {fileID: 8300000, guid: 3fc00c9957e0ba8459de4fe46ba5c1b8, type: 3}
-    - {fileID: 8300000, guid: 64fa3a3363417a0489e5b86d721cfb86, type: 3}
-    - {fileID: 8300000, guid: 5ea3e8e3d451e6546aa3ace48f3dbd93, type: 3}
-    - {fileID: 8300000, guid: e5009816e8bd25a4695ee23b3f653721, type: 3}
-    - {fileID: 8300000, guid: c74691336955a504e9f6b7c075abff3e, type: 3}
+    - {fileID: 8300000, guid: 13295f3ea047f4d45ba12e33286b1eef, type: 3}
+    - {fileID: 8300000, guid: f3187e7dc1209c641be33c41ec042373, type: 3}
+    - {fileID: 8300000, guid: aaebfc07b18b81c4fa173f39ff55c880, type: 3}
+    - {fileID: 8300000, guid: 61023a8cf3104424fbe21407519d1f96, type: 3}
+    - {fileID: 8300000, guid: de0fba7f88a414147bfa1d92ffb99369, type: 3}
+    - {fileID: 8300000, guid: c7480989874659f42ac4b9070e8a8e2c, type: 3}
+    - {fileID: 8300000, guid: 3bc384841d156f94e93c906bcd9df186, type: 3}
+    - {fileID: 8300000, guid: 2385e3603b32afb4c96a5eda372acfd0, type: 3}
     variationsCount: 2
   - name: Percussion
     clips:
@@ -78,22 +78,22 @@ MonoBehaviour:
     variationsCount: 3
   - name: String
     clips:
-    - {fileID: 8300000, guid: be86faa6b7f6fda43b4dec658d67aed5, type: 3}
-    - {fileID: 8300000, guid: 3a8781585c1437e40bdd6ecaa4521a02, type: 3}
-    - {fileID: 8300000, guid: 2ab16d47a5f5aa542ab52fcb36f3b8f9, type: 3}
-    - {fileID: 8300000, guid: cefc8ec6224da3043957f95b9d66342e, type: 3}
-    - {fileID: 8300000, guid: c9ee060c73407e246879b846f7d09eca, type: 3}
-    - {fileID: 8300000, guid: ad65bf7a2f3832a47b9c56bb345aa67b, type: 3}
-    - {fileID: 8300000, guid: fa36070f90d9ba148a8fcdc4692a2530, type: 3}
-    - {fileID: 8300000, guid: 4ba5db102c9d6604b8522bf21d77500f, type: 3}
+    - {fileID: 8300000, guid: d31839a3e331db744be097f83e507a07, type: 3}
+    - {fileID: 8300000, guid: 7046ed8cd8a34b04d8d1e8c79e2dbaf7, type: 3}
+    - {fileID: 8300000, guid: 56294c99794bfe7418cd69ac91e00bd4, type: 3}
+    - {fileID: 8300000, guid: e7d3a7d3b4f1dba4fbe3ce07b466befd, type: 3}
+    - {fileID: 8300000, guid: 1316ca461022c4e40aba81e5d764bcf7, type: 3}
+    - {fileID: 8300000, guid: 6b3ae50b4d1c69a4a88d0a2a28c71c7a, type: 3}
+    - {fileID: 8300000, guid: 26a411e29cb69e94abac884aba7fc393, type: 3}
+    - {fileID: 8300000, guid: 189a87d6bc220f34ea8e4d019df466f4, type: 3}
     variationsCount: 2
   textureSoundBanks:
   - name: WindTexture
     clips:
-    - {fileID: 8300000, guid: 37bc8d05c79c7d64992c017baca73a4f, type: 3}
-    - {fileID: 8300000, guid: 455ceca794f085046bb69aed4ce8bb3f, type: 3}
-    - {fileID: 8300000, guid: 192a767cfe55b2d4a9bd67ef18027860, type: 3}
-    - {fileID: 8300000, guid: 6c69bc30e1d721444a8e5c8eb9607716, type: 3}
+    - {fileID: 8300000, guid: ff178d3e5170c5645ae61036a378b332, type: 3}
+    - {fileID: 8300000, guid: 5f4f762967931034ba94db47a744da83, type: 3}
+    - {fileID: 8300000, guid: 8b593a7b8d189ef4c814b020c4b248fe, type: 3}
+    - {fileID: 8300000, guid: db2dce5653727ec449f6e217801c4d1f, type: 3}
     variationsCount: 1
   - name: PercussionTexture
     clips:
@@ -104,10 +104,10 @@ MonoBehaviour:
     variationsCount: 1
   - name: StringTexture
     clips:
-    - {fileID: 8300000, guid: ea802122cbdccb6489ce72a34ed3748c, type: 3}
-    - {fileID: 8300000, guid: e7feb1738e3ed0643b5a62dc953e9034, type: 3}
-    - {fileID: 8300000, guid: dd08518664c98c14c97bc78ab01ca7fc, type: 3}
-    - {fileID: 8300000, guid: 23d9649a5d5913b4aafe6dcfb0885d18, type: 3}
+    - {fileID: 8300000, guid: b8380d823e0f0ea4da6a5b3666e11738, type: 3}
+    - {fileID: 8300000, guid: de64e593c70c95f49b7238787aef8d40, type: 3}
+    - {fileID: 8300000, guid: 6e44af658a2382b46a1e55fbc83b435d, type: 3}
+    - {fileID: 8300000, guid: f9b850bf0706f2644860af320e603318, type: 3}
     variationsCount: 1
   noteExpireTimer: 3
   noteUnfilledDismisTimer: 0

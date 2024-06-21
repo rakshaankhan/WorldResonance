@@ -1,1 +1,1 @@
-{"collectedItemGuids":["375cc79a-31e9-459c-b126-aea27a077199"],"lastSceneOpen":"TutorialScene","NewGame":false}
+{"collectedItemGuids":[],"lastSceneOpen":"","NewGame":true}
