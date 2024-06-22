@@ -1,4 +1,5 @@
 using UnityEngine;
+using static Gamekit3D.RandomAudioPlayer;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -16,10 +17,29 @@ public class PlayerMovement : MonoBehaviour
     private AudioSource walkSound;
     [SerializeField]
     private AudioSource climbSound;
+    [SerializeField]
+    private AudioSource motorSound;
+    [SerializeField]
+    private AudioSource moveStopSound;
+
+    [SerializeField]
+    private SoundBank walkSounds;
+
+
+    [SerializeField]
+    private SoundBank motorSounds;
+
+    private float walkingTimer = 0;
     void Awake()
     {
         playerActionManager = GetComponent<PlayerActionManager>();
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void Start()
+    {
+        walkingTimer -= motorSounds.clips[0].length;
+        motorSound.Pause();
     }
 
     public void Move(float speed)
@@ -47,11 +67,42 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Mathf.Abs(rb.velocity.x) > Mathf.Epsilon)
         {
-            walkSound.UnPause();
+            //   walkSound.UnPause();
+
+            if (walkSound.isPlaying == false)
+            {
+                var clip = walkSounds.ReturnRandom();
+                walkSound.clip = clip;
+                walkSound.Play();
+            }
+            if (walkingTimer < 0)
+            {
+                moveStopSound.Stop();
+                motorSound.PlayOneShot(motorSounds.clips[0]);
+                walkingTimer = 0;
+            }
+            else if (walkingTimer > motorSounds.clips[0].length)
+            {
+                if (motorSound.isPlaying == false)
+                {
+                    //motorSound.clip = motorSounds.clips[1];
+                    //motorSound.loop = true;
+                    motorSound.UnPause();
+                }
+            }
+            walkingTimer += Time.fixedDeltaTime;
         }
         else
         {
-            walkSound.Pause();
+            walkSound.Stop();
+            //motorSound.loop = false;
+            if (walkingTimer > motorSounds.clips[0].length)
+            {
+                moveStopSound.Play();
+            }
+            motorSound.Pause();
+
+            walkingTimer -= motorSounds.clips[0].length;
         }
 
     }

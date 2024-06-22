@@ -12,6 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c36d48def7eaae44cb06b18f654398c4, type: 3}
   m_Name: LastScene
   m_EditorClassIdentifier: 
-  lastScene:
-    m_SceneAsset: {fileID: 102900000, guid: f96556ee3325cfd4691aeb925f8017af, type: 3}
-    m_SceneName: Drop
+  lastSceneName: None

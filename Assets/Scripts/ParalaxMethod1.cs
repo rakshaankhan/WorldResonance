@@ -6,6 +6,9 @@ public class ParalaxMethod1 : MonoBehaviour
     [SerializeField]
     private float paralaxEffectModifier;
 
+    [SerializeField]
+    private bool IsInfinite = true;
+
     private float lenght, start;
 
     private Camera cam;
@@ -24,6 +27,8 @@ public class ParalaxMethod1 : MonoBehaviour
 
         transform.position = new Vector3(start + dist, transform.position.y, transform.position.z);
 
+
+        if (IsInfinite == false) return;
 
         if (temp > start + lenght)
         {

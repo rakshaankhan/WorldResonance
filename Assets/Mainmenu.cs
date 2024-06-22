@@ -5,6 +5,15 @@ using UnityEngine.UI;
 public class Mainmenu : MonoBehaviour
 {
     [SerializeField]
+    private AudioClip upClip;
+
+
+    [SerializeField]
+    private AudioClip downClip;
+
+    private AudioSource audioSource;
+
+    [SerializeField]
     private SceneField optionsScene;
 
     [SerializeField]
@@ -13,14 +22,53 @@ public class Mainmenu : MonoBehaviour
     [SerializeField]
     private EventSystem eventSystem;
 
+    private GameObject lastSelectable;
+
     private void Start()
     {
-        //TODO 
+        audioSource = GetComponent<AudioSource>();
+
         conButton.interactable = !DataManager.instance.isNewGame();//NOT
         if (conButton.IsInteractable())
         {
             eventSystem.firstSelectedGameObject = conButton.gameObject;
+
         }
+        lastSelectable = eventSystem.firstSelectedGameObject;
+    }
+
+    private void Update()
+    {
+
+        if (eventSystem.currentSelectedGameObject == null) return;
+
+        //TODO this feels so bad. 
+        //Suprise Suprise It was bad.
+        //if (eventSystem.currentSelectedGameObject != lastSelectable)
+        //{
+
+        //    audioSource.PlayOneShot(upClip);
+        //    var x = lastSelectable.FindSelectableOnUp();
+        //    var y = lastSelectable.FindSelectableOnDown();
+        //    var t = lastSelectable.FindSelectable(Vector3.left);
+        //    if (lastSelectable.FindSelectableOnUp() == eventSystem.currentSelectedGameObject)
+        //    {
+        //        audioSource.PlayOneShot(upClip);
+        //    }
+        //    else if (lastSelectable.FindSelectableOnDown() == eventSystem.currentSelectedGameObject)
+        //    {
+        //        audioSource.PlayOneShot(downClip);
+        //    }
+        //    lastSelectable = eventSystem.currentSelectedGameObject.GetComponent<Selectable>();
+        //}
+
+        //if (eventSystem.currentSelectedGameObject != lastSelectable)
+        //{
+        //    audioSource.PlayOneShot(upClip);
+        //    lastSelectable = eventSystem.currentSelectedGameObject;
+        //}
+
+
     }
 
     public void Continue()
