@@ -1,3 +1,4 @@
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class ParalaxMethod1 : MonoBehaviour
@@ -17,10 +18,11 @@ public class ParalaxMethod1 : MonoBehaviour
         start = transform.position.x;
         lenght = GetComponent<SpriteRenderer>().bounds.size.x;
         cam = Camera.main;
+        CinemachineCore.CameraUpdatedEvent.AddListener(UpdateParallax);
     }
 
-    // Update is called once per frame
-    void Update()
+
+    void UpdateParallax(CinemachineBrain brainssssss)
     {
         float temp = cam.transform.position.x * (1 - paralaxEffectModifier);
         float dist = cam.transform.position.x * paralaxEffectModifier;
