@@ -27,9 +27,29 @@ public class PlayerAnimation : MonoBehaviour
     public void SetDirection(string direction)
     {
         currentDirection = direction;
-        if (direction == "Right") { sprite.flipX = false; }
-        else { sprite.flipX = true; }
+        ChangeDirection(direction);
     }
+
+    private void ChangeDirection(string direction)
+    {
+        if (direction == "Right")
+        {
+            FlipSprite(false);
+
+        }
+        else
+        {
+            FlipSprite(true);
+
+        }
+    }
+
+    private void FlipSprite(bool flag)
+    {
+        //sprite.flipX = flag;
+        if (flag) { transform.localScale = new Vector3(-1, 1, 1); } else { transform.localScale = Vector3.one; }
+    }
+
     public void SetAnimation(string animation) { playerAnimator.Play(animation); }
 
     public void HandlePlayerMoveAnimation()
@@ -65,27 +85,27 @@ public class PlayerAnimation : MonoBehaviour
     public void SetAnimationMoveRight()
     {
         currentDirection = directions[1];
-        sprite.flipX = false;
+        FlipSprite(false);
         PlayAnimation("PlayerMove");
     }
 
     public void SetAnimationMoveLeft()
     {
         currentDirection = directions[0];
-        sprite.flipX = true;
+        FlipSprite(true);
         PlayAnimation("PlayerMove");
     }
 
     public void SetAnimationIdleRight()
     {
-        sprite.flipX = false;
+        FlipSprite(false);
         currentDirection = directions[1];
         PlayAnimation("PlayerIdle");
         //Debug.Log("idle right");
     }
     public void SetAnimationIdleLeft()
     {
-        sprite.flipX = true;
+        FlipSprite(true);
         currentDirection = directions[0];
         PlayAnimation("PlayerIdle");
         //Debug.Log("idle left");
@@ -93,14 +113,17 @@ public class PlayerAnimation : MonoBehaviour
 
     public void SetAnimationGlideRight()
     {
-        sprite.flipX = false;
+        FlipSprite(false);
         currentDirection = directions[1];
         PlayAnimation("PlayerGlide");
     }
     public void SetAnimationGlideLeft()
     {
-        sprite.flipX = true;
+        FlipSprite(true);
         currentDirection = directions[0];
         PlayAnimation("PlayerGlide");
     }
+
+
+
 }

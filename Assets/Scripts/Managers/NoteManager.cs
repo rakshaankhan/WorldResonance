@@ -73,7 +73,7 @@ public class NoteManager : MonoBehaviour
 
 
 
-    private void SpecialEnque(PlayerInstrument.Note note)
+    public void SpecialEnque(PlayerInstrument.Note note)
     {
         if (note == PlayerInstrument.Note._) return;
         if (listFilled == true) return;

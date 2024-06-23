@@ -73,7 +73,6 @@ public class PlayerManager : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         if (!enabled) { return; }

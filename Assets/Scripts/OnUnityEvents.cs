@@ -9,6 +9,11 @@ public class OnUnityEvents : MonoBehaviour
     [SerializeField]
     private UnityEvent onEnableEvents;
 
+    [SerializeField]
+    private UnityEvent onTriggerEnterEvents;
+
+
+
 
     public void OnDisable()
     {
@@ -19,4 +24,10 @@ public class OnUnityEvents : MonoBehaviour
     {
         onEnableEvents.Invoke();
     }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        onTriggerEnterEvents.Invoke();
+    }
+
 }

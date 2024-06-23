@@ -18,7 +18,14 @@ public class PlayerInstrument : MonoBehaviour
     [SerializeField]
     private List<InstrumentInformation> instrumentList;
 
+    [SerializeField]
+    private AudioSource audioSource;
 
+    [SerializeField]
+    private AudioClip itemSwapSound;
+
+    [SerializeField]
+    private bool disablePlayerInstrument;
 
     //private void OnEnable()
     //{
@@ -63,13 +70,18 @@ public class PlayerInstrument : MonoBehaviour
 
     public void ChangeInstrument(InstrumentType type)
     {
+        if (disablePlayerInstrument == true) return;
+
         //TODO Maybe just use an id if there will me more insturuments instead of Type.
+        audioSource.PlayOneShot(itemSwapSound);
         selectedInstrument = instrumentList[(int) type];
         instrumentChangeEvent.TriggerEvent();
     }
 
     public void ChooseNoteAndPlay(int id)
     {
+        if (disablePlayerInstrument == true) return;
+
         selectedNote = (Note) id;
         PlayCurrentInstrument();
     }

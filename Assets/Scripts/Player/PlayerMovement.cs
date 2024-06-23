@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using static Gamekit3D.RandomAudioPlayer;
 
 public class PlayerMovement : MonoBehaviour
@@ -12,7 +13,11 @@ public class PlayerMovement : MonoBehaviour
     float downVelocity = 0;
 
     public bool canClimb = false;
+    [SerializeField]
+    private Light2D motorLight;
 
+
+    [Header("Sound Effects")]
     [SerializeField]
     private AudioSource walkSound;
     [SerializeField]
@@ -77,6 +82,7 @@ public class PlayerMovement : MonoBehaviour
             }
             if (walkingTimer < 0)
             {
+
                 moveStopSound.Stop();
                 motorSound.PlayOneShot(motorSounds.clips[0]);
                 walkingTimer = 0;
@@ -87,21 +93,27 @@ public class PlayerMovement : MonoBehaviour
                 {
                     //motorSound.clip = motorSounds.clips[1];
                     //motorSound.loop = true;
+                    //TODO check why this part does not work.
+                    Debugger.Log("MotorSound.UnPause called", Debugger.PriorityLevel.Medium);
                     motorSound.UnPause();
                 }
+
             }
+            motorLight.shapeLightFalloffSize = Mathf.Min(2, motorLight.shapeLightFalloffSize + Time.deltaTime / 3f);
             walkingTimer += Time.fixedDeltaTime;
+
         }
         else
         {
             walkSound.Stop();
             //motorSound.loop = false;
+
             if (walkingTimer > motorSounds.clips[0].length)
             {
                 moveStopSound.Play();
             }
             motorSound.Pause();
-
+            motorLight.shapeLightFalloffSize = Mathf.Max(0, motorLight.shapeLightFalloffSize - Time.deltaTime);
             walkingTimer -= motorSounds.clips[0].length;
         }
 
@@ -120,9 +132,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (canClimb && playerActionManager.moveValue.y > 0)
         {
-            //downVelocity = speed * baseUpVelocity * rb.gravityScale;
+
             Debugger.Log("Player wants to climb Ladder", Debugger.PriorityLevel.Low);
-            // climbSound.pitch = Mathf.Clamp(downVelocity, 1.2f, 3f);
             climbSound.UnPause();
             rb.isKinematic = true;
             rb.MovePosition(transform.position + Vector3.up * speed * baseUpVelocity + Vector3.right * speed * playerActionManager.moveValue.x * baseUpVelocity);

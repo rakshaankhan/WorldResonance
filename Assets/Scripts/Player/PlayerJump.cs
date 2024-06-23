@@ -1,10 +1,16 @@
 using System.Collections;
 using UnityEngine;
+using static Gamekit3D.RandomAudioPlayer;
 
 public class PlayerJump : MonoBehaviour
 {
     [SerializeField]
     private GameEvent playerWantsToFall;
+
+    [SerializeField]
+    private SoundBank jumpSounds;
+    [SerializeField]
+    private AudioSource audioSource;
 
     PlayerActionManager playerActionManager;
     PlayerManager playerManager;
@@ -60,6 +66,7 @@ public class PlayerJump : MonoBehaviour
             rb.AddForce(Vector2.up * baseJumpForce, ForceMode2D.Impulse);
             jumping = true;
             elapseTime = 0;
+            audioSource.PlayOneShot(jumpSounds.ReturnRandom());
         }
         else if (!playerActionManager.jumpValue)
         {
