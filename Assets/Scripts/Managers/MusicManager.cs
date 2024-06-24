@@ -41,6 +41,8 @@ public class MusicManager : MonoBehaviour
 
     private Sequence fadeoutForNotesTween;
     private Sequence fadeInForNotesTween;
+
+
     void Awake()
     {
         if (instance != null)
@@ -65,9 +67,7 @@ public class MusicManager : MonoBehaviour
 
         fadeoutForNotesTween.Append(musicPlayer.DOFade(fadeOutValueForNotes, fadeOutTimerForNotes)).Pause();
         fadeInForNotesTween.Append(musicPlayer.DOFade(fadeInValueForNotes, fadeInTimerForNotes)).Pause();
-        //theSequence.Append
-        //fadeInForNotesTween
-        //theSequence.Play();
+
     }
 
     public void FadeIN()
@@ -112,17 +112,21 @@ public class MusicManager : MonoBehaviour
         if (musicPlayer == null) return;
         if (musicPlayer.clip == sceneMusicClips[index]) return;
 
+        FadeOutThenFadeIN(sceneMusicClips[index], Scene);
 
-        FadeOutThenFadeIN(sceneMusicClips[index]);
 
     }
 
 
-    private void FadeOutThenFadeIN(AudioClip clip)
+    private void FadeOutThenFadeIN(AudioClip clip, Scene scene)
     {
+
         musicPlayer.DOFade(0, fadeOutTimer).OnComplete(() =>
         {
-            musicPlayer.clip = clip;
+            if (scene == SceneManager.GetActiveScene())
+            {
+                musicPlayer.clip = clip;
+            }
             FadeIN();
         });
     }

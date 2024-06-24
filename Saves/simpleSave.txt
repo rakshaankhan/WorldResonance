@@ -1,1 +1,1 @@
-{"collectedItemGuids":[],"lastSceneOpen":"Level1a","NewGame":false}
+{"collectedItemGuids":[],"lastSceneOpen":"","NewGame":true}

@@ -1700,6 +1700,7 @@ MonoBehaviour:
   climbSound: {fileID: 6112686244780786657}
   motorSound: {fileID: 4487787102439041370}
   moveStopSound: {fileID: 3612069771801836344}
+  generalSounds: {fileID: 6440328120449697154}
   walkSounds:
     name: WalkingSounds
     clips:

@@ -26,6 +26,8 @@ public class PlayerMovement : MonoBehaviour
     private AudioSource motorSound;
     [SerializeField]
     private AudioSource moveStopSound;
+    [SerializeField]
+    private AudioSource generalSounds;
 
     [SerializeField]
     private SoundBank walkSounds;
@@ -84,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
             {
 
                 moveStopSound.Stop();
-                motorSound.PlayOneShot(motorSounds.clips[0]);
+                generalSounds.PlayOneShot(motorSounds.clips[0]);
                 walkingTimer = 0;
             }
             else if (walkingTimer > motorSounds.clips[0].length)
