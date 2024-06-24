@@ -1144,7 +1144,7 @@ PrefabInstance:
       objectReference: {fileID: 1691842407}
     - target: {fileID: 1540094895118908467, guid: 87713ec7819f55d4696756a4300641f3, type: 3}
       propertyPath: m_Size.x
-      value: 63.31069
+      value: 48.412155
       objectReference: {fileID: 0}
     - target: {fileID: 1540094895118908467, guid: 87713ec7819f55d4696756a4300641f3, type: 3}
       propertyPath: m_Size.y
@@ -1152,7 +1152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1540094895118908467, guid: 87713ec7819f55d4696756a4300641f3, type: 3}
       propertyPath: m_Offset.x
-      value: 5.810176
+      value: -1.6390924
       objectReference: {fileID: 0}
     - target: {fileID: 1540094895118908467, guid: 87713ec7819f55d4696756a4300641f3, type: 3}
       propertyPath: m_Offset.y
@@ -1164,7 +1164,7 @@ PrefabInstance:
       objectReference: {fileID: 1691842407}
     - target: {fileID: 4396041049662186526, guid: 87713ec7819f55d4696756a4300641f3, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.data[0].Array.data[0].x
-      value: 37.465496
+      value: 22.566957
       objectReference: {fileID: 0}
     - target: {fileID: 4396041049662186526, guid: 87713ec7819f55d4696756a4300641f3, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.data[0].Array.data[0].y
@@ -1172,7 +1172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4396041049662186526, guid: 87713ec7819f55d4696756a4300641f3, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.data[0].Array.data[1].x
-      value: 37.465496
+      value: 22.566957
       objectReference: {fileID: 0}
     - target: {fileID: 4396041049662186526, guid: 87713ec7819f55d4696756a4300641f3, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.data[0].Array.data[1].y
@@ -1196,7 +1196,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4396041049662186526, guid: 87713ec7819f55d4696756a4300641f3, type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[0].Array.data[0].X
-      value: 374655232
+      value: 225669856
       objectReference: {fileID: 0}
     - target: {fileID: 4396041049662186526, guid: 87713ec7819f55d4696756a4300641f3, type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[0].Array.data[0].Y
@@ -1220,7 +1220,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4396041049662186526, guid: 87713ec7819f55d4696756a4300641f3, type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[0].Array.data[3].X
-      value: 374655232
+      value: 225669856
       objectReference: {fileID: 0}
     - target: {fileID: 4396041049662186526, guid: 87713ec7819f55d4696756a4300641f3, type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[0].Array.data[3].Y
