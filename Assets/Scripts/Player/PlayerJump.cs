@@ -79,7 +79,7 @@ public class PlayerJump : MonoBehaviour
             audioSource.PlayOneShot(jumpSounds.ReturnRandom());
             animator.SetTrigger("Jump");
             animator.SetBool("Jumping", true);
-            Debugger.Log("Player Jumped time: " + Time.time, Debugger.PriorityLevel.High);
+            Debugger.Log("Player Jumped time: " + Time.time, Debugger.PriorityLevel.MustShown);
         }
         else if (!playerActionManager.jumpValue)
         {
@@ -87,6 +87,7 @@ public class PlayerJump : MonoBehaviour
         }
         else if (jumping && elapseTime < maxHoldTime && !playerManager.playerGrounded.IsGrounded())
         {
+            Debugger.Log("Player Jumped when not grounded time: " + Time.time, Debugger.PriorityLevel.MustShown);
             rb.AddForce(Vector2.up * holdJumpForce * Time.deltaTime);
             elapseTime += Time.deltaTime;
         }

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: DebuggerSettings
   m_EditorClassIdentifier: 
   isDebugLogsAllowed: 1
-  AllowedPriorityLimit: 50
-  AllowedSystemType: {fileID: 0}
+  AllowedPriorityLimit: 7
+  AllowedSystemType: {fileID: 11500000, guid: 78fe8646f94ce224e94d657788d98248, type: 3}
   IEnumeratorCallName: 
