@@ -139,6 +139,7 @@ public class PlayerMovement : MonoBehaviour
             climbSound.UnPause();
             rb.isKinematic = true;
             rb.MovePosition(transform.position + Vector3.up * speed * baseUpVelocity + Vector3.right * speed * playerActionManager.moveValue.x * baseUpVelocity);
+
         }
         else
         {

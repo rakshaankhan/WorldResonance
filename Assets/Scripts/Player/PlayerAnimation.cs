@@ -59,6 +59,8 @@ public class PlayerAnimation : MonoBehaviour
         else if (Mathf.Abs(playerActionManager.moveValue.x) > Mathf.Epsilon) { SetAnimationMove(); }
         else { SetAnimationIdle(); }
 
+        playerAnimator.SetBool("Climbing", rb.isKinematic);
+
         playerAnimator.SetFloat("WalkingSpeed", Mathf.Abs(playerActionManager.moveValue.x));
         playerAnimator.SetFloat("VelocityY", rb.velocity.y);
         // if (playerActionManager.jumpValue == true && playerAnimator.GetBool("Jump") == false) playerAnimator.SetTrigger("Jump");
