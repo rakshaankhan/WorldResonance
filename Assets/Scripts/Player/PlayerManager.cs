@@ -79,7 +79,7 @@ public class PlayerManager : MonoBehaviour
         playerMovement.Move(speed);
         playerJump.Jump(baseJumpForce, holdJumpForce);
         if (canGlide) { playerGlide.Glide(birdBasePower, birdDecreasePowerRate, glideTime); }
-        playerAnimation.HandlePlayerMoveAnimation();
+        playerAnimation.HandlePlayerMoveAnimation(playerRB);
 
         Debugger.Log("playerRB.velocity.y is " + playerRB.velocity.y, Debugger.PriorityLevel.LeastImportant);
         if (playerRB.velocity.y < fallDownDedection)

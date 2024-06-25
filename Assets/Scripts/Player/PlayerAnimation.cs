@@ -52,16 +52,23 @@ public class PlayerAnimation : MonoBehaviour
 
     public void SetAnimation(string animation) { playerAnimator.Play(animation); }
 
-    public void HandlePlayerMoveAnimation()
+    public void HandlePlayerMoveAnimation(Rigidbody2D rb)
     {
-        //Debug.Log("Handle player animation");
+
         if (playerManager.playerGlide.gliding) { SetAnimationGlide(); }
-        else if (Mathf.Abs(playerActionManager.moveValue.x) > 0) { SetAnimationMove(); }
+        else if (Mathf.Abs(playerActionManager.moveValue.x) > Mathf.Epsilon) { SetAnimationMove(); }
         else { SetAnimationIdle(); }
+
+        playerAnimator.SetFloat("WalkingSpeed", Mathf.Abs(playerActionManager.moveValue.x));
+        playerAnimator.SetFloat("VelocityY", rb.velocity.y);
+        // if (playerActionManager.jumpValue == true && playerAnimator.GetBool("Jump") == false) playerAnimator.SetTrigger("Jump");
     }
 
     public void SetAnimationMove()
     {
+        // playerAnimator.SetFloat("WalkingSpeed", 1);
+        //playerAnimator.SetBool("Jumping", playerManager.playerJump);
+
         if (playerActionManager.moveValue.x > 0) { SetAnimationMoveRight(); }
         else { SetAnimationMoveLeft(); }
     }

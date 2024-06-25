@@ -11,6 +11,8 @@ public class PlayerJump : MonoBehaviour
     private SoundBank jumpSounds;
     [SerializeField]
     private AudioSource audioSource;
+    [SerializeField]
+    private Animator animator;
 
     PlayerActionManager playerActionManager;
     PlayerManager playerManager;
@@ -43,15 +45,23 @@ public class PlayerJump : MonoBehaviour
     /// <summary>
     /// Called every frame to handle Jump behavior
     /// </summary>
+    private float lastYvelocityY = 0;
     public void Jump(float baseJumpForce, float holdJumpForce)
     {
         if (rb.velocity.y < 0)
         {
             falling = true;
+            lastYvelocityY = rb.velocity.y;
+            Debugger.Log("Player Jump Stall Fall time: " + Time.time, Debugger.PriorityLevel.High);
         }
         else
         {
             falling = false;
+            if (lastYvelocityY < 0)
+            {
+                lastYvelocityY = 0;
+                animator.SetBool("Jumping", false);
+            }
         }
 
         if (playerActionManager.jumpValue && playerManager.playerGrounded.IsGrounded() && !jumping)
@@ -67,6 +77,9 @@ public class PlayerJump : MonoBehaviour
             jumping = true;
             elapseTime = 0;
             audioSource.PlayOneShot(jumpSounds.ReturnRandom());
+            animator.SetTrigger("Jump");
+            animator.SetBool("Jumping", true);
+            Debugger.Log("Player Jumped time: " + Time.time, Debugger.PriorityLevel.High);
         }
         else if (!playerActionManager.jumpValue)
         {
