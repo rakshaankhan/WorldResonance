@@ -9,6 +9,8 @@ public class PersistentGameData
 
     public string lastSceneOpen;
 
+    public List<int> collectedInstruments = new List<int> { 0, 0, 0 };
+
     // public Vector3 playerPosition;
     ///public Vector3 playerRotation;
 

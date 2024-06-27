@@ -237,6 +237,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 1
+  visual: {fileID: 427545950399684990}
+  selectedMat: {fileID: 2100000, guid: 8316c3ca65b36894e9e397dd5359e3ee, type: 2}
+  deSelectedMaterial: {fileID: 2100000, guid: 76ec1214fa6a16643a6d9913e1010dfd, type: 2}
 --- !u!1 &5645115877700610053
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,7 +292,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 42a7bc8fde1331e429f46bdccc8ef503, type: 2}
+  - {fileID: 2100000, guid: 76ec1214fa6a16643a6d9913e1010dfd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

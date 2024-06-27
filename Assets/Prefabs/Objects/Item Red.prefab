@@ -129,6 +129,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fakeOutline: {fileID: 5020130088778190786}
+  objectItself: {fileID: 4468330317280170578}
+  outlineOff: {fileID: 0}
+  outlineON: {fileID: 0}
 --- !u!114 &4904855176209261740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,7 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb861d02c668c7749ba078b949d89787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 
+  id: 1d8ff888-0dd8-43fb-95a1-ba7b10b6f9ef
 --- !u!1 &5020130088778190786
 GameObject:
   m_ObjectHideFlags: 0

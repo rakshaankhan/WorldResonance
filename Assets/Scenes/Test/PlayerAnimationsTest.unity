@@ -6593,6 +6593,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fakeOutline: {fileID: 11000807}
+  objectItself: {fileID: 0}
+  outlineOff: {fileID: 0}
+  outlineON: {fileID: 0}
 --- !u!114 &1581345551
 MonoBehaviour:
   m_ObjectHideFlags: 0

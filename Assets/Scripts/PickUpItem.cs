@@ -67,7 +67,7 @@ public class PickUpItem : MonoBehaviour, IDataSaveLoad
 
         if (isPicked == false)
         {
-            Debug.Log("Pick Up");
+            Debugger.Log("Pick Up");
             isPicked = true;
             inventory.AddItem(itemID);
             gameObject.SetActive(false);

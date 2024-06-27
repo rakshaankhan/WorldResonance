@@ -4,6 +4,15 @@ public class Ladder : MonoBehaviour
 {
     public bool active = true;
 
+    [SerializeField]
+    private SpriteRenderer visual;
+
+    [SerializeField]
+    private Material selectedMat;
+
+    [SerializeField]
+    private Material deSelectedMaterial;
+
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -12,6 +21,7 @@ public class Ladder : MonoBehaviour
         if (collision.gameObject.TryGetComponent<PlayerMovement>(out PlayerMovement playerMovement))
         {
             playerMovement.canClimb = true;
+            if (visual != null) visual.material = selectedMat;
         }
     }
 
@@ -20,6 +30,7 @@ public class Ladder : MonoBehaviour
         if (collision.gameObject.TryGetComponent<PlayerMovement>(out PlayerMovement playerMovement))
         {
             playerMovement.canClimb = false;
+            if (visual != null) visual.material = deSelectedMaterial;
         }
     }
 }

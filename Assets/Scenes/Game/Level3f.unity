@@ -320,6 +320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paralaxEffectModifier: -0.65
+  IsInfinite: 1
 --- !u!212 &117358923
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1541,6 +1542,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paralaxEffectModifier: 0.026
+  IsInfinite: 1
 --- !u!1 &960864718
 GameObject:
   m_ObjectHideFlags: 0
@@ -1679,7 +1681,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1145131180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2405,6 +2407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paralaxEffectModifier: 1
+  IsInfinite: 1
 --- !u!1001 &1396456201
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2863,6 +2866,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paralaxEffectModifier: 0.615
+  IsInfinite: 1
 --- !u!1 &2138113970
 GameObject:
   m_ObjectHideFlags: 0

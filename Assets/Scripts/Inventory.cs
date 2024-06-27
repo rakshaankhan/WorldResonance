@@ -1,7 +1,8 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour
+public class Inventory : MonoBehaviour, IDataSaveLoad
 {
     [SerializeField]
     private GameEvent updateUI;
@@ -10,9 +11,15 @@ public class Inventory : MonoBehaviour
     private List<int> itemCounts;
 
 
+    private PlayerInstrument playerInstrument;
+
+    private void Awake()
+    {
+        playerInstrument = GetComponent<PlayerInstrument>();
+        itemCounts = DataManager.instance.GetItemCounts();
+    }
     void Start()
     {
-        itemCounts = new List<int> { 10, 10, 10 };
 
         UpdateUI();
     }
@@ -44,8 +51,26 @@ public class Inventory : MonoBehaviour
 
         return itemCounts[itemID];
     }
+
+    public int GetSum()
+    {
+        if (itemCounts == null) return 0;
+
+        return itemCounts.Sum();
+    }
     void UpdateUI()
     {
+        playerInstrument.CheckInventoryForInstruments();
         updateUI.TriggerEvent();
+    }
+
+    public void Save(PersistentGameData gameData)
+    {
+        gameData.collectedInstruments = itemCounts;
+    }
+
+    public void Load(PersistentGameData gameData)
+    {
+        itemCounts = gameData.collectedInstruments;
     }
 }

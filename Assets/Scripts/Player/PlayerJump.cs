@@ -48,7 +48,7 @@ public class PlayerJump : MonoBehaviour
     private float lastYvelocityY = 0;
     public void Jump(float baseJumpForce, float holdJumpForce)
     {
-        if (rb.velocity.y < 0)
+        if (rb.velocity.y < 0 && playerManager.playerGrounded.IsGrounded() == false)
         {
             falling = true;
             lastYvelocityY = rb.velocity.y;

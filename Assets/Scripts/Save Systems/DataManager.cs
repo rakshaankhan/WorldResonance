@@ -119,4 +119,9 @@ public class DataManager : MonoBehaviour
         }
         return gameData.lastSceneOpen;
     }
+
+    internal List<int> GetItemCounts()
+    {
+        return gameData.collectedInstruments;
+    }
 }

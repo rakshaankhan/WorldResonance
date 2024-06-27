@@ -37,8 +37,11 @@ public class PlayerMovement : MonoBehaviour
     private SoundBank motorSounds;
 
     private float walkingTimer = 0;
+
+    private PlayerGrounded playerGrounded;
     void Awake()
     {
+        playerGrounded = GetComponent<PlayerGrounded>();
         playerActionManager = GetComponent<PlayerActionManager>();
         rb = GetComponent<Rigidbody2D>();
     }
@@ -76,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
         {
             //   walkSound.UnPause();
 
-            if (walkSound.isPlaying == false)
+            if (walkSound.isPlaying == false && playerGrounded.IsGrounded())
             {
                 var clip = walkSounds.ReturnRandom();
                 walkSound.clip = clip;
@@ -93,9 +96,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (motorSound.isPlaying == false)
                 {
-                    //motorSound.clip = motorSounds.clips[1];
-                    //motorSound.loop = true;
-                    //TODO check why this part does not work.
                     Debugger.Log("MotorSound.UnPause called", Debugger.PriorityLevel.Medium);
                     motorSound.UnPause();
                 }

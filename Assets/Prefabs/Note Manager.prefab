@@ -50,16 +50,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSheetUI: {fileID: 0}
   soundBanks:
-  - name: Wind
+  - name: String
     clips:
-    - {fileID: 8300000, guid: 13295f3ea047f4d45ba12e33286b1eef, type: 3}
-    - {fileID: 8300000, guid: f3187e7dc1209c641be33c41ec042373, type: 3}
-    - {fileID: 8300000, guid: aaebfc07b18b81c4fa173f39ff55c880, type: 3}
-    - {fileID: 8300000, guid: 61023a8cf3104424fbe21407519d1f96, type: 3}
-    - {fileID: 8300000, guid: de0fba7f88a414147bfa1d92ffb99369, type: 3}
-    - {fileID: 8300000, guid: c7480989874659f42ac4b9070e8a8e2c, type: 3}
-    - {fileID: 8300000, guid: 3bc384841d156f94e93c906bcd9df186, type: 3}
-    - {fileID: 8300000, guid: 2385e3603b32afb4c96a5eda372acfd0, type: 3}
+    - {fileID: 8300000, guid: d31839a3e331db744be097f83e507a07, type: 3}
+    - {fileID: 8300000, guid: 7046ed8cd8a34b04d8d1e8c79e2dbaf7, type: 3}
+    - {fileID: 8300000, guid: 56294c99794bfe7418cd69ac91e00bd4, type: 3}
+    - {fileID: 8300000, guid: e7d3a7d3b4f1dba4fbe3ce07b466befd, type: 3}
+    - {fileID: 8300000, guid: 1316ca461022c4e40aba81e5d764bcf7, type: 3}
+    - {fileID: 8300000, guid: 6b3ae50b4d1c69a4a88d0a2a28c71c7a, type: 3}
+    - {fileID: 8300000, guid: 26a411e29cb69e94abac884aba7fc393, type: 3}
+    - {fileID: 8300000, guid: 189a87d6bc220f34ea8e4d019df466f4, type: 3}
     variationsCount: 2
   - name: Percussion
     clips:
@@ -76,24 +76,24 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 85b89edfae9249c468e2af14902d2a77, type: 3}
     - {fileID: 8300000, guid: 53a3a72472ee0774e82a686759f8af93, type: 3}
     variationsCount: 3
-  - name: String
+  - name: Wind
     clips:
-    - {fileID: 8300000, guid: d31839a3e331db744be097f83e507a07, type: 3}
-    - {fileID: 8300000, guid: 7046ed8cd8a34b04d8d1e8c79e2dbaf7, type: 3}
-    - {fileID: 8300000, guid: 56294c99794bfe7418cd69ac91e00bd4, type: 3}
-    - {fileID: 8300000, guid: e7d3a7d3b4f1dba4fbe3ce07b466befd, type: 3}
-    - {fileID: 8300000, guid: 1316ca461022c4e40aba81e5d764bcf7, type: 3}
-    - {fileID: 8300000, guid: 6b3ae50b4d1c69a4a88d0a2a28c71c7a, type: 3}
-    - {fileID: 8300000, guid: 26a411e29cb69e94abac884aba7fc393, type: 3}
-    - {fileID: 8300000, guid: 189a87d6bc220f34ea8e4d019df466f4, type: 3}
+    - {fileID: 8300000, guid: 13295f3ea047f4d45ba12e33286b1eef, type: 3}
+    - {fileID: 8300000, guid: f3187e7dc1209c641be33c41ec042373, type: 3}
+    - {fileID: 8300000, guid: aaebfc07b18b81c4fa173f39ff55c880, type: 3}
+    - {fileID: 8300000, guid: 61023a8cf3104424fbe21407519d1f96, type: 3}
+    - {fileID: 8300000, guid: de0fba7f88a414147bfa1d92ffb99369, type: 3}
+    - {fileID: 8300000, guid: c7480989874659f42ac4b9070e8a8e2c, type: 3}
+    - {fileID: 8300000, guid: 3bc384841d156f94e93c906bcd9df186, type: 3}
+    - {fileID: 8300000, guid: 2385e3603b32afb4c96a5eda372acfd0, type: 3}
     variationsCount: 2
   textureSoundBanks:
-  - name: WindTexture
+  - name: StringTexture
     clips:
-    - {fileID: 8300000, guid: ff178d3e5170c5645ae61036a378b332, type: 3}
-    - {fileID: 8300000, guid: 5f4f762967931034ba94db47a744da83, type: 3}
-    - {fileID: 8300000, guid: 8b593a7b8d189ef4c814b020c4b248fe, type: 3}
-    - {fileID: 8300000, guid: db2dce5653727ec449f6e217801c4d1f, type: 3}
+    - {fileID: 8300000, guid: b8380d823e0f0ea4da6a5b3666e11738, type: 3}
+    - {fileID: 8300000, guid: de64e593c70c95f49b7238787aef8d40, type: 3}
+    - {fileID: 8300000, guid: 6e44af658a2382b46a1e55fbc83b435d, type: 3}
+    - {fileID: 8300000, guid: f9b850bf0706f2644860af320e603318, type: 3}
     variationsCount: 1
   - name: PercussionTexture
     clips:
@@ -102,12 +102,12 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 4de3de9d5ad2af045afaa19c41a45be4, type: 3}
     - {fileID: 8300000, guid: 93a0cdc8227c42f47b2963b2c27884d1, type: 3}
     variationsCount: 1
-  - name: StringTexture
+  - name: WindTexture
     clips:
-    - {fileID: 8300000, guid: b8380d823e0f0ea4da6a5b3666e11738, type: 3}
-    - {fileID: 8300000, guid: de64e593c70c95f49b7238787aef8d40, type: 3}
-    - {fileID: 8300000, guid: 6e44af658a2382b46a1e55fbc83b435d, type: 3}
-    - {fileID: 8300000, guid: f9b850bf0706f2644860af320e603318, type: 3}
+    - {fileID: 8300000, guid: ff178d3e5170c5645ae61036a378b332, type: 3}
+    - {fileID: 8300000, guid: 5f4f762967931034ba94db47a744da83, type: 3}
+    - {fileID: 8300000, guid: 8b593a7b8d189ef4c814b020c4b248fe, type: 3}
+    - {fileID: 8300000, guid: db2dce5653727ec449f6e217801c4d1f, type: 3}
     variationsCount: 1
   noteExpireTimer: 3
   noteUnfilledDismisTimer: 0

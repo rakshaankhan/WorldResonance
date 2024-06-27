@@ -11,6 +11,9 @@ public class PlayerActionManager : MonoBehaviour
     [SerializeField]
     private GameEvent interactGameEvent;
 
+    [SerializeField]
+    public bool disabledMovement;
+
     public Vector2 moveValue { get; private set; }
     public bool jumpValue { get; private set; }
     public bool glideValue { get; private set; }
@@ -56,10 +59,10 @@ public class PlayerActionManager : MonoBehaviour
     void ManageActions(PlayerInput input, bool onEnable)
     {
 
-        AssignCallbacks(input, "Move", SetMove, null, null, context => context.ReadValue<Vector2>(), onEnable);
+        AssignCallbacks(input, "Move", SetMove, null, started: null, context => context.ReadValue<Vector2>(), onEnable);
         AssignCallbacks(input, "Jump", SetJump, OnJumpCancel, started: null, context => context.ReadValueAsButton(), onEnable);
         AssignCallbacks(input, "glide", SetGlide, SetGlide, null, context => context.ReadValueAsButton(), onEnable);
-        AssignCallbacks(input, "interact", null, OnInteractStart, null, context => context, onEnable);
+        AssignCallbacks(input, "interact", performed: null, OnInteractStart, null, context => context, onEnable);
         AssignCallbacks(input, "Select Instrument", null, null, OnSelectInstrumentName, context => context, onEnable);
         AssignCallbacks(input, "Play Note", OnPlayNote6, null, null, context => context, onEnable);
 
@@ -111,10 +114,27 @@ public class PlayerActionManager : MonoBehaviour
 
 
 
-    void SetMove(Vector2 value) { moveValue = value; }
-    void SetJump(bool value) { jumpValue = value; }
-    void SetGlide(bool value) { glideValue = value; }
-    void SetInteract(bool value) { interactValue = value; }
+    void SetMove(Vector2 value)
+    {
+        moveValue = value;
+        if ((disabledMovement == true)) moveValue = Vector2.zero;
+    }
+    void SetJump(bool value)
+    {
+        jumpValue = value;
+        if ((disabledMovement == true)) jumpValue = false;
+    }
+    void SetGlide(bool value)
+    {
+
+        glideValue = value;
+        if ((disabledMovement == true)) glideValue = false;
+    }
+    void SetInteract(bool value)
+    {
+        interactValue = value;
+
+    }
     void SetEscape(bool value) { escapeValue = value; }
     void OnJumpCancel(bool value)
     {
@@ -123,46 +143,46 @@ public class PlayerActionManager : MonoBehaviour
     }
     void OnInteractStart(InputAction.CallbackContext context)
     {
+        if ((disabledMovement == true)) return;
+
         SetInteract(context.ReadValueAsButton());
         interactGameEvent.TriggerEvent();
         LevelEventsManager.Instance.Interact();
-        Debug.Log("interact");
+
     }
 
     void OnEscape(InputAction.CallbackContext context)
     {
-        Debug.Log("escape!");
         SetEscape(context.ReadValueAsButton());
         PauseMenu.togglePause();
-        Debug.Log("after error message");
     }
 
     public void OnSelectInstrumentName(InputAction.CallbackContext context)
     {
+        if ((disabledMovement == true)) return;
 
-        //TODO this does not allow multiple button pressed which creates unresponsive controls.
         var control = context.control;
         if (control is KeyControl keyControl)
         {
             switch (keyControl.keyCode)
             {
                 case Key.Digit1:
-                selectedInstrument = PlayerInstrument.InstrumentType.Wind;
-                Debug.Log("Key 1 pressed");
+                selectedInstrument = PlayerInstrument.InstrumentType.String;
+                Debugger.Log("Key 1 pressed", Debugger.PriorityLevel.Medium);
                 break;
 
                 case Key.Digit2:
                 selectedInstrument = PlayerInstrument.InstrumentType.Percussion;
-                Debug.Log("Key 2 pressed");
+                Debugger.Log("Key 2 pressed", Debugger.PriorityLevel.Medium);
                 break;
 
                 case Key.Digit3:
-                selectedInstrument = PlayerInstrument.InstrumentType.String;
-                Debug.Log("Key 3 pressed");
+                selectedInstrument = PlayerInstrument.InstrumentType.Wind;
+                Debugger.Log("Key 3 pressed", Debugger.PriorityLevel.Medium);
                 break;
 
                 default:
-                Debug.Log("Other key pressed " + keyControl.keyCode.ToString());
+                Debugger.Log("Other key pressed " + keyControl.keyCode.ToString());
                 break;
             }
 
@@ -212,6 +232,19 @@ public class PlayerActionManager : MonoBehaviour
 
             playerInstrument.ChooseNoteAndPlay(id);
         }
+    }
+
+
+    public void DisableMovement()
+    {
+        disabledMovement = true;
+        moveValue = Vector2.zero;
+        jumpValue = false;
+    }
+
+    public void EnableMovement()
+    {
+        disabledMovement = false;
     }
 }
 

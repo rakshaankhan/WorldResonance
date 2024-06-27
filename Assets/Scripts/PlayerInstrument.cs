@@ -27,6 +27,8 @@ public class PlayerInstrument : MonoBehaviour
     [SerializeField]
     private bool disablePlayerInstrument;
 
+    private PlayerAnimation playerAnimation;
+
     //private void OnEnable()
     //{
     //    LevelEventsManager.Instance.onInteract += PlayCurrentInstrument;
@@ -36,20 +38,33 @@ public class PlayerInstrument : MonoBehaviour
     //{
     //    LevelEventsManager.Instance.onInteract -= PlayCurrentInstrument;
     //}
+
+    private Inventory inventory;
+    private void Awake()
+    {
+        playerAnimation = GetComponent<PlayerAnimation>();
+        inventory = GetComponent<Inventory>();
+    }
+    private void Start()
+    {
+
+        CheckInventoryForInstruments();
+    }
+
     public enum InstrumentType
     {
         /// <summary>
-        /// Moves Stuff
+        /// Creates Stuff
         /// </summary>
-        Wind,
+        String,
         /// <summary>
         /// Removes Stuff
         /// </summary>
         Percussion,
         /// <summary>
-        /// Creates Stuff
+        /// Moves Stuff
         /// </summary>
-        String
+        Wind
     }
 
     //Did not write actual notes to make it easier to read
@@ -60,19 +75,20 @@ public class PlayerInstrument : MonoBehaviour
         B,
         C,
         D
-
     }
 
     public void PlayCurrentInstrument()
     {
         instrumentPlayEvent.TriggerEvent();
+        playerAnimation.PlayInstrument(selectedInstrument.instrumentType);
     }
 
     public void ChangeInstrument(InstrumentType type)
     {
         if (disablePlayerInstrument == true) return;
 
-        //TODO Maybe just use an id if there will me more insturuments instead of Type.
+        if (inventory.GetItemCount((int) type) == 0) return;
+
         audioSource.PlayOneShot(itemSwapSound);
         selectedInstrument = instrumentList[(int) type];
         instrumentChangeEvent.TriggerEvent();
@@ -84,5 +100,17 @@ public class PlayerInstrument : MonoBehaviour
 
         selectedNote = (Note) id;
         PlayCurrentInstrument();
+    }
+
+    public void CheckInventoryForInstruments()
+    {
+        if (inventory.GetSum() <= 0)
+        {
+            disablePlayerInstrument = true;
+        }
+        else
+        {
+            disablePlayerInstrument = false;
+        }
     }
 }

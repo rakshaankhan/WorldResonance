@@ -46,8 +46,8 @@ public class PlayerAnimation : MonoBehaviour
 
     private void FlipSprite(bool flag)
     {
-        //sprite.flipX = flag;
-        if (flag) { transform.localScale = new Vector3(-1, 1, 1); } else { transform.localScale = Vector3.one; }
+        sprite.flipX = flag;
+        // if (flag) { transform.localScale = new Vector3(-1, 1, 1); } else { transform.localScale = Vector3.one; }
     }
 
     public void SetAnimation(string animation) { playerAnimator.Play(animation); }
@@ -133,6 +133,16 @@ public class PlayerAnimation : MonoBehaviour
         PlayAnimation("PlayerGlide");
     }
 
+    internal void PlayInstrument(PlayerInstrument.InstrumentType instrumentType)
+    {
+        var intValue = (int) (instrumentType);
+        playerAnimator.SetBool("SpecialEventPlaying", true);
+        playerAnimator.SetInteger("InstrumentNumber", intValue);
+    }
 
-
+    public void HideInstrument()
+    {
+        playerAnimator.SetBool("SpecialEventPlaying", false);
+        playerAnimator.SetInteger("InstrumentNumber", -1);
+    }
 }

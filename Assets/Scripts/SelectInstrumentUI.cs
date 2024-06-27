@@ -7,6 +7,9 @@ using UnityEngine.UI;
 public class SelectInstrumentUI : MonoBehaviour
 {
     [SerializeField]
+    private RectTransform mainRotate;
+
+    [SerializeField]
     private List<Transform> animationPath;
     [SerializeField]
     private AnimationCurve curveX;
@@ -21,13 +24,19 @@ public class SelectInstrumentUI : MonoBehaviour
     private List<Material> materials;
 
     private PlayerInstrument playerInstrument;
+
     private void Start()
     {
-        playerInstrument = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInstrument>();
+        // playerInstrument = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInstrument>();
 
     }
+
     public void OnInstrumentChange()
     {
+        if (playerInstrument == null)
+        {
+            playerInstrument = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInstrument>();
+        }
         var type = playerInstrument.selectedInstrument.instrumentType;
 
         foreach (var image in images)
@@ -37,7 +46,8 @@ public class SelectInstrumentUI : MonoBehaviour
         //images[(int) type].material.SetFloat("_Outline", 1);
         images[(int) type].material = materials[1];
         //transform.DOPath();
-        MoveElements(0, type);
+        //MoveElements(0, type);
+        Rotate((int) type);
     }
 
     private IEnumerator MoveElements(int index, PlayerInstrument.InstrumentType type)
@@ -50,6 +60,12 @@ public class SelectInstrumentUI : MonoBehaviour
         images[index].transform.parent.GetComponent<RectTransform>().DOAnchorPos3DX(x, 0.1f);
 
         return null;
+    }
+
+    private void Rotate(int index)
+    {
+
+        mainRotate.DOLocalRotate((new Vector3(0, 0, 120 * index)), 1f);
     }
 
 
