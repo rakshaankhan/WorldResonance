@@ -132,11 +132,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 316568463182719893, guid: 462168f4a8311b144b62bf40591e58a1, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1022.5
+      value: 1076.2999
       objectReference: {fileID: 0}
     - target: {fileID: 316568463182719893, guid: 462168f4a8311b144b62bf40591e58a1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -510.1
+      value: -469.7
       objectReference: {fileID: 0}
     - target: {fileID: 443993586025230658, guid: 462168f4a8311b144b62bf40591e58a1, type: 3}
       propertyPath: onEventTriggered.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -272,11 +272,11 @@ PrefabInstance:
       objectReference: {fileID: 1045494073}
     - target: {fileID: 3951460129671994482, guid: 462168f4a8311b144b62bf40591e58a1, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 938.2999
+      value: 907.8999
       objectReference: {fileID: 0}
     - target: {fileID: 3951460129671994482, guid: 462168f4a8311b144b62bf40591e58a1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -608.7
+      value: -666.9
       objectReference: {fileID: 0}
     - target: {fileID: 5295723710863443044, guid: 462168f4a8311b144b62bf40591e58a1, type: 3}
       propertyPath: m_Enabled
@@ -292,11 +292,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7948125532931596013, guid: 462168f4a8311b144b62bf40591e58a1, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 915.7999
+      value: 862.8999
       objectReference: {fileID: 0}
     - target: {fileID: 7948125532931596013, guid: 462168f4a8311b144b62bf40591e58a1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -490
+      value: -429.5
       objectReference: {fileID: 0}
     - target: {fileID: 8094109152333153515, guid: 462168f4a8311b144b62bf40591e58a1, type: 3}
       propertyPath: m_Enabled
@@ -829,7 +829,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3c6c0dbfc9738374f9a2eddddccb60c7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: aa0c1e82278c24b42807a3e29b7fff82, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

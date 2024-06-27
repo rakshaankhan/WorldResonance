@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 61ce5d89c318a354b9e2efb7705eeb03
+guid: 6bd084dda30ccba48ae554836da48506
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 80
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -97,12 +97,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bongos playing_0
+      name: flute playing_0
       rect:
         serializedVersion: 2
         x: 0
         y: 727
-        width: 337
+        width: 420
         height: 727
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -111,19 +111,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c122aec5a55b7be43a2e30c23e974930
-      internalID: 2071871514
+      spriteID: fe0023ac08b0b2a47bd3cbfbc8da0ff3
+      internalID: -1865314372
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bongos playing_1
+      name: flute playing_1
       rect:
         serializedVersion: 2
-        x: 337
+        x: 420
         y: 727
-        width: 337
+        width: 420
         height: 727
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -132,19 +132,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc0a15e5e7ec2a747bd2447be1752b89
-      internalID: 1529573212
+      spriteID: c9cef66210674514597015776c26154a
+      internalID: -365985110
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bongos playing_2
+      name: flute playing_2
       rect:
         serializedVersion: 2
-        x: 674
+        x: 840
         y: 727
-        width: 337
+        width: 420
         height: 727
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -153,19 +153,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4fe68e2d44f235143aafcedab5bab94a
-      internalID: -1274732036
+      spriteID: e5f10482929f4a54aa0043e2bb7e0fe2
+      internalID: 981916494
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bongos playing_3
+      name: flute playing_3
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 337
+        width: 420
         height: 727
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -174,19 +174,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dec11c8e567de4945b0eb595731e043a
-      internalID: -1361238270
+      spriteID: 32003443a3792154ebb63e1f830ba4a0
+      internalID: 960155779
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bongos playing_4
+      name: flute playing_4
       rect:
         serializedVersion: 2
-        x: 337
+        x: 420
         y: 0
-        width: 337
+        width: 420
         height: 727
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -195,19 +195,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8938cb13d9f57754caee476dfe77d6aa
-      internalID: 2090888710
+      spriteID: dd91d2a78e307ed45be3e0b095f5187a
+      internalID: 750883409
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bongos playing_5
+      name: flute playing_5
       rect:
         serializedVersion: 2
-        x: 674
+        x: 840
         y: 0
-        width: 337
+        width: 420
         height: 727
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -216,8 +216,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f6096eaac24674e45b8db1fa5555e547
-      internalID: 1740471595
+      spriteID: a152106aed96d1341b3f3ac92a392534
+      internalID: 1726012907
       vertices: []
       indices: 
       edges: []
@@ -233,12 +233,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      bongos playing_0: 2071871514
-      bongos playing_1: 1529573212
-      bongos playing_2: -1274732036
-      bongos playing_3: -1361238270
-      bongos playing_4: 2090888710
-      bongos playing_5: 1740471595
+      flute playing_0: -1865314372
+      flute playing_1: -365985110
+      flute playing_2: 981916494
+      flute playing_3: 960155779
+      flute playing_4: 750883409
+      flute playing_5: 1726012907
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

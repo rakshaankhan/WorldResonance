@@ -54,10 +54,7 @@ public class NoteListChangeUIHandler : MonoBehaviour
                     var result = Instantiate(notePrefab, transform.position, Quaternion.Euler(0, 0, Random.Range(-30, 30)));
                     result.transform.localScale = (Vector3.one * 0.8f) + (Random.insideUnitSphere * 0.4f);
                 }
-                textField.text = myNote.ToString();
-
-
-
+                textField.text = myNote.ToArrowString();
             }
         }
 

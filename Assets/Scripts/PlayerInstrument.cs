@@ -67,6 +67,7 @@ public class PlayerInstrument : MonoBehaviour
         Wind
     }
 
+
     //Did not write actual notes to make it easier to read
     public enum Note
     {
@@ -76,6 +77,7 @@ public class PlayerInstrument : MonoBehaviour
         C,
         D
     }
+
 
     public void PlayCurrentInstrument()
     {
