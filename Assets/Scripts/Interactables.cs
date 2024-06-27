@@ -30,6 +30,7 @@ public class Interactables : MonoBehaviour
     private PlayerInstrument playerInstrument;
 
 
+    private bool activated = false;
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -49,9 +50,11 @@ public class Interactables : MonoBehaviour
         //TODO right now this assumes player did not change instrument in mid song play. I am not sure what will be the final intend. 
         if (playerInstrument.selectedInstrument.instrumentType != insturumentType) mistakeCount++;
 
+        Debugger.Log("Mistake Count for instrument " + mistakeCount, Debugger.PriorityLevel.MustShown);
         for (int i = 0; i < acceptedNoteOrder.Count; i++)
         {
             if (acceptedNoteOrder[i] != noteManager.GetINoteAtIndex(i)) mistakeCount++;
+            Debugger.Log("Mistake Count for note " + i + " and count" + mistakeCount, Debugger.PriorityLevel.MustShown);
         }
 
         if (mistakeCount == 0)
@@ -67,7 +70,11 @@ public class Interactables : MonoBehaviour
 
     private void SpecialAction()
     {
+        if (activated == true) return;
+
+        activated = true;
         specialInteraction.Invoke();
+
     }
 
 }
