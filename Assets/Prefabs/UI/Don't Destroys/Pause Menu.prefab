@@ -223,6 +223,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onTriggerEnterEvents:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3186050531579667727
 GameObject:
   m_ObjectHideFlags: 0
@@ -1107,10 +1110,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2324258077075328647, guid: 6c2a709949042e34580a44cba9ce68f1, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2921116855430009197, guid: 6c2a709949042e34580a44cba9ce68f1, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 2921116855430009197, guid: 6c2a709949042e34580a44cba9ce68f1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 34
+      objectReference: {fileID: 0}
     - target: {fileID: 2926747444762236882, guid: 6c2a709949042e34580a44cba9ce68f1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 8970741659259464766}
+    - target: {fileID: 3426551274112756612, guid: 6c2a709949042e34580a44cba9ce68f1, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3718090797565628764, guid: 6c2a709949042e34580a44cba9ce68f1, type: 3}
       propertyPath: m_SpriteState.m_SelectedSprite
       value: 
@@ -1271,6 +1290,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7147265989680906558, guid: 6c2a709949042e34580a44cba9ce68f1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8394aeb4e534365448d88d5dc425df51, type: 3}
+    - target: {fileID: 7147265989680906558, guid: 6c2a709949042e34580a44cba9ce68f1, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7220496139739577303, guid: 6c2a709949042e34580a44cba9ce68f1, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 7220496139739577303, guid: 6c2a709949042e34580a44cba9ce68f1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 34
+      objectReference: {fileID: 0}
     - target: {fileID: 8264786108550148232, guid: 6c2a709949042e34580a44cba9ce68f1, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1303,6 +1338,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9161712900551883750, guid: 6c2a709949042e34580a44cba9ce68f1, type: 3}
+      propertyPath: m_SpriteState.m_PressedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c39e237f144210e4a8da71ed6ec12cd2, type: 3}
+    - target: {fileID: 9161712900551883750, guid: 6c2a709949042e34580a44cba9ce68f1, type: 3}
+      propertyPath: m_SpriteState.m_SelectedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c39e237f144210e4a8da71ed6ec12cd2, type: 3}
+    - target: {fileID: 9161712900551883750, guid: 6c2a709949042e34580a44cba9ce68f1, type: 3}
+      propertyPath: m_SpriteState.m_HighlightedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c39e237f144210e4a8da71ed6ec12cd2, type: 3}
     - target: {fileID: 9161712900551883750, guid: 6c2a709949042e34580a44cba9ce68f1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
