@@ -1,5 +1,4 @@
 using DG.Tweening;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,6 +7,9 @@ public class SelectInstrumentUI : MonoBehaviour
 {
     [SerializeField]
     private RectTransform mainRotate;
+
+    [SerializeField]
+    private RectTransform slaveRotate;
 
     [SerializeField]
     private List<Transform> animationPath;
@@ -21,6 +23,9 @@ public class SelectInstrumentUI : MonoBehaviour
     private List<Image> images;
 
     [SerializeField]
+    private List<Sprite> ovverideSprites;
+
+    [SerializeField]
     private List<Material> materials;
 
     private PlayerInstrument playerInstrument;
@@ -29,6 +34,11 @@ public class SelectInstrumentUI : MonoBehaviour
     {
         // playerInstrument = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInstrument>();
 
+    }
+
+    private void OnEnable()
+    {
+        images[0].overrideSprite = ovverideSprites[0];
     }
 
     public void OnInstrumentChange()
@@ -42,30 +52,27 @@ public class SelectInstrumentUI : MonoBehaviour
         foreach (var image in images)
         {
             image.material = materials[0];
+            image.overrideSprite = null;
         }
-        //images[(int) type].material.SetFloat("_Outline", 1);
         images[(int) type].material = materials[1];
-        //transform.DOPath();
-        //MoveElements(0, type);
-        Rotate((int) type);
+        images[(int) type].overrideSprite = ovverideSprites[(int) type];
+
+        AnimateInstrumentUI((int) type);
     }
 
-    private IEnumerator MoveElements(int index, PlayerInstrument.InstrumentType type)
-    {
-        float time = 0;
-        time += Time.deltaTime;
-        var y = curveY.Evaluate((float) type / 2) * 200;
-        var x = curveX.Evaluate((float) type / 2) * 300;
-        images[index].transform.parent.GetComponent<RectTransform>().DOAnchorPos3DY(y, 0.1f);
-        images[index].transform.parent.GetComponent<RectTransform>().DOAnchorPos3DX(x, 0.1f);
 
-        return null;
-    }
-
-    private void Rotate(int index)
+    private void AnimateInstrumentUI(int index)
     {
 
         mainRotate.DOLocalRotate((new Vector3(0, 0, 120 * index)), 1f);
+        slaveRotate.DOLocalRotate((new Vector3(0, 0, 120 * index) * -1), 1f, RotateMode.FastBeyond360);
+        images[index].transform.DOScale(Vector3.one * 2, 1f);
+
+        for (int i = 0; i < images.Count; i++)
+        {
+            if (i == index) continue;
+            images[i].transform.DOScale(Vector3.one, 1f);
+        }
     }
 
 
