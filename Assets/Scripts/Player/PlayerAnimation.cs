@@ -19,6 +19,8 @@ public class PlayerAnimation : MonoBehaviour
 
     void PlayAnimation(string newAnimation)
     {
+        return;
+
         if (currentAnimation == newAnimation) { return; }
         currentAnimation = newAnimation;
         playerAnimator?.Play(currentAnimation);

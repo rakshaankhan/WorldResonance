@@ -179,4 +179,19 @@ public class NoteManager : MonoBehaviour
 
     }
 
+    public AudioClip GetRandomNoteClip()
+    {
+        var instrumentIndex = Random.Range(0, soundBanks.Count);
+        SoundBank instrumentNotes = soundBanks[instrumentIndex];
+        var noteIndex = Random.Range(0, maxExclusive: 4);
+        return instrumentNotes.ReturnRandomFromVariations(noteIndex);
+
+    }
+
+    public void GetRandomSong()
+    {
+        //cardSuit = (CardSuit) Random.Range(0, 3);
+
+    }
+
 }
