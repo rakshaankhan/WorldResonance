@@ -2,15 +2,28 @@ using DG.Tweening;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Rendering.Universal;
 
 public class BossManager : MonoBehaviour
 {
+    [Range(0, 2)]
+    [SerializeField]
+    private int selectedInstrumentIndex = 2;
+
+    [SerializeField]
+    private BossRockSpawner rockSpawner;
+
+    public UnityEvent changedNotes;
+
     [SerializeField]
     private List<GameObject> platforms;
 
     [SerializeField]
     private NoteManager noteManager;
+
+    [SerializeField]
+    private Interactables myInteractable;
 
     [SerializeField]
     private float songNoteInterval = 0.2f;
@@ -20,50 +33,83 @@ public class BossManager : MonoBehaviour
 
     [SerializeField]
     private Light2D eyeLight2D;
+    [SerializeField]
+    private SpriteRenderer spriteRenderer;
 
     [Header("Boos Fight Paramaters")]
     [SerializeField]
     private int turnCount = 20;
+    [SerializeField]
+    private float turnDelay = 10;
+    [SerializeField]
+    private int winCounter = 10;
 
+    [SerializeField]
+    private int difficultyRampThreshold = 4;
+
+    private bool countered = false;
+    private int counteredCount = 0;
+
+    public Queue<PlayerInstrument.Note> notes = new(NoteManager.NOTE_SIZE);
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        myInteractable = GetComponent<Interactables>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Start()
     {
-        DOVirtual.DelayedCall(3f, PlayRandomSong).SetLoops(turnCount);
+        PlayRandomSong();
+
+        DOVirtual.DelayedCall(turnDelay, PlayRandomSong).SetLoops(turnCount).SetEase(Ease.InSine);
     }
 
-    [ContextMenu("Play random Note")]
+
     public void PlayRandomNote()
     {
-        var clip = noteManager.GetRandomNoteClip();
+        var clip = noteManager.GetRandomNoteClipFromInstrument(instrumentIndex: selectedInstrumentIndex);
         audioSource.PlayOneShot(clip);
     }
 
-    [ContextMenu("Play random Song")]
+
     public void PlayRandomSong()
     {
+        if (counteredCount > difficultyRampThreshold)
+        {
+            rockSpawner.SpawnRockRandom();
+
+        }
+        notes.Clear();
+        myInteractable.acceptedNoteOrder.Clear();
+        myInteractable.activated = false;
         Sequence s = DOTween.Sequence();
         for (int i = 0; i < 6; i++)
         {
+            var note = (PlayerInstrument.Note) Random.Range(1, 5);
+            notes.Enqueue(note);
+            myInteractable.acceptedNoteOrder.Add(note);
 
             s.AppendCallback(PlayRandomNote);
             s.AppendInterval(songNoteInterval);
             transform.DOPunchPosition(Random.insideUnitCircle, 1f);
         }
+        changedNotes.Invoke();
+        if (countered && counteredCount < 5)
+        {
+            countered = false;
+            return;
+        }
 
-        FindHighestPlatform(platforms).transform.DOBlendableMoveBy(Vector3.down * Random.Range(3, 10), 1f).SetEase(Ease.OutBounce);
+        FindHighestPlatform(platforms).transform.DOBlendableMoveBy(Vector3.down * Random.Range(minInclusive: 5, 15), 1f).SetEase(Ease.OutBounce);
 
         var y = FindAverageYValue(platforms);
         transform.DOMoveY(y, 2f).SetEase(Ease.InElastic);
 
-        //old
+
         DOTween.To(() => eyeLight2D.intensity, x => eyeLight2D.intensity = x, 200f, 0.2f).SetLoops(2, LoopType.Yoyo); ;
         DOTween.To(() => eyeLight2D.color, x => eyeLight2D.color = x, Color.black, 0.2f).SetLoops(2, LoopType.Yoyo); ;
-        //  eyeLight2D.DOIntensity(1, 1);
-        //  PlayRandomNote();
+
     }
 
 
@@ -82,4 +128,25 @@ public class BossManager : MonoBehaviour
         return averageY;
     }
 
+    public void CounterBossSong()
+    {
+        countered = true;
+        counteredCount++;
+        transform.DOPunchPosition(Vector3.left * 1, 0.3f);
+
+        spriteRenderer.color = Color.Lerp(Color.red, Color.green, counteredCount / winCounter);
+
+        rockSpawner.disabled = true;
+
+        notes.Clear();
+        changedNotes.Invoke();
+
+        //transform.DOShakePosition(0f, 10f,);
+    }
+
+    internal PlayerInstrument.Note GetINoteAtIndex(int orderInUI)
+    {
+        if (notes.Count == 0) return PlayerInstrument.Note._;
+        return notes.ElementAt(orderInUI);
+    }
 }

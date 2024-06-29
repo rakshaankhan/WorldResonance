@@ -16,7 +16,7 @@ public class Interactables : MonoBehaviour
     private PlayerInstrument.InstrumentType insturumentType = default;
 
     [SerializeField]
-    List<PlayerInstrument.Note> acceptedNoteOrder;
+    public List<PlayerInstrument.Note> acceptedNoteOrder;
 
     [SerializeField]
     private GameEvent songFailEvent;
@@ -30,7 +30,7 @@ public class Interactables : MonoBehaviour
     private PlayerInstrument playerInstrument;
 
 
-    private bool activated = false;
+    public bool activated = false;
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");

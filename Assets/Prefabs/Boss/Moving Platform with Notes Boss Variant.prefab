@@ -29,12 +29,28 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5049198362873805386, guid: d7013d9675e5d194d849ae87ccc12dfe, type: 3}
+      propertyPath: gameEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: b04523810d759b5488ff3be7272ddda7, type: 2}
+    - target: {fileID: 5049198362873805386, guid: d7013d9675e5d194d849ae87ccc12dfe, type: 3}
       propertyPath: onEventTriggered.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5049198362873805386, guid: d7013d9675e5d194d849ae87ccc12dfe, type: 3}
+      propertyPath: onEventTriggered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5881522617024070149}
+    - target: {fileID: 5049198362873805386, guid: d7013d9675e5d194d849ae87ccc12dfe, type: 3}
       propertyPath: onEventTriggered.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5049198362873805386, guid: d7013d9675e5d194d849ae87ccc12dfe, type: 3}
+      propertyPath: onEventTriggered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MoveWhenPlayerIsOn
+      objectReference: {fileID: 0}
+    - target: {fileID: 5049198362873805386, guid: d7013d9675e5d194d849ae87ccc12dfe, type: 3}
+      propertyPath: onEventTriggered.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MoveBridgeWhenPlayerOn, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6302229429464745751, guid: d7013d9675e5d194d849ae87ccc12dfe, type: 3}
       propertyPath: m_LocalPosition.x
@@ -77,6 +93,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7084331698920003037, guid: d7013d9675e5d194d849ae87ccc12dfe, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7084331698920003037, guid: d7013d9675e5d194d849ae87ccc12dfe, type: 3}
       propertyPath: interractionDistance
       value: 200
       objectReference: {fileID: 0}
@@ -105,6 +125,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 251252715212675688, guid: d7013d9675e5d194d849ae87ccc12dfe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3129407885273097791}
+    - targetCorrespondingSourceObject: {fileID: 251252715212675688, guid: d7013d9675e5d194d849ae87ccc12dfe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5881522617024070149}
   m_SourcePrefab: {fileID: 100100000, guid: d7013d9675e5d194d849ae87ccc12dfe, type: 3}
 --- !u!1 &6678990810973882290 stripped
 GameObject:
@@ -126,3 +149,23 @@ MonoBehaviour:
   floatVector: {x: 0, y: 2, z: 0}
   floatFrequence: 1
   curve: 10
+--- !u!114 &5881522617024070149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6678990810973882290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f01cb52b8891c94eaa5ed3f24cbea9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: {x: 0, y: 3, z: 0}
+  scale: {x: 3, y: 1, z: 1}
+  timer: 0.3
+  scaletimer: 1
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  groundCheckDimensions: {x: 10.51, y: 3.4}

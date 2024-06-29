@@ -8,7 +8,7 @@ public static class NoteExtensions
         switch (note)
         {
             case Note._:
-            return "_";
+            return " ";
             case Note.A:
             return "↑"; // Arrow for A
             case Note.B:

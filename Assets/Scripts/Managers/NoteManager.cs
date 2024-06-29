@@ -26,7 +26,7 @@ public class NoteManager : MonoBehaviour
 
     [SerializeField]
     public Queue<PlayerInstrument.Note> notes = new(NOTE_SIZE);
-    private const int NOTE_SIZE = 6;
+    public const int NOTE_SIZE = 6;
 
     [SerializeField]
     private PlayerInstrument playerInstrument;
@@ -182,6 +182,13 @@ public class NoteManager : MonoBehaviour
     public AudioClip GetRandomNoteClip()
     {
         var instrumentIndex = Random.Range(0, soundBanks.Count);
+        return GetRandomNoteClipFromInstrument(instrumentIndex);
+    }
+
+    public AudioClip GetRandomNoteClipFromInstrument(int instrumentIndex)
+    {
+        if (instrumentIndex > soundBanks.Count - 1 || instrumentIndex < 0) return null;
+
         SoundBank instrumentNotes = soundBanks[instrumentIndex];
         var noteIndex = Random.Range(0, maxExclusive: 4);
         return instrumentNotes.ReturnRandomFromVariations(noteIndex);
