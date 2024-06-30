@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 public class OptionsMenuManager : MonoBehaviour
 {
 
+
+    [SerializeField] private AudioClip ui_Back_Clip;
+
     [SerializeField] private TMPro.TMP_Dropdown _qualityDropdown;
     [SerializeField] private TMPro.TMP_Dropdown _fspCapDropdown;
     [SerializeField] private TMPro.TMP_Dropdown _resolutionDropdown;
@@ -106,5 +109,10 @@ public class OptionsMenuManager : MonoBehaviour
     public void ResetGameState()
     {
         DataManager.instance.ResetGameState();
+    }
+
+    public void PlayOneShot(AudioClip clip)
+    {
+        MusicManager.instance.PlayOneShotClip(clip);
     }
 }

@@ -577,7 +577,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 6478382544290818344, guid: 26a21470da74cf540a0024c8fe4b3445, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 3958b2103ba480543aecffc034e77a66, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8480d82d22b983a45990d8952bde96e8, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -805,6 +805,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   onEnableEvents:
+    m_PersistentCalls:
+      m_Calls: []
+  onTriggerEnterEvents:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &7262207946554743068

@@ -5,6 +5,12 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField]
+    private AudioClip select_clip;
+
+    [SerializeField]
+    private AudioClip back_clip;
+
+    [SerializeField]
     private GameEvent sceneIsChaning;
 
     [SerializeField]
@@ -104,4 +110,16 @@ public class PauseMenu : MonoBehaviour
         // You can add more logic here like confirmation dialog if needed
         Application.Quit();
     }
+
+
+    public void PlaySelectClip()
+    {
+        MusicManager.instance.PlayOneShotClip(select_clip);
+    }
+
+    public void PlayBackClip()
+    {
+        MusicManager.instance.PlayOneShotClip(back_clip);
+    }
+
 }

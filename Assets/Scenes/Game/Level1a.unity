@@ -2061,16 +2061,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d48da3e0f471c643b026fb9c2742763, type: 3}
---- !u!1 &1210386594 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6266681915181934450, guid: 7c3b089e016f2b144a9495e7fad5987d, type: 3}
-  m_PrefabInstance: {fileID: 5029033940721365459}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1210386596 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8264021672575032962, guid: 7c3b089e016f2b144a9495e7fad5987d, type: 3}
-  m_PrefabInstance: {fileID: 5029033940721365459}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1236132316
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2609,7 +2599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flyingNotesPrefab: {fileID: 3111461273749537846, guid: ff00a846f8a27ba48861fe671d8b66a8, type: 3}
-  bird: {fileID: 1210386594}
+  bird: {fileID: 0}
   birdTarget: {fileID: 1506418641}
   birdFlyTime: 4
   noteManager: {fileID: 1621179859}
@@ -4901,63 +4891,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf8eab90c2f7f7643973eb7636dcd71b, type: 3}
---- !u!1001 &5029033940721365459
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6266681915181934450, guid: 7c3b089e016f2b144a9495e7fad5987d, type: 3}
-      propertyPath: m_Name
-      value: Bird
-      objectReference: {fileID: 0}
-    - target: {fileID: 8264021672575032962, guid: 7c3b089e016f2b144a9495e7fad5987d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 142.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8264021672575032962, guid: 7c3b089e016f2b144a9495e7fad5987d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -17
-      objectReference: {fileID: 0}
-    - target: {fileID: 8264021672575032962, guid: 7c3b089e016f2b144a9495e7fad5987d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8264021672575032962, guid: 7c3b089e016f2b144a9495e7fad5987d, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8264021672575032962, guid: 7c3b089e016f2b144a9495e7fad5987d, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8264021672575032962, guid: 7c3b089e016f2b144a9495e7fad5987d, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8264021672575032962, guid: 7c3b089e016f2b144a9495e7fad5987d, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8264021672575032962, guid: 7c3b089e016f2b144a9495e7fad5987d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8264021672575032962, guid: 7c3b089e016f2b144a9495e7fad5987d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8264021672575032962, guid: 7c3b089e016f2b144a9495e7fad5987d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7c3b089e016f2b144a9495e7fad5987d, type: 3}
 --- !u!1001 &5153490466576290623
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5240,7 +5173,7 @@ PrefabInstance:
     - target: {fileID: 3617849042271328856, guid: 87713ec7819f55d4696756a4300641f3, type: 3}
       propertyPath: Target.TrackingTarget
       value: 
-      objectReference: {fileID: 1210386596}
+      objectReference: {fileID: 0}
     - target: {fileID: 4396041049662186526, guid: 87713ec7819f55d4696756a4300641f3, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.data[0].Array.data[0].x
       value: 152.57777
@@ -5454,7 +5387,6 @@ SceneRoots:
   - {fileID: 6170790580702725959}
   - {fileID: 1686069806}
   - {fileID: 1364576978}
-  - {fileID: 5029033940721365459}
   - {fileID: 6131500098793625326}
   - {fileID: 1506418641}
   - {fileID: 1127013093}

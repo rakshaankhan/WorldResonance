@@ -5,11 +5,11 @@ using UnityEngine.UI;
 public class Mainmenu : MonoBehaviour
 {
     [SerializeField]
-    private AudioClip upClip;
+    private AudioClip selectClip;
 
 
     [SerializeField]
-    private AudioClip downClip;
+    private AudioClip backClip;
 
     private AudioSource audioSource;
 
@@ -96,5 +96,15 @@ public class Mainmenu : MonoBehaviour
     {
         // Quit the application
         Application.Quit();
+    }
+
+    public void PlaySelectClip()
+    {
+        MusicManager.instance.PlayOneShotClip(selectClip);
+    }
+
+    public void PlayBackClip()
+    {
+        MusicManager.instance.PlayOneShotClip(backClip);
     }
 }

@@ -5,9 +5,13 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-//TODO music manager needs to know the music and which scene we are on and when to change musics.
+
 public class MusicManager : MonoBehaviour
+
 {
+    [SerializeField]
+    private AudioSource playOneShots;
+
     [SerializeField]
     private List<SceneField> scenes = new();
     [SerializeField]
@@ -129,6 +133,12 @@ public class MusicManager : MonoBehaviour
             }
             FadeIN();
         });
+    }
+
+
+    public void PlayOneShotClip(AudioClip clip)
+    {
+        playOneShots.PlayOneShot(clip);
     }
 
 }
