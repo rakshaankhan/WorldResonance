@@ -62,6 +62,7 @@ public class PlayerAnimation : MonoBehaviour
         else { SetAnimationIdle(); }
 
         playerAnimator.SetBool("Climbing", rb.isKinematic);
+        if (rb.isKinematic) { playerAnimator.SetBool("Jumping", false); }//Quick fix for climc animation getting stucked.
 
         playerAnimator.SetFloat("WalkingSpeed", Mathf.Abs(playerActionManager.moveValue.x));
         playerAnimator.SetFloat("VelocityY", rb.velocity.y);
