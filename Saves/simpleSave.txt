@@ -1,1 +1,1 @@
-{"collectedItemGuids":[],"lastSceneOpen":"","collectedInstruments":[0,0,0],"NewGame":true}
+{"collectedItemGuids":["536d3e91-579b-4f97-a5d8-802ad74ceff9"],"lastSceneOpen":"Level2c","collectedInstruments":[1,0,0],"NewGame":false}
