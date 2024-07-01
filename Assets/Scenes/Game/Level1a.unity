@@ -184,7 +184,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Space+S '
+  m_text: S+Space
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: abebe6f4ce53b62409bbdd67985943ea, type: 2}
   m_sharedMaterial: {fileID: 745624599158130106, guid: abebe6f4ce53b62409bbdd67985943ea, type: 2}
@@ -3469,7 +3469,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3128304204020393822, guid: 6c7f91ba4956a5d4499f0c711b1be9c3, type: 3}
       propertyPath: fadeOut
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3128304204020393822, guid: 6c7f91ba4956a5d4499f0c711b1be9c3, type: 3}
       propertyPath: disabled
