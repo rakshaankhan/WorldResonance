@@ -20,4 +20,10 @@ public class MoveBridge : MonoBehaviour
         transform.DOBlendableMoveBy(direction, timer);
         transform.DOScale(scale, scaletimer);
     }
+
+
+    public void ChangeScaleTimer(float timer)
+    {
+        scaletimer = timer;
+    }
 }

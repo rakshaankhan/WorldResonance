@@ -149,4 +149,11 @@ public class PlayerJump : MonoBehaviour
             elapseTime += Time.deltaTime;
         }
     }
+
+    public void SetJump()
+    {
+        jumping = true;
+        animator.SetTrigger("Jump");
+        animator.SetBool("Jumping", true);
+    }
 }

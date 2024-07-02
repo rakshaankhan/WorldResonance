@@ -33,6 +33,8 @@ public class InstrumentCanvasScript : MonoBehaviour
         mainInstrumentPanel.SetActive(result.Sum() > 0);
         for (int i = 0; i < result.Count; i++)
         {
+            if (i >= instrumentImages.Count) break;
+
             instrumentImages[i].SetActive(result[i] > 0);
         }
     }

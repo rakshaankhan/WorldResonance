@@ -16,7 +16,15 @@ public class ParalaxMethod1 : MonoBehaviour
     void Start()
     {
         start = transform.position.x;
-        lenght = GetComponent<SpriteRenderer>().bounds.size.x;
+        if (TryGetComponent<SpriteRenderer>(out SpriteRenderer s))
+        {
+            lenght = s.bounds.size.x;
+        }
+        else
+        {
+            IsInfinite = false;
+        }
+
         cam = Camera.main;
         CinemachineCore.CameraUpdatedEvent.AddListener(UpdateParallax);
     }

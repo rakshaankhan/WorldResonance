@@ -59,7 +59,7 @@ public class PlayerActionManager : MonoBehaviour
     void ManageActions(PlayerInput input, bool onEnable)
     {
 
-        AssignCallbacks(input, "Move", SetMove, null, started: null, context => context.ReadValue<Vector2>(), onEnable);
+        AssignCallbacks(input, "Move", SetMove, UnSetMove, started: null, context => context.ReadValue<Vector2>(), onEnable);
         AssignCallbacks(input, "Jump", SetJump, OnJumpCancel, started: null, context => context.ReadValueAsButton(), onEnable);
         AssignCallbacks(input, "glide", SetGlide, SetGlide, null, context => context.ReadValueAsButton(), onEnable);
         AssignCallbacks(input, "interact", performed: null, OnInteractStart, null, context => context, onEnable);
@@ -118,6 +118,12 @@ public class PlayerActionManager : MonoBehaviour
     {
         moveValue = value;
         if ((disabledMovement == true)) moveValue = Vector2.zero;
+    }
+
+    void UnSetMove(Vector2 value)
+    {
+
+        moveValue = Vector2.zero;
     }
     void SetJump(bool value)
     {
